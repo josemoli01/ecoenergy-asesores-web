@@ -1,112 +1,111 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ecoenergy Asesores</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eco Energy Asesores</title>
 
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f5f5f5;
-      color: #333;
-    }
+<style>
+body {
+  margin: 0;
+  font-family: Arial;
+}
 
-    header {
-      background: #0f172a;
-      color: white;
-      padding: 15px;
-      text-align: center;
-    }
+.hero {
+  background: #0f172a;
+  color: white;
+  text-align: center;
+  padding: 80px 20px;
+}
 
-    .hero {
-      padding: 50px 20px;
-      text-align: center;
-      background: white;
-    }
+.btn {
+  background: #22c55e;
+  color: white;
+  padding: 15px 25px;
+  border-radius: 10px;
+  text-decoration: none;
+  display: inline-block;
+  margin-top: 20px;
+}
 
-    .hero h1 {
-      color: #16a34a;
-    }
+.section {
+  padding: 60px 20px;
+  text-align: center;
+}
 
-    .btn {
-      display: inline-block;
-      padding: 12px 20px;
-      margin: 10px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: bold;
-      color: white;
-    }
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
 
-    .whatsapp {
-      background: #25D366;
-    }
+.card {
+  border: 1px solid #ddd;
+  padding: 20px;
+  border-radius: 15px;
+  width: 250px;
+}
 
-    .facebook {
-      background: #1877F2;
-    }
-
-    .section {
-      background: white;
-      margin: 20px;
-      padding: 20px;
-      border-radius: 10px;
-    }
-
-    .whatsapp-float {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: #25D366;
-      color: white;
-      padding: 12px 18px;
-      border-radius: 50px;
-      text-decoration: none;
-    }
-  </style>
+.calc {
+  font-size: 22px;
+  color: green;
+  font-weight: bold;
+}
+</style>
 </head>
 
 <body>
 
-<header>
-  <h2>Ecoenergy Asesores</h2>
-</header>
+<div class="hero">
+  <h1>Reduce tu factura eléctrica hasta 70%</h1>
+  <p>Energía solar en Panamá</p>
+  <a class="btn" href="https://wa.me/50769453126" target="_blank">Cotizar por WhatsApp</a>
+</div>
 
-<section class="hero">
-  <h1>Energía solar en Panamá</h1>
-  <p>
-    Soluciones de temas energéticos renovables para residencias,
-    comercios, industrias y entidades académicas.
-  </p>
+<div class="section">
+  <h2>Calcula tu ahorro</h2>
+  <input type="range" min="50" max="1000" value="100" id="slider">
+  <p>Factura actual: $<span id="valor">100</span></p>
+  <p class="calc">Ahorro estimado: $<span id="ahorro">70</span></p>
+</div>
 
-  <a class="btn whatsapp" href="https://wa.me/50769453126?text=Hola%20quiero%20información" target="_blank">
-    WhatsApp
-  </a>
+<div class="section">
+  <h2>Tipos de clientes</h2>
+  <div class="cards">
+    <div class="card">
+      <h3>Residencial</h3>
+      <p>Reduce el consumo a cero. Solo pagas cargo mínimo.</p>
+    </div>
 
-  <a class="btn facebook" href="#" target="_blank">
-    Facebook
-  </a>
-</section>
+    <div class="card">
+      <h3>Comercial</h3>
+      <p>Ahorro entre 30% y 70%. Se mantiene demanda.</p>
+    </div>
 
-<section class="section">
-  <h3>Servicios</h3>
-  <p>✔ Residencias</p>
-  <p>✔ Comercios</p>
-  <p>✔ Industrias</p>
-  <p>✔ Entidades académicas</p>
-</section>
+    <div class="card">
+      <h3>Industrial</h3>
+      <p>Optimización energética completa.</p>
+    </div>
+  </div>
+</div>
 
-<section class="section">
-  <h3>Ubicación</h3>
-  <p>Plaza Figuer, Oficina 106</p>
-  <p>Av. Ricardo J. Alfaro, Panamá</p>
-</section>
+<div class="hero">
+  <h2>Empieza hoy</h2>
+  <p>Cotización GRATIS</p>
+  <a class="btn" href="https://wa.me/50769453126" target="_blank">Hablar ahora</a>
+</div>
 
-<a class="whatsapp-float" href="https://wa.me/50769453126" target="_blank">
-  WhatsApp
-</a>
+<script>
+const slider = document.getElementById("slider");
+const valor = document.getElementById("valor");
+const ahorro = document.getElementById("ahorro");
+
+slider.oninput = function() {
+  valor.innerText = this.value;
+  ahorro.innerText = Math.round(this.value * 0.7);
+}
+</script>
 
 </body>
 </html>
