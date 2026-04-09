@@ -642,7 +642,7 @@
       nav{
         width:100%;
         justify-content:flex-start;
-        gap:12px;
+    gap:12px;
       }
 
       .brand img{
@@ -740,7 +740,7 @@
             </div>
             <div class="metric">
               <strong>Comercial</strong>
-              El ahorro depende del porcentaje de demanda y de la parte compensable.
+              El resultado depende de demanda, compensación y saldo libre en caja.
             </div>
             <div class="metric">
               <strong>On Grid / Off Grid</strong>
@@ -748,7 +748,7 @@
             </div>
             <div class="metric">
               <strong>Todo Panamá</strong>
-              Cobertura comercial para diferentes tipos de proyecto.
+              Cobertura comercial para distintos tipos de proyecto.
             </div>
           </div>
         </div>
@@ -795,7 +795,7 @@
             <img src="residencial.jpg" alt="Solución residencial">
             <div class="card-body">
               <h3>Residencial</h3>
-              <p>En clientes residenciales, la compensación puede reducir casi totalmente el pago por consumo de energía, manteniéndose por lo general el cargo fijo del recibo.</p>
+              <p>En clientes residenciales, gran parte del pago actual puede convertirse en pago de suscripción al sistema solar, manteniéndose generalmente solo el cargo fijo con la empresa eléctrica y un remanente libre.</p>
             </div>
           </article>
 
@@ -803,7 +803,7 @@
             <img src="comercial.jpg" alt="Solución comercial">
             <div class="card-body">
               <h3>Comercial</h3>
-              <p>En clientes comerciales, el ahorro depende del porcentaje de demanda y de la parte de energía compensable. En muchos casos, el ahorro puede ubicarse aproximadamente entre 30% y 70%.</p>
+              <p>En clientes comerciales, el cálculo depende del porcentaje de demanda, de la parte compensable y del saldo libre en caja que se genera luego del esquema energético propuesto.</p>
             </div>
           </article>
 
@@ -858,7 +858,7 @@
       <div class="container calc-grid">
         <div class="calc-box">
           <h4>Calculadora</h4>
-          <h5>Estimador referencial de ahorro y pago final</h5>
+          <h5>Estimador referencial de ahorro y flujo mensual</h5>
 
           <div class="field">
             <label for="tipoCliente">Tipo de cliente</label>
@@ -870,7 +870,7 @@
 
           <div class="field">
             <label for="facturaMensual">Factura mensual aproximada (USD)</label>
-            <input type="number" id="facturaMensual" placeholder="Ejemplo: 300">
+            <input type="number" id="facturaMensual" placeholder="Ejemplo: 300 o 3000">
           </div>
 
           <div id="camposResidencial">
@@ -880,7 +880,7 @@
             </div>
 
             <div class="field">
-              <label for="porcentajeResidencial">Porcentaje destinado al sistema solar (%)</label>
+              <label for="porcentajeResidencial">Porcentaje destinado a suscripción PFV (%)</label>
               <input type="number" id="porcentajeResidencial" value="90" min="0" max="100" step="1">
             </div>
           </div>
@@ -888,17 +888,17 @@
           <div id="camposComercial" style="display:none;">
             <div class="field">
               <label for="porcentajeDemanda">Porcentaje exacto de demanda (%)</label>
-              <input type="number" id="porcentajeDemanda" value="60" min="0" max="100" step="1">
+              <input type="number" id="porcentajeDemanda" value="40" min="0" max="100" step="1">
             </div>
 
             <div class="field">
-              <label for="porcentajeCompensacionComercial">Porcentaje de compensación sobre la parte energética (%)</label>
-              <input type="number" id="porcentajeCompensacionComercial" value="100" min="0" max="100" step="1">
+              <label for="porcentajeCompensacionComercial">Porcentaje de suscripción PFV sobre la parte energética (%)</label>
+              <input type="number" id="porcentajeCompensacionComercial" value="90" min="0" max="100" step="1">
             </div>
 
             <div class="field">
-              <label for="cargoFijoComercial">Cargo fijo estimado adicional (USD)</label>
-              <input type="number" id="cargoFijoComercial" value="4.00" step="0.01">
+              <label for="cargoFijoComercial">Cargo fijo estimado de la eléctrica (USD)</label>
+              <input type="number" id="cargoFijoComercial" value="5.50" step="0.01">
             </div>
           </div>
 
@@ -908,8 +908,7 @@
           </div>
 
           <p class="calc-note">
-            En residencial, parte del pago puede redirigirse al sistema solar, manteniéndose el cargo fijo de la eléctrica.
-            En comercial, el resultado depende del porcentaje de demanda, de la parte compensable y de los cargos fijos.
+            Este cálculo es referencial. En residencial se separa suscripción PFV, pago a eléctrica y saldo en caja. En comercial se separa demanda, suscripción PFV, saldo en caja y cargo fijo.
           </p>
         </div>
 
@@ -917,12 +916,13 @@
           <h4>Resultado</h4>
           <h5>Proyección estimada</h5>
           <div class="result-value" id="ahorroMensual">$0.00</div>
-          <div class="result-sub" id="detalleAhorro">Ingresa los datos y obtén una referencia inicial del ahorro posible.</div>
+          <div class="result-sub" id="detalleAhorro">Ingresa los datos y obtén una referencia inicial del resultado mensual.</div>
 
           <div class="list">
-            <div class="list-item"><span class="tick">✔</span><span id="res1">Pago estimado principal.</span></div>
-            <div class="list-item"><span class="tick">✔</span><span id="res2">Pago estimado complementario.</span></div>
-            <div class="list-item"><span class="tick">✔</span><span id="res3">Ahorro neto estimado.</span></div>
+            <div class="list-item"><span class="tick">✔</span><span id="res1">Resultado 1</span></div>
+            <div class="list-item"><span class="tick">✔</span><span id="res2">Resultado 2</span></div>
+            <div class="list-item"><span class="tick">✔</span><span id="res3">Resultado 3</span></div>
+            <div class="list-item"><span class="tick">✔</span><span id="res4">Resultado 4</span></div>
           </div>
         </div>
       </div>
@@ -1032,61 +1032,55 @@
       if (factura <= 0) {
         document.getElementById('ahorroMensual').textContent = '$0.00';
         document.getElementById('detalleAhorro').textContent = 'Ingresa una factura válida para calcular.';
-        document.getElementById('res1').textContent = 'Pago estimado principal.';
-        document.getElementById('res2').textContent = 'Pago estimado complementario.';
-        document.getElementById('res3').textContent = 'Ahorro neto estimado.';
+        document.getElementById('res1').textContent = 'Resultado 1';
+        document.getElementById('res2').textContent = 'Resultado 2';
+        document.getElementById('res3').textContent = 'Resultado 3';
+        document.getElementById('res4').textContent = 'Resultado 4';
         return;
       }
-
-      let ahorro = 0;
-      let pagoFinal = 0;
-      let detalle = '';
 
       if (tipo === 'residencial') {
         const cargoFijo = parseFloat(document.getElementById('cargoFijo').value) || 0;
         const porcentaje = (parseFloat(document.getElementById('porcentajeResidencial').value) || 0) / 100;
 
-        const pagoSistema = factura * porcentaje;
-        const pagoElectrica = cargoFijo;
-        ahorro = factura - (pagoSistema + pagoElectrica);
-        pagoFinal = pagoSistema + pagoElectrica;
+        const pagoSuscripcion = factura * porcentaje;
+        const saldoEnCaja = factura - pagoSuscripcion - cargoFijo;
+        const ahorroTotal = pagoSuscripcion + saldoEnCaja;
 
-        document.getElementById('ahorroMensual').textContent = '$' + ahorro.toFixed(2);
-        detalle =
+        document.getElementById('ahorroMensual').textContent = '$' + ahorroTotal.toFixed(2);
+        document.getElementById('detalleAhorro').textContent =
           'Para una factura de $' + factura.toFixed(2) +
-          ', con un pago estimado al sistema solar del ' + (porcentaje * 100).toFixed(0) +
-          '% y un cargo fijo de $' + pagoElectrica.toFixed(2) +
-          ', el ahorro neto estimado frente a la factura actual sería de $' + ahorro.toFixed(2) + '.';
+          ', con una suscripción PFV del ' + (porcentaje * 100).toFixed(0) +
+          '% y un cargo fijo de $' + cargoFijo.toFixed(2) +
+          ', el valor que deja de ir al consumo eléctrico se distribuye entre pago del sistema solar y saldo libre en caja.';
 
-        document.getElementById('detalleAhorro').textContent = detalle;
-        document.getElementById('res1').textContent = 'Pago estimado al sistema solar: $' + pagoSistema.toFixed(2);
-        document.getElementById('res2').textContent = 'Pago estimado a la empresa eléctrica: $' + pagoElectrica.toFixed(2);
-        document.getElementById('res3').textContent = 'Ahorro neto estimado: $' + ahorro.toFixed(2);
+        document.getElementById('res1').textContent = 'Pago suscripción PFV: $' + pagoSuscripcion.toFixed(2);
+        document.getElementById('res2').textContent = 'Pago a empresa eléctrica: $' + cargoFijo.toFixed(2);
+        document.getElementById('res3').textContent = 'Saldo en caja: $' + saldoEnCaja.toFixed(2);
+        document.getElementById('res4').textContent = 'Ahorro total generado: $' + ahorroTotal.toFixed(2);
       } else {
         const porcentajeDemanda = (parseFloat(document.getElementById('porcentajeDemanda').value) || 0) / 100;
-        const porcentajeCompensacion = (parseFloat(document.getElementById('porcentajeCompensacionComercial').value) || 0) / 100;
-        const cargoFijoComercial = parseFloat(document.getElementById('cargoFijoComercial').value) || 0;
+        const porcentajeComp = (parseFloat(document.getElementById('porcentajeCompensacionComercial').value) || 0) / 100;
+        const cargoFijo = parseFloat(document.getElementById('cargoFijoComercial').value) || 0;
 
-        const demanda = factura * porcentajeDemanda;
-        const energiaCompensable = Math.max(factura - demanda, 0);
-        const ahorroEnergia = energiaCompensable * porcentajeCompensacion;
-        const pagoEnergiaRestante = energiaCompensable - ahorroEnergia;
+        const pagoDemanda = factura * porcentajeDemanda;
+        const parteEnergetica = factura - pagoDemanda;
+        const pagoSuscripcion = parteEnergetica * porcentajeComp;
+        const saldoEnCaja = parteEnergetica - pagoSuscripcion;
+        const ahorroTotal = pagoSuscripcion + saldoEnCaja;
 
-        pagoFinal = demanda + pagoEnergiaRestante + cargoFijoComercial;
-        ahorro = factura - pagoFinal;
-
-        document.getElementById('ahorroMensual').textContent = '$' + ahorro.toFixed(2);
-        detalle =
+        document.getElementById('ahorroMensual').textContent = '$' + ahorroTotal.toFixed(2);
+        document.getElementById('detalleAhorro').textContent =
           'Para una factura de $' + factura.toFixed(2) +
           ', con una demanda del ' + (porcentajeDemanda * 100).toFixed(0) +
-          '%, compensación del ' + (porcentajeCompensacion * 100).toFixed(0) +
-          '% sobre la parte energética y un cargo fijo aproximado de $' + cargoFijoComercial.toFixed(2) +
-          ', el ahorro neto estimado sería de $' + ahorro.toFixed(2) + '.';
+          '%, una suscripción PFV del ' + (porcentajeComp * 100).toFixed(0) +
+          '% sobre la parte energética y un cargo fijo de $' + cargoFijo.toFixed(2) +
+          ', el resultado se separa entre demanda, suscripción PFV, saldo en caja y pago fijo a la empresa eléctrica.';
 
-        document.getElementById('detalleAhorro').textContent = detalle;
-        document.getElementById('res1').textContent = 'Pago estimado por demanda: $' + demanda.toFixed(2);
-        document.getElementById('res2').textContent = 'Pago restante + cargo fijo: $' + (pagoEnergiaRestante + cargoFijoComercial).toFixed(2);
-        document.getElementById('res3').textContent = 'Ahorro neto estimado: $' + ahorro.toFixed(2);
+        document.getElementById('res1').textContent = 'Pago por demanda: $' + pagoDemanda.toFixed(2);
+        document.getElementById('res2').textContent = 'Pago suscripción PFV: $' + pagoSuscripcion.toFixed(2);
+        document.getElementById('res3').textContent = 'Saldo en caja: $' + saldoEnCaja.toFixed(2);
+        document.getElementById('res4').textContent = 'Pago a empresa eléctrica (cargo fijo): $' + cargoFijo.toFixed(2);
       }
     }
 
