@@ -3,765 +3,172 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Eco Energy Asesores | Energía solar en Panamá</title>
-  <meta name="description" content="Reduce tu factura eléctrica con energía solar en Panamá. Soluciones para residencias, comercios e industrias. Cotización por WhatsApp." />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800;900&display=swap" rel="stylesheet">
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <meta name="description" content="Energía solar en Panamá para residencias, comercios e industrias. Reduce tu factura eléctrica y cotiza por WhatsApp." />
   <style>
-    :root {
-      --bg: #f8fafc;
-      --text: #0f172a;
-      --muted: #475569;
-      --dark: #020617;
-      --card: #ffffff;
-      --green: #22c55e;
-      --green-dark: #16a34a;
-      --line: #e2e8f0;
-      --shadow: 0 20px 40px rgba(2, 6, 23, 0.08);
-      --radius: 24px;
-    }* { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-body {
-  margin: 0;
-  font-family: 'Inter', Arial, sans-serif;
-  background: var(--bg);
-  color: var(--text);
-}
-
-img { max-width: 100%; display: block; }
-a { text-decoration: none; }
-
-.container {
-  width: min(1180px, calc(100% - 32px));
-  margin: 0 auto;
-}
-
-.topbar {
-  position: sticky;
-  top: 0;
-  z-index: 50;
-  backdrop-filter: blur(12px);
-  background: rgba(255,255,255,0.92);
-  border-bottom: 1px solid rgba(226,232,240,0.9);
-}
-
-.topbar-inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  padding: 14px 0;
-}
-
-.brand {
-  display: flex;
-  flex-direction: column;
-  line-height: 1;
-}
-
-.brand-title {
-  font-size: 24px;
-  font-weight: 900;
-  letter-spacing: -0.04em;
-}
-
-.brand-title span { color: var(--green-dark); }
-
-.brand-sub {
-  margin-top: 4px;
-  font-size: 10px;
-  color: #64748b;
-  letter-spacing: 0.38em;
-  text-transform: uppercase;
-}
-
-.nav {
-  display: flex;
-  gap: 22px;
-  align-items: center;
-}
-
-.nav a {
-  color: #334155;
-  font-weight: 600;
-  font-size: 14px;
-}
-
-.nav a:hover { color: var(--green-dark); }
-
-.cta-btn, .cta-btn-secondary {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 16px;
-  padding: 16px 26px;
-  font-weight: 800;
-  transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
-  box-shadow: var(--shadow);
-}
-
-.cta-btn:hover, .cta-btn-secondary:hover, .floating-whatsapp:hover, .mini-btn:hover {
-  transform: translateY(-2px);
-}
-
-.cta-btn {
-  background: linear-gradient(135deg, #22c55e, #16a34a);
-  color: white;
-}
-
-.cta-btn-secondary {
-  background: rgba(255,255,255,0.08);
-  color: white;
-  border: 1px solid rgba(255,255,255,0.14);
-  box-shadow: none;
-}
-
-.hero {
-  position: relative;
-  overflow: hidden;
-  background:
-    radial-gradient(circle at top right, rgba(34,197,94,0.22), transparent 28%),
-    radial-gradient(circle at bottom left, rgba(59,130,246,0.18), transparent 24%),
-    linear-gradient(180deg, #020617 0%, #081128 100%);
-  color: white;
-  padding: 86px 0 78px;
-}
-
-.hero-grid {
-  display: grid;
-  grid-template-columns: 1.08fr 0.92fr;
-  gap: 40px;
-  align-items: center;
-}
-
-.tag {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 10px 14px;
-  border-radius: 999px;
-  background: rgba(34,197,94,0.12);
-  border: 1px solid rgba(34,197,94,0.22);
-  color: #bbf7d0;
-  font-size: 12px;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: .16em;
-}
-
-.hero h1 {
-  margin: 18px 0 0;
-  font-size: 68px;
-  line-height: .98;
-  letter-spacing: -0.05em;
-  font-weight: 900;
-  max-width: 760px;
-}
-
-.hero h1 .highlight { color: #4ade80; }
-
-.hero p.lead {
-  margin: 20px 0 0;
-  color: #dbe4f0;
-  font-size: 20px;
-  line-height: 1.6;
-  max-width: 720px;
-}
-
-.hero-actions {
-  display: flex;
-  gap: 14px;
-  flex-wrap: wrap;
-  margin-top: 28px;
-}
-
-.hero-proof {
-  margin-top: 28px;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 14px;
-}
-
-.proof-card {
-  padding: 18px;
-  border-radius: 22px;
-  background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.09);
-}
-
-.proof-card strong {
-  display: block;
-  font-size: 26px;
-  font-weight: 900;
-  color: white;
-}
-
-.proof-card span {
-  display: block;
-  margin-top: 6px;
-  font-size: 13px;
-  color: #cbd5e1;
-  line-height: 1.45;
-}
-
-.hero-visual {
-  position: relative;
-}
-
-.visual-card {
-  background: rgba(255,255,255,0.08);
-  border: 1px solid rgba(255,255,255,0.1);
-  border-radius: 30px;
-  padding: 18px;
-  backdrop-filter: blur(10px);
-  box-shadow: var(--shadow);
-}
-
-.visual-main {
-  overflow: hidden;
-  border-radius: 24px;
-  background: #fff;
-  color: var(--text);
-}
-
-.visual-main img {
-  width: 100%;
-  height: 360px;
-  object-fit: cover;
-}
-
-.visual-caption {
-  padding: 18px;
-}
-
-.visual-caption h3 {
-  margin: 0;
-  font-size: 24px;
-  font-weight: 900;
-  letter-spacing: -0.03em;
-}
-
-.visual-caption p {
-  margin: 8px 0 0;
-  color: var(--muted);
-  line-height: 1.6;
-}
-
-.mini-badge {
-  position: absolute;
-  right: -8px;
-  bottom: 18px;
-  background: linear-gradient(135deg, #22c55e, #16a34a);
-  color: white;
-  border-radius: 18px;
-  padding: 14px 16px;
-  width: 210px;
-  box-shadow: 0 18px 30px rgba(22, 163, 74, 0.3);
-}
-
-.mini-badge strong {
-  display: block;
-  font-size: 18px;
-  font-weight: 900;
-}
-
-.mini-badge span {
-  display: block;
-  margin-top: 6px;
-  font-size: 13px;
-  line-height: 1.45;
-  color: rgba(255,255,255,0.92);
-}
-
-.section {
-  padding: 84px 0;
-}
-
-.section-title {
-  text-align: center;
-  max-width: 800px;
-  margin: 0 auto 42px;
-}
-
-.section-title .eyebrow {
-  display: inline-block;
-  color: var(--green-dark);
-  font-size: 12px;
-  font-weight: 900;
-  text-transform: uppercase;
-  letter-spacing: .2em;
-}
-
-.section-title h2 {
-  margin: 14px 0 0;
-  font-size: 48px;
-  line-height: 1.05;
-  font-weight: 900;
-  letter-spacing: -0.04em;
-}
-
-.section-title p {
-  margin: 14px auto 0;
-  font-size: 18px;
-  line-height: 1.7;
-  color: var(--muted);
-  max-width: 760px;
-}
-
-.gallery-grid {
-  display: grid;
-  grid-template-columns: 1.4fr .9fr .9fr;
-  gap: 18px;
-}
-
-.gallery-card {
-  position: relative;
-  overflow: hidden;
-  border-radius: 26px;
-  background: white;
-  box-shadow: var(--shadow);
-  min-height: 280px;
-}
-
-.gallery-card img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform .45s ease;
-}
-
-.gallery-card:hover img { transform: scale(1.04); }
-
-.gallery-overlay {
-  position: absolute;
-  inset: auto 0 0 0;
-  padding: 18px;
-  background: linear-gradient(180deg, transparent, rgba(2,6,23,.82));
-  color: white;
-}
-
-.gallery-overlay strong {
-  display: block;
-  font-size: 22px;
-  font-weight: 900;
-}
-
-.gallery-overlay span {
-  display: block;
-  margin-top: 8px;
-  color: rgba(255,255,255,0.88);
-  line-height: 1.5;
-  font-size: 14px;
-}
-
-.stats-band {
-  margin-top: 22px;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
-}
-
-.stat-box {
-  background: white;
-  border-radius: 22px;
-  padding: 22px;
-  box-shadow: var(--shadow);
-  text-align: center;
-}
-
-.stat-box strong {
-  display: block;
-  color: var(--green-dark);
-  font-size: 32px;
-  font-weight: 900;
-}
-
-.stat-box span {
-  display: block;
-  margin-top: 8px;
-  color: var(--muted);
-  font-size: 14px;
-  line-height: 1.45;
-}
-
-.split {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 22px;
-  align-items: start;
-}
-
-.big-card {
-  background: white;
-  border-radius: 30px;
-  padding: 30px;
-  box-shadow: var(--shadow);
-}
-
-.big-card.dark {
-  background: linear-gradient(180deg, #06122a, #020617);
-  color: white;
-}
-
-.big-card h3 {
-  margin: 0;
-  font-size: 34px;
-  line-height: 1.08;
-  font-weight: 900;
-  letter-spacing: -0.04em;
-}
-
-.big-card p {
-  margin: 14px 0 0;
-  line-height: 1.75;
-  color: var(--muted);
-  font-size: 16px;
-}
-
-.big-card.dark p { color: #d5deeb; }
-
-.saving-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 18px;
-  margin-top: 24px;
-}
-
-.saving-card {
-  border-radius: 24px;
-  padding: 24px;
-  background: #fff;
-  box-shadow: var(--shadow);
-  border: 1px solid rgba(226,232,240,0.8);
-}
-
-.saving-card h4 {
-  margin: 0;
-  font-size: 26px;
-  font-weight: 900;
-  letter-spacing: -0.03em;
-}
-
-.saving-card p {
-  margin: 12px 0 0;
-  color: var(--muted);
-  line-height: 1.65;
-}
-
-.saving-card small {
-  display: inline-block;
-  margin-top: 14px;
-  padding: 8px 12px;
-  border-radius: 999px;
-  background: #f1f5f9;
-  font-weight: 700;
-  color: #334155;
-}
-
-.calc-box {
-  margin-top: 26px;
-  border-radius: 26px;
-  background: linear-gradient(180deg, #f8fafc, #eef4f8);
-  padding: 24px;
-  border: 1px solid #e2e8f0;
-}
-
-.calc-box label {
-  font-weight: 800;
-  display: block;
-  margin-bottom: 10px;
-}
-
-.range {
-  width: 100%;
-  accent-color: #16a34a;
-}
-
-.calc-values {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 14px;
-  margin-top: 18px;
-}
-
-.calc-value {
-  background: white;
-  padding: 18px;
-  border-radius: 18px;
-  box-shadow: 0 10px 22px rgba(15,23,42,.05);
-  text-align: center;
-}
-
-.calc-value strong {
-  display: block;
-  font-size: 28px;
-  font-weight: 900;
-  letter-spacing: -0.03em;
-}
-
-.calc-value span {
-  display: block;
-  margin-top: 6px;
-  font-size: 13px;
-  color: var(--muted);
-  line-height: 1.4;
-}
-
-.service-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 18px;
-}
-
-.service-card {
-  background: white;
-  border-radius: 24px;
-  padding: 24px;
-  box-shadow: var(--shadow);
-  border: 1px solid rgba(226,232,240,0.7);
-}
-
-.service-card .icon {
-  width: 54px;
-  height: 54px;
-  border-radius: 18px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(135deg, #dcfce7, #bbf7d0);
-  font-size: 24px;
-}
-
-.service-card h4 {
-  margin: 18px 0 0;
-  font-size: 24px;
-  font-weight: 900;
-  letter-spacing: -0.03em;
-}
-
-.service-card p {
-  margin: 10px 0 0;
-  color: var(--muted);
-  line-height: 1.65;
-}
-
-.steps {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 18px;
-}
-
-.step {
-  border-radius: 24px;
-  padding: 24px;
-  background: white;
-  box-shadow: var(--shadow);
-  text-align: left;
-}
-
-.step strong {
-  display: block;
-  font-size: 42px;
-  font-weight: 900;
-  letter-spacing: -0.04em;
-  color: var(--green-dark);
-}
-
-.step h4 {
-  margin: 10px 0 0;
-  font-size: 22px;
-  font-weight: 900;
-  letter-spacing: -0.03em;
-}
-
-.step p {
-  margin: 10px 0 0;
-  color: var(--muted);
-  line-height: 1.6;
-}
-
-.testimonial-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 18px;
-}
-
-.testimonial {
-  background: white;
-  border-radius: 24px;
-  padding: 24px;
-  box-shadow: var(--shadow);
-}
-
-.stars {
-  color: #f59e0b;
-  font-size: 18px;
-  letter-spacing: 0.15em;
-}
-
-.testimonial p {
-  margin: 14px 0 0;
-  line-height: 1.75;
-  color: var(--muted);
-}
-
-.testimonial strong {
-  display: block;
-  margin-top: 16px;
-  font-weight: 800;
-  color: var(--text);
-}
-
-.faq-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 18px;
-}
-
-.faq {
-  background: white;
-  border-radius: 24px;
-  padding: 22px;
-  box-shadow: var(--shadow);
-}
-
-.faq h4 {
-  margin: 0;
-  font-size: 20px;
-  font-weight: 900;
-}
-
-.faq p {
-  margin: 10px 0 0;
-  color: var(--muted);
-  line-height: 1.7;
-}
-
-.final-cta {
-  background:
-    radial-gradient(circle at top left, rgba(34,197,94,0.18), transparent 30%),
-    linear-gradient(180deg, #020617 0%, #081128 100%);
-  color: white;
-  border-radius: 34px;
-  padding: 38px;
-  box-shadow: var(--shadow);
-  display: grid;
-  grid-template-columns: 1.15fr .85fr;
-  gap: 20px;
-  align-items: center;
-}
-
-.final-cta h3 {
-  margin: 0;
-  font-size: 44px;
-  line-height: 1.04;
-  letter-spacing: -0.04em;
-  font-weight: 900;
-}
-
-.final-cta p {
-  margin: 14px 0 0;
-  color: #dbe4f0;
-  line-height: 1.7;
-  font-size: 17px;
-}
-
-.contact-box {
-  background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.1);
-  border-radius: 26px;
-  padding: 24px;
-}
-
-.contact-box strong {
-  display: block;
-  font-size: 20px;
-  font-weight: 900;
-}
-
-.contact-box ul {
-  margin: 16px 0 0;
-  padding: 0;
-  list-style: none;
-}
-
-.contact-box li {
-  margin: 10px 0;
-  color: #dbe4f0;
-  line-height: 1.55;
-}
-
-footer {
-  padding: 32px 0 90px;
-  color: #64748b;
-  font-size: 14px;
-  text-align: center;
-}
-
-.floating-whatsapp {
-  position: fixed;
-  right: 18px;
-  bottom: 18px;
-  z-index: 60;
-  background: linear-gradient(135deg, #22c55e, #16a34a);
-  color: white;
-  padding: 16px 22px;
-  border-radius: 999px;
-  font-weight: 900;
-  box-shadow: 0 18px 40px rgba(22,163,74,.35);
-}
-
-.mini-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 14px;
-  padding: 12px 16px;
-  background: white;
-  color: var(--text);
-  font-weight: 800;
-  box-shadow: var(--shadow);
-}
-
-@media (max-width: 1080px) {
-  .hero-grid, .split, .final-cta {
-    grid-template-columns: 1fr;
-  }
-  .gallery-grid,
-  .service-grid,
-  .steps,
-  .testimonial-grid,
-  .faq-grid,
-  .saving-grid,
-  .stats-band,
-  .calc-values {
-    grid-template-columns: 1fr 1fr;
-  }
-  .hero h1 { font-size: 54px; }
-  .nav { display: none; }
-}
-
-@media (max-width: 720px) {
-  .hero { padding: 72px 0 58px; }
-  .hero h1 { font-size: 44px; }
-  .hero p.lead { font-size: 18px; }
-  .section-title h2 { font-size: 34px; }
-  .gallery-grid,
-  .service-grid,
-  .steps,
-  .testimonial-grid,
-  .faq-grid,
-  .saving-grid,
-  .stats-band,
-  .calc-values,
-  .hero-proof {
-    grid-template-columns: 1fr;
-  }
-  .visual-main img { height: 260px; }
-  .mini-badge { position: static; width: auto; margin-top: 12px; }
-  .topbar-inner { padding: 12px 0; }
-  .brand-title { font-size: 20px; }
+    :root{
+      --green:#22c55e;
+      --green-dark:#16a34a;
+      --navy:#071225;
+      --text:#0f172a;
+      --muted:#475569;
+      --bg:#f8fafc;
+      --card:#ffffff;
+      --line:#e2e8f0;
+      --shadow:0 14px 30px rgba(2,6,23,.08);
+      --radius:22px;
+      --max:1120px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Arial,Helvetica,sans-serif;
+      background:var(--bg);
+      color:var(--text);
+    }
+    img{max-width:100%;display:block}
+    a{text-decoration:none;color:inherit}
+    .container{width:min(var(--max),calc(100% - 28px));margin:0 auto}.topbar{
+  position:sticky;top:0;z-index:50;
+  background:rgba(255,255,255,.96);
+  border-bottom:1px solid var(--line);
+  backdrop-filter:blur(10px);
+}
+.topbar-inner{
+  display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 0;
+}
+.brand{line-height:1}
+.brand-title{font-size:24px;font-weight:900;letter-spacing:-.04em}
+.brand-title span{color:var(--green-dark)}
+.brand-sub{display:block;margin-top:4px;font-size:10px;letter-spacing:.34em;color:#64748b;font-weight:700}
+
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  border-radius:16px;padding:16px 22px;font-weight:800;transition:.2s ease;
+}
+.btn:hover{transform:translateY(-1px)}
+.btn-primary{background:var(--green);color:#fff;box-shadow:var(--shadow)}
+.btn-secondary{background:#fff;color:var(--text);border:1px solid var(--line)}
+.btn-dark{background:#0f172a;color:#fff;border:1px solid rgba(255,255,255,.08)}
+
+.hero{
+  background:linear-gradient(180deg,#081327 0%, #041122 100%);
+  color:#fff;padding:72px 0 56px;
+}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:30px;align-items:center}
+.pill{
+  display:inline-block;padding:10px 14px;border-radius:999px;
+  background:rgba(34,197,94,.12);border:1px solid rgba(34,197,94,.24);
+  color:#bbf7d0;font-size:12px;font-weight:900;letter-spacing:.18em;text-transform:uppercase;
+}
+.hero h1{margin:18px 0 0;font-size:60px;line-height:.98;letter-spacing:-.05em;font-weight:900}
+.hero h1 .green{color:#4ade80}
+.hero p{margin:18px 0 0;max-width:680px;color:#dbe4f0;font-size:20px;line-height:1.6}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
+.hero-card{
+  background:#fff;border-radius:28px;overflow:hidden;box-shadow:var(--shadow);color:var(--text)
+}
+.hero-card img{width:100%;height:360px;object-fit:cover}
+.hero-card-body{padding:22px}
+.hero-card-body h3{margin:0;font-size:28px;line-height:1.06;font-weight:900;letter-spacing:-.04em}
+.hero-card-body p{margin:10px 0 0;color:var(--muted);font-size:16px;line-height:1.65}
+
+.section{padding:66px 0}
+.section-title{text-align:center;max-width:760px;margin:0 auto 34px}
+.section-title small{display:inline-block;color:var(--green-dark);font-size:12px;font-weight:900;letter-spacing:.18em;text-transform:uppercase}
+.section-title h2{margin:12px 0 0;font-size:44px;line-height:1.05;letter-spacing:-.04em;font-weight:900}
+.section-title p{margin:14px auto 0;color:var(--muted);font-size:18px;line-height:1.7;max-width:700px}
+
+.grid-3,.grid-4,.services,.steps,.faq-grid{display:grid;gap:18px}
+.grid-3{grid-template-columns:repeat(3,1fr)}
+.grid-4{grid-template-columns:repeat(4,1fr)}
+.services{grid-template-columns:repeat(3,1fr)}
+.steps{grid-template-columns:repeat(4,1fr)}
+.faq-grid{grid-template-columns:repeat(2,1fr)}
+
+.card,.stat,.service,.step,.faq,.cta-box{
+  background:var(--card);border:1px solid rgba(226,232,240,.9);border-radius:var(--radius);box-shadow:var(--shadow)
+}
+.card{padding:26px}
+.card h3{margin:0;font-size:30px;font-weight:900;letter-spacing:-.03em}
+.card p{margin:12px 0 0;color:var(--muted);font-size:17px;line-height:1.7}
+
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.gallery-item{position:relative;overflow:hidden;border-radius:26px;box-shadow:var(--shadow);min-height:270px}
+.gallery-item img{width:100%;height:100%;object-fit:cover}
+.overlay{position:absolute;inset:auto 0 0 0;padding:18px;background:linear-gradient(180deg,transparent,rgba(2,6,23,.85));color:#fff}
+.overlay strong{display:block;font-size:28px;font-weight:900}
+.overlay span{display:block;margin-top:8px;font-size:15px;line-height:1.5;color:rgba(255,255,255,.9)}
+
+.stat{padding:24px;text-align:center}
+.stat strong{display:block;color:var(--green-dark);font-size:40px;font-weight:900;letter-spacing:-.04em}
+.stat span{display:block;margin-top:10px;color:var(--muted);font-size:15px;line-height:1.6}
+
+.split{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.panel{background:#fff;border:1px solid rgba(226,232,240,.9);border-radius:28px;box-shadow:var(--shadow);padding:28px}
+.panel.dark{background:linear-gradient(180deg,#081327 0%, #041122 100%);color:#fff;border:none}
+.panel h3{margin:0;font-size:36px;line-height:1.05;font-weight:900;letter-spacing:-.04em}
+.panel p{margin:14px 0 0;color:var(--muted);font-size:17px;line-height:1.75}
+.panel.dark p{color:#dbe4f0}
+
+.calc{
+  margin-top:20px;background:#f8fafc;border:1px solid var(--line);border-radius:22px;padding:20px
+}
+.calc label{display:block;font-weight:800;margin-bottom:10px}
+input[type="range"]{width:100%;accent-color:var(--green-dark)}
+.calc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:16px}
+.calc-item{background:#fff;border:1px solid var(--line);border-radius:18px;padding:18px;text-align:center}
+.calc-item strong{display:block;font-size:30px;font-weight:900;letter-spacing:-.03em}
+.calc-item span{display:block;margin-top:8px;color:var(--muted);font-size:13px;line-height:1.45}
+
+.service{padding:24px}
+.icon{width:56px;height:56px;border-radius:18px;background:#dcfce7;display:flex;align-items:center;justify-content:center;font-size:26px}
+.service h4{margin:18px 0 0;font-size:29px;line-height:1.06;font-weight:900;letter-spacing:-.03em}
+.service p{margin:12px 0 0;color:var(--muted);font-size:17px;line-height:1.7}
+
+.step{padding:24px}
+.step strong{display:block;color:var(--green-dark);font-size:46px;font-weight:900;letter-spacing:-.04em}
+.step h4{margin:12px 0 0;font-size:28px;font-weight:900;letter-spacing:-.03em}
+.step p{margin:12px 0 0;color:var(--muted);font-size:17px;line-height:1.7}
+
+.faq{padding:24px}
+.faq h4{margin:0;font-size:26px;font-weight:900;line-height:1.12;letter-spacing:-.03em}
+.faq p{margin:12px 0 0;color:var(--muted);font-size:17px;line-height:1.75}
+
+.final{
+  background:linear-gradient(180deg,#081327 0%, #041122 100%);color:#fff;border-radius:30px;padding:34px;
+  display:grid;grid-template-columns:1.05fr .95fr;gap:20px;box-shadow:var(--shadow)
+}
+.final h3{margin:0;font-size:44px;line-height:1.04;font-weight:900;letter-spacing:-.04em}
+.final p{margin:14px 0 0;color:#dbe4f0;font-size:17px;line-height:1.75}
+.contact{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:24px;padding:24px}
+.contact strong{display:block;font-size:22px;font-weight:900}
+.contact ul{list-style:none;padding:0;margin:14px 0 0}
+.contact li{margin:10px 0;color:#dbe4f0;font-size:16px;line-height:1.6}
+
+footer{text-align:center;color:#64748b;padding:28px 0 100px;font-size:14px}
+.floating{position:fixed;right:16px;bottom:16px;z-index:60;background:var(--green);color:#fff;padding:16px 22px;border-radius:999px;font-weight:900;box-shadow:0 18px 35px rgba(34,197,94,.35)}
+
+@media (max-width:980px){
+  .hero-grid,.split,.final{grid-template-columns:1fr}
+  .grid-3,.grid-4,.gallery,.services,.steps,.faq-grid,.calc-grid{grid-template-columns:1fr 1fr}
+  .hero h1{font-size:48px}
+  .section-title h2{font-size:36px}
+}
+@media (max-width:680px){
+  .hero{padding:52px 0 42px}
+  .hero h1{font-size:40px}
+  .hero p,.section-title p,.card p,.service p,.step p,.faq p,.panel p{font-size:16px}
+  .grid-3,.grid-4,.gallery,.services,.steps,.faq-grid,.calc-grid{grid-template-columns:1fr}
+  .hero-card img{height:250px}
+  .section{padding:54px 0}
+  .panel h3{font-size:30px}
+  .service h4,.step h4,.faq h4,.card h3{font-size:24px}
+  .final h3{font-size:34px}
+  .hero-actions{flex-direction:column}
+  .btn{width:100%}
+  .topbar-inner{padding:12px 0}
+  .brand-title{font-size:22px}
 }
 
   </style>
@@ -771,303 +178,154 @@ footer {
     <div class="container topbar-inner">
       <div class="brand">
         <div class="brand-title"><span>ECO</span> ENERGY</div>
-        <div class="brand-sub">Solutions</div>
+        <span class="brand-sub">SOLUTIONS</span>
       </div>
-      <nav class="nav">
-        <a href="#resultados">Resultados</a>
-        <a href="#ahorro">Ahorro</a>
-        <a href="#soluciones">Soluciones</a>
-        <a href="#proceso">Proceso</a>
-        <a href="#contacto">Contacto</a>
-      </nav>
-      <a class="mini-btn" href="https://wa.me/50769453126?text=Hola%20quiero%20cotizar%20energ%C3%ADa%20solar" target="_blank">WhatsApp</a>
+      <a class="btn btn-secondary" href="https://wa.me/50769453126?text=Hola%20quiero%20cotizar%20energ%C3%ADa%20solar" target="_blank">WhatsApp</a>
     </div>
   </header>  <section class="hero">
     <div class="container hero-grid">
-      <div data-aos="fade-right">
-        <div class="tag">Energía solar en Panamá</div>
-        <h1>Paga <span class="highlight">$0 en consumo</span> eléctrico ⚡</h1>
-        <p class="lead">
-          Reduce tu factura eléctrica hasta un 70% con soluciones solares para residencias, comercios e industrias. Monitorea tu sistema, protege tu inversión y cotiza directo por WhatsApp.
-        </p>
+      <div>
+        <div class="pill">Energía solar en Panamá</div>
+        <h1>Paga <span class="green">$0 en consumo</span> eléctrico ⚡</h1>
+        <p>Reduce tu factura eléctrica hasta un 70% con soluciones solares para residencias, comercios e industrias. Monitorea tu sistema y cotiza directo por WhatsApp.</p>
         <div class="hero-actions">
-          <a class="cta-btn" href="https://wa.me/50769453126?text=Hola%20quiero%20cotizar%20energ%C3%ADa%20solar" target="_blank">Cotizar por WhatsApp</a>
-          <a class="cta-btn-secondary" href="#ahorro">Ver ahorro estimado</a>
-        </div>
-        <div class="hero-proof">
-          <div class="proof-card">
-            <strong>Residencial</strong>
-            <span>El cargo por kWh puede bajar prácticamente a cero y quedar principalmente el cargo fijo.</span>
-          </div>
-          <div class="proof-card">
-            <strong>Comercial</strong>
-            <span>Ahorro estimado entre 30% y 70%, manteniendo demanda y cargos fijos.</span>
-          </div>
-          <div class="proof-card">
-            <strong>Monitoreo</strong>
-            <span>Revisa el rendimiento de tu sistema desde tu celular y toma mejores decisiones.</span>
-          </div>
-        </div>
-      </div><div class="hero-visual" data-aos="fade-left">
-    <div class="visual-card">
-      <div class="visual-main">
-        <img src="https://images.unsplash.com/photo-1509395176047-4a66953fd231?auto=format&fit=crop&w=1200&q=80" alt="Paneles solares" />
-        <div class="visual-caption">
-          <h3>Instalaciones con imagen de empresa grande</h3>
-          <p>Una presencia visual fuerte genera más confianza, más permanencia en la página y más contactos por WhatsApp.</p>
+          <a class="btn btn-primary" href="https://wa.me/50769453126?text=Hola%20quiero%20cotizar%20energ%C3%ADa%20solar" target="_blank">Cotizar por WhatsApp</a>
+          <a class="btn btn-secondary" href="#ahorro">Ver ahorro estimado</a>
         </div>
       </div>
-    </div>
-    <div class="mini-badge">
-      <strong>Empieza a ahorrar hoy</strong>
-      <span>Te orientamos según tu tipo de cliente: residencial, comercial o industrial.</span>
-    </div>
-  </div>
-</div>
-
-  </section>  <section class="section" id="resultados">
-    <div class="container">
-      <div class="section-title" data-aos="fade-up">
-        <span class="eyebrow">Resultados reales</span>
-        <h2>Más imágenes, más confianza, más ventas</h2>
-        <p>Una página con presencia visual fuerte vende mucho mejor. Aquí tienes una estructura de empresa grande con imágenes modernas, secciones claras y llamadas a la acción en los puntos correctos.</p>
-      </div><div class="gallery-grid">
-    <div class="gallery-card" data-aos="zoom-in">
-      <img src="https://images.unsplash.com/photo-1497440001374-f26997328c1b?auto=format&fit=crop&w=1200&q=80" alt="Casa con paneles solares" />
-      <div class="gallery-overlay">
-        <strong>Residencial</strong>
-        <span>Proyectos pensados para reducir al máximo el cargo por consumo eléctrico.</span>
-      </div>
-    </div>
-    <div class="gallery-card" data-aos="zoom-in" data-aos-delay="80">
-      <img src="https://images.unsplash.com/photo-1466611653911-95081537e5b7?auto=format&fit=crop&w=900&q=80" alt="Parque solar" />
-      <div class="gallery-overlay">
-        <strong>Comercial</strong>
-        <span>Instalaciones enfocadas en ahorro, continuidad operativa y control del gasto.</span>
-      </div>
-    </div>
-    <div class="gallery-card" data-aos="zoom-in" data-aos-delay="140">
-      <img src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=900&q=80" alt="Instalación técnica" />
-      <div class="gallery-overlay">
-        <strong>Monitoreo</strong>
-        <span>Controla tu sistema desde el celular y mantén visibilidad del rendimiento.</span>
-      </div>
-    </div>
-  </div>
-
-  <div class="stats-band">
-    <div class="stat-box" data-aos="fade-up">
-      <strong>70%</strong>
-      <span>Ahorro máximo estimado en clientes comerciales según perfil de consumo.</span>
-    </div>
-    <div class="stat-box" data-aos="fade-up" data-aos-delay="70">
-      <strong>0 kWh</strong>
-      <span>Meta de reducción del cargo por consumo en clientes residenciales.</span>
-    </div>
-    <div class="stat-box" data-aos="fade-up" data-aos-delay="140">
-      <strong>24/7</strong>
-      <span>Monitoreo y revisión del sistema desde tu celular o computadora.</span>
-    </div>
-    <div class="stat-box" data-aos="fade-up" data-aos-delay="210">
-      <strong>100%</strong>
-      <span>Enfoque en soluciones adaptadas al tipo de techo, carga y necesidad.</span>
-    </div>
-  </div>
-</div>
-
-  </section>  <section class="section" id="ahorro" style="padding-top: 20px;">
-    <div class="container split">
-      <div class="big-card" data-aos="fade-right">
-        <span class="eyebrow">Ahorro real</span>
-        <h3>Lo que más le importa al cliente: cuánto le baja la facturación</h3>
-        <p>
-          El mensaje comercial debe ser fuerte, pero también correcto. En residencial puedes comunicar que el consumo puede bajar prácticamente a cero. En comercial debes explicar que el ahorro puede variar entre 30% y 70%, manteniendo demanda y cargo fijo.
-        </p><div class="calc-box">
-      <label for="slider">Mueve el control y calcula un ahorro estimado</label>
-      <input class="range" type="range" min="50" max="1500" value="300" id="slider" />
-      <div class="calc-values">
-        <div class="calc-value">
-          <strong>$<span id="valor">300</span></strong>
-          <span>Factura actual estimada</span>
-        </div>
-        <div class="calc-value">
-          <strong style="color:#16a34a;">$<span id="ahorro">210</span></strong>
-          <span>Ahorro estimado máximo</span>
-        </div>
-        <div class="calc-value">
-          <strong>$<span id="restante">90</span></strong>
-          <span>Factura estimada restante</span>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="big-card dark" data-aos="fade-left">
-    <span class="eyebrow" style="color:#86efac;">Mensaje pro</span>
-    <h3>La promesa correcta vende mejor que exagerar</h3>
-    <p>
-      En vez de decir “te dejamos la factura en cero” a todos, es más inteligente decir: “Paga $0 en consumo eléctrico” y debajo explicar las diferencias por tipo de cliente. Eso da impacto y credibilidad al mismo tiempo.
-    </p>
-    <div class="hero-actions" style="margin-top:22px;">
-      <a class="cta-btn" href="https://wa.me/50769453126?text=Hola%20quiero%20saber%20cu%C3%A1nto%20puedo%20ahorrar" target="_blank">Quiero saber cuánto ahorro</a>
-    </div>
-  </div>
-</div>
-
-<div class="container saving-grid">
-  <div class="saving-card" data-aos="fade-up">
-    <h4 style="color:#16a34a;">Residencial</h4>
-    <p>El cargo por kWh puede bajar prácticamente a cero. El cliente normalmente queda pagando principalmente el cargo fijo del recibo.</p>
-    <small>Impacto alto y mensaje claro</small>
-  </div>
-  <div class="saving-card" data-aos="fade-up" data-aos-delay="80">
-    <h4 style="color:#2563eb;">Comercial</h4>
-    <p>El ahorro puede moverse aproximadamente entre 30% y 70%. Sigue existiendo el pago de demanda en kW y el cargo fijo.</p>
-    <small>Promesa realista que genera confianza</small>
-  </div>
-  <div class="saving-card" data-aos="fade-up" data-aos-delay="160">
-    <h4 style="color:#ca8a04;">Industrial</h4>
-    <p>La optimización depende del perfil de carga, operación y consumo. Aquí la conversación se enfoca más en eficiencia y retorno.</p>
-    <small>Venta consultiva y técnica</small>
-  </div>
-</div>
-
-  </section>  <section class="section" id="soluciones">
-    <div class="container">
-      <div class="section-title" data-aos="fade-up">
-        <span class="eyebrow">Soluciones</span>
-        <h2>Todo lo necesario para verse y vender como empresa grande</h2>
-        <p>Integra equipos, visuales, monitoreo, instalación y acompañamiento comercial en una sola propuesta clara.</p>
-      </div><div class="service-grid">
-    <div class="service-card" data-aos="fade-up">
-      <div class="icon">☀️</div>
-      <h4>Paneles solares</h4>
-      <p>Sistemas pensados para aprovechar la energía solar y transformar el pago de luz en una inversión inteligente.</p>
-    </div>
-    <div class="service-card" data-aos="fade-up" data-aos-delay="70">
-      <div class="icon">🔌</div>
-      <h4>Inversores y equipos</h4>
-      <p>Componentes clave para convertir, administrar y estabilizar la energía producida por el sistema.</p>
-    </div>
-    <div class="service-card" data-aos="fade-up" data-aos-delay="140">
-      <div class="icon">🛡️</div>
-      <h4>Protecciones</h4>
-      <p>Seguridad eléctrica y continuidad operativa para cuidar la instalación y la inversión del cliente.</p>
-    </div>
-    <div class="service-card" data-aos="fade-up">
-      <div class="icon">📲</div>
-      <h4>Monitoreo inteligente</h4>
-      <p>Chequea el estatus del sistema desde tu celular y mantén visibilidad constante del rendimiento.</p>
-    </div>
-    <div class="service-card" data-aos="fade-up" data-aos-delay="70">
-      <div class="icon">🏗️</div>
-      <h4>Instalación profesional</h4>
-      <p>Montaje adaptado a residencia, comercio o industria con enfoque técnico y comercial.</p>
-    </div>
-    <div class="service-card" data-aos="fade-up" data-aos-delay="140">
-      <div class="icon">🧰</div>
-      <h4>Mantenimiento y soporte</h4>
-      <p>Acompañamiento para que el sistema siga rindiendo y el cliente perciba valor en el tiempo.</p>
-    </div>
-  </div>
-</div>
-
-  </section>  <section class="section" id="proceso" style="background:#eef3f7;">
-    <div class="container">
-      <div class="section-title" data-aos="fade-up">
-        <span class="eyebrow">Proceso</span>
-        <h2>Una experiencia simple para convertir visitas en clientes</h2>
-        <p>Este es el recorrido ideal: captar interés, calcular ahorro, generar confianza y llevar al prospecto directo a WhatsApp.</p>
-      </div>
-      <div class="steps">
-        <div class="step" data-aos="fade-up">
-          <strong>01</strong>
-          <h4>Conectamos</h4>
-          <p>El cliente entra, ve una promesa fuerte y entiende de inmediato el beneficio principal.</p>
-        </div>
-        <div class="step" data-aos="fade-up" data-aos-delay="70">
-          <strong>02</strong>
-          <h4>Calculamos</h4>
-          <p>Usa la calculadora de ahorro y visualiza una mejora clara en su facturación.</p>
-        </div>
-        <div class="step" data-aos="fade-up" data-aos-delay="140">
-          <strong>03</strong>
-          <h4>Generamos confianza</h4>
-          <p>Imágenes, estructura y lenguaje serio aumentan la intención de escribir.</p>
-        </div>
-        <div class="step" data-aos="fade-up" data-aos-delay="210">
-          <strong>04</strong>
-          <h4>Cerramos por WhatsApp</h4>
-          <p>La conversación se lleva a cotización, revisión de factura y siguiente paso comercial.</p>
+      <div class="hero-card">
+        <img src="https://images.unsplash.com/photo-1509395176047-4a66953fd231?auto=format&fit=crop&w=1200&q=80" alt="Instalación solar profesional" />
+        <div class="hero-card-body">
+          <h3>Instalación profesional y confianza visual</h3>
+          <p>Una página limpia, moderna y bien presentada ayuda a que el cliente escriba y pida cotización más rápido.</p>
         </div>
       </div>
     </div>
   </section>  <section class="section">
-    <div class="container">
-      <div class="section-title" data-aos="fade-up">
-        <span class="eyebrow">Confianza</span>
-        <h2>Una marca fuerte también se construye con percepción</h2>
-        <p>Una página moderna, bien presentada y visual transmite capacidad, orden y seriedad. Eso influye directamente en la decisión del cliente.</p>
+    <div class="container grid-3">
+      <div class="card">
+        <h3>Residencial</h3>
+        <p>El cargo por kWh puede bajar prácticamente a cero y quedar principalmente el cargo fijo.</p>
       </div>
-      <div class="testimonial-grid">
-        <div class="testimonial" data-aos="fade-up">
-          <div class="stars">★★★★★</div>
-          <p>“Lo primero que me convenció fue ver una propuesta clara, moderna y enfocada en ahorro real, no solo en paneles.”</p>
-          <strong>Prospecto residencial</strong>
+      <div class="card">
+        <h3>Comercial</h3>
+        <p>Ahorro estimado entre 30% y 70%, manteniendo demanda y cargos fijos.</p>
+      </div>
+      <div class="card">
+        <h3>Monitoreo</h3>
+        <p>Revisa el rendimiento de tu sistema desde tu celular y toma mejores decisiones.</p>
+      </div>
+    </div>
+  </section>  <section class="section" style="padding-top:0">
+    <div class="container">
+      <div class="section-title">
+        <small>Resultados reales</small>
+        <h2>Una página limpia sí vende mejor</h2>
+        <p>Visual fuerte, mensaje claro y estructura simple para convertir visitas en conversaciones por WhatsApp.</p>
+      </div>
+      <div class="gallery">
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1497440001374-f26997328c1b?auto=format&fit=crop&w=1200&q=80" alt="Proyecto residencial" />
+          <div class="overlay"><strong>Residencial</strong><span>Proyectos pensados para reducir al máximo el cargo por consumo eléctrico.</span></div>
         </div>
-        <div class="testimonial" data-aos="fade-up" data-aos-delay="70">
-          <div class="stars">★★★★★</div>
-          <p>“Cuando explicas bien la diferencia entre residencial y comercial, se siente que sabes de lo que hablas y generas más confianza.”</p>
-          <strong>Prospecto comercial</strong>
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1466611653911-95081537e5b7?auto=format&fit=crop&w=1200&q=80" alt="Proyecto comercial" />
+          <div class="overlay"><strong>Comercial</strong><span>Instalaciones enfocadas en ahorro, continuidad operativa y control del gasto.</span></div>
         </div>
-        <div class="testimonial" data-aos="fade-up" data-aos-delay="140">
-          <div class="stars">★★★★★</div>
-          <p>“Una página con imágenes, calculadora y WhatsApp directo ayuda mucho a que la persona tome acción rápido.”</p>
-          <strong>Enfoque de conversión</strong>
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=1200&q=80" alt="Monitoreo del sistema" />
+          <div class="overlay"><strong>Monitoreo</strong><span>Controla tu sistema desde el celular y mantén visibilidad del rendimiento.</span></div>
         </div>
       </div>
     </div>
-  </section>  <section class="section" style="padding-top: 0;">
+  </section>  <section class="section" style="padding-top:0">
+    <div class="container grid-4">
+      <div class="stat"><strong>70%</strong><span>Ahorro máximo estimado en clientes comerciales según perfil de consumo.</span></div>
+      <div class="stat"><strong>0 kWh</strong><span>Meta de reducción del cargo por consumo en clientes residenciales.</span></div>
+      <div class="stat"><strong>24/7</strong><span>Monitoreo y revisión del sistema desde tu celular o computadora.</span></div>
+      <div class="stat"><strong>100%</strong><span>Soluciones adaptadas al tipo de cliente y necesidad real.</span></div>
+    </div>
+  </section>  <section class="section" id="ahorro" style="padding-top:0">
+    <div class="container split">
+      <div class="panel">
+        <h3>Calcula tu ahorro estimado</h3>
+        <p>Muestra al cliente un escenario simple y después llévalo a WhatsApp para revisar su factura real.</p>
+        <div class="calc">
+          <label for="slider">Factura mensual estimada</label>
+          <input id="slider" type="range" min="50" max="1500" value="300" />
+          <div class="calc-grid">
+            <div class="calc-item"><strong>$<span id="valor">300</span></strong><span>Factura actual</span></div>
+            <div class="calc-item"><strong style="color:#16a34a">$<span id="ahorro">210</span></strong><span>Ahorro estimado</span></div>
+            <div class="calc-item"><strong>$<span id="restante">90</span></strong><span>Pago restante</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="panel dark">
+        <h3>Mensaje correcto para vender</h3>
+        <p>“Paga $0 en consumo eléctrico” impacta fuerte y sigue siendo creíble. En residencial puede bajar casi a cero el consumo. En comercial el ahorro puede variar entre 30% y 70%.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="https://wa.me/50769453126?text=Hola%20quiero%20saber%20cu%C3%A1nto%20puedo%20ahorrar" target="_blank">Quiero saber cuánto ahorro</a>
+        </div>
+      </div>
+    </div>
+  </section>  <section class="section" id="soluciones">
     <div class="container">
-      <div class="section-title" data-aos="fade-up">
-        <span class="eyebrow">Preguntas comunes</span>
-        <h2>Resuelve dudas antes de que el cliente pregunte</h2>
+      <div class="section-title">
+        <small>Soluciones</small>
+        <h2>Lo que ofreces, explicado claro</h2>
+        <p>Sin enredos. Solo lo necesario para que el cliente entienda rápido y te contacte.</p>
+      </div>
+      <div class="services">
+        <div class="service"><div class="icon">☀️</div><h4>Paneles solares</h4><p>Sistemas para aprovechar la energía solar y transformar el pago de luz en una inversión inteligente.</p></div>
+        <div class="service"><div class="icon">🔌</div><h4>Inversores y equipos</h4><p>Componentes clave para convertir, administrar y estabilizar la energía producida por el sistema.</p></div>
+        <div class="service"><div class="icon">🛡️</div><h4>Protecciones</h4><p>Seguridad eléctrica y continuidad operativa para cuidar la inversión del cliente.</p></div>
+        <div class="service"><div class="icon">📲</div><h4>Monitoreo inteligente</h4><p>Chequea el estatus del sistema desde tu celular y mantén visibilidad constante del rendimiento.</p></div>
+        <div class="service"><div class="icon">🏗️</div><h4>Instalación profesional</h4><p>Montaje adaptado a residencia, comercio o industria con enfoque técnico y comercial.</p></div>
+        <div class="service"><div class="icon">🧰</div><h4>Mantenimiento y soporte</h4><p>Acompañamiento para que el sistema siga rindiendo y el cliente perciba valor en el tiempo.</p></div>
+      </div>
+    </div>
+  </section>  <section class="section" style="background:#eef3f7">
+    <div class="container">
+      <div class="section-title">
+        <small>Proceso</small>
+        <h2>Cómo convertimos visitas en clientes</h2>
+        <p>Un recorrido simple y directo que termina donde importa: WhatsApp.</p>
+      </div>
+      <div class="steps">
+        <div class="step"><strong>01</strong><h4>Conectamos</h4><p>El cliente entra, ve una promesa fuerte y entiende de inmediato el beneficio principal.</p></div>
+        <div class="step"><strong>02</strong><h4>Calculamos</h4><p>Usa la calculadora y visualiza una mejora clara en su facturación.</p></div>
+        <div class="step"><strong>03</strong><h4>Generamos confianza</h4><p>Imágenes, estructura y lenguaje serio aumentan la intención de escribir.</p></div>
+        <div class="step"><strong>04</strong><h4>Cerramos</h4><p>El prospecto pasa a WhatsApp para cotización y revisión de factura.</p></div>
+      </div>
+    </div>
+  </section>  <section class="section">
+    <div class="container">
+      <div class="section-title">
+        <small>Preguntas frecuentes</small>
+        <h2>Respuestas claras</h2>
       </div>
       <div class="faq-grid">
-        <div class="faq" data-aos="fade-up">
-          <h4>¿La factura queda en cero?</h4>
-          <p>En residencial, el cargo por consumo puede bajar prácticamente a cero, pero normalmente sigue existiendo un cargo fijo. En comercial, además del cargo fijo, suele mantenerse la demanda.</p>
-        </div>
-        <div class="faq" data-aos="fade-up" data-aos-delay="70">
-          <h4>¿El ahorro es igual para todos?</h4>
-          <p>No. Depende del tipo de cliente, el patrón de consumo, la demanda y la solución instalada.</p>
-        </div>
-        <div class="faq" data-aos="fade-up">
-          <h4>¿Puedo monitorear mi sistema?</h4>
-          <p>Sí. Uno de los mensajes fuertes de la marca es que el cliente pueda revisar el estatus del sistema desde su celular.</p>
-        </div>
-        <div class="faq" data-aos="fade-up" data-aos-delay="70">
-          <h4>¿Atienden en todo Panamá?</h4>
-          <p>Sí. La comunicación comercial puede orientarse a cobertura nacional, con atención para proyectos residenciales, comerciales e industriales.</p>
-        </div>
+        <div class="faq"><h4>¿La factura queda en cero?</h4><p>En residencial, el cargo por consumo puede bajar prácticamente a cero, pero normalmente sigue existiendo un cargo fijo. En comercial también suele mantenerse la demanda.</p></div>
+        <div class="faq"><h4>¿El ahorro es igual para todos?</h4><p>No. Depende del tipo de cliente, el patrón de consumo, la demanda y la solución instalada.</p></div>
+        <div class="faq"><h4>¿Puedo monitorear mi sistema?</h4><p>Sí. Uno de los puntos fuertes de la propuesta es revisar el estatus del sistema desde el celular.</p></div>
+        <div class="faq"><h4>¿Atienden en Panamá?</h4><p>Sí. La comunicación está enfocada en Panamá para proyectos residenciales, comerciales e industriales.</p></div>
       </div>
     </div>
-  </section>  <section class="section" id="contacto" style="padding-top: 24px;">
-    <div class="container final-cta" data-aos="zoom-in">
+  </section>  <section class="section" id="contacto" style="padding-top:0">
+    <div class="container final">
       <div>
-        <span class="eyebrow" style="color:#86efac;">Último paso</span>
-        <h3>Convierte esta visita en una cotización real</h3>
-        <p>Si el cliente ya llegó hasta aquí, no necesita más información: necesita acción. Llévalo directo a WhatsApp y pídele su factura para calcular un ahorro más exacto.</p>
+        <h3>Empieza a ahorrar hoy</h3>
+        <p>Si ya llegaste hasta aquí, el siguiente paso es simple: escríbenos por WhatsApp, comparte tu factura y te orientamos según tu tipo de cliente.</p>
         <div class="hero-actions">
-          <a class="cta-btn" href="https://wa.me/50769453126?text=Hola%20quiero%20cotizar%20energ%C3%ADa%20solar" target="_blank">Hablar por WhatsApp</a>
-          <a class="cta-btn-secondary" href="tel:69453126">Llamar ahora</a>
+          <a class="btn btn-primary" href="https://wa.me/50769453126?text=Hola%20quiero%20cotizar%20energ%C3%ADa%20solar" target="_blank">Hablar por WhatsApp</a>
+          <a class="btn btn-dark" href="tel:69453126">Llamar ahora</a>
         </div>
       </div>
-      <div class="contact-box">
+      <div class="contact">
         <strong>Datos clave</strong>
         <ul>
           <li>📞 WhatsApp: 6945-3126</li>
-          <li>🌐 Dominio: ecoenergy-asesores.com</li>
+          <li>🌐 ecoenergy-asesores.com</li>
           <li>📍 Panamá</li>
           <li>⚡ Soluciones para residencial, comercial e industrial</li>
           <li>📲 Monitoreo desde celular</li>
@@ -1075,29 +333,22 @@ footer {
       </div>
     </div>
   </section>  <footer>
-    <div class="container">
-      Eco Energy Asesores · Página optimizada para conversión, imagen de marca y contacto directo.
-    </div>
-  </footer><a class="floating-whatsapp" href="https://wa.me/50769453126?text=Hola%20quiero%20cotizar%20energ%C3%ADa%20solar" target="_blank">WhatsApp</a>
+    <div class="container">Eco Energy Asesores · Página limpia, profesional y lista para vender.</div>
+  </footer><a class="floating" href="https://wa.me/50769453126?text=Hola%20quiero%20cotizar%20energ%C3%ADa%20solar" target="_blank">WhatsApp</a>
 
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>  <script>
-    AOS.init({ duration: 800, once: true, offset: 70 });
-
+  <script>
     const slider = document.getElementById('slider');
     const valor = document.getElementById('valor');
     const ahorro = document.getElementById('ahorro');
     const restante = document.getElementById('restante');
-
-    function actualizarCalculo() {
+    function actualizar(){
       const factura = Number(slider.value);
       const ahorroEstimado = Math.round(factura * 0.7);
-      const restanteEstimado = Math.max(factura - ahorroEstimado, 0);
       valor.textContent = factura;
       ahorro.textContent = ahorroEstimado;
-      restante.textContent = restanteEstimado;
+      restante.textContent = Math.max(factura - ahorroEstimado, 0);
     }
-
-    slider.addEventListener('input', actualizarCalculo);
-    actualizarCalculo();
+    slider.addEventListener('input', actualizar);
+    actualizar();
   </script></body>
 </html>
