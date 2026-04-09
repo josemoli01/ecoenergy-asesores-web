@@ -1,91 +1,934 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>EcoEnergy Asesores Panamá | Energía Solar</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EcoEnergy Asesores Panamá | Energía solar para hogares, comercios e industrias</title>
+  <meta name="description" content="EcoEnergy Asesores Panamá. Soluciones solares residenciales, comerciales e industriales en Panamá. Filial comercial de Eco Energy Solutions." />
+  <style>
+    :root{
+      --green:#20c05c;
+      --green-dark:#159447;
+      --green-soft:#eaf8ef;
+      --dark:#142033;
+      --text:#334155;
+      --muted:#6b7b8c;
+      --line:#e8edf2;
+      --white:#ffffff;
+      --bg:#f7faf8;
+      --shadow:0 10px 30px rgba(20,32,51,.08);
+      --shadow-strong:0 18px 45px rgba(20,32,51,.14);
+      --radius:22px;
+      --max:1180px;
+    }
 
-<style>
-body { margin:0; font-family: Arial, sans-serif; background:#f6faf7; color:#1a2a2a; }
-header { display:flex; justify-content:space-between; align-items:center; padding:15px 30px; background:white; box-shadow:0 2px 10px rgba(0,0,0,0.05);}
-header h2 { margin:0; color:#2e7d32;}
-nav a { margin:0 10px; text-decoration:none; color:#333;}
-.btn { background:#4caf50; color:white; padding:10px 20px; border-radius:25px; text-decoration:none;}
-.section { padding:60px 20px; max-width:1100px; margin:auto;}
-.hero { text-align:center;}
-.hero h1 { font-size:32px; color:#2e7d32;}
-.cards { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:20px;}
-.card { background:white; padding:20px; border-radius:10px; box-shadow:0 5px 15px rgba(0,0,0,0.05);}
-footer { background:#0e1f16; color:white; text-align:center; padding:20px;}
-input, textarea { width:100%; padding:10px; margin:5px 0; border-radius:5px; border:1px solid #ccc;}
-button { background:#4caf50; color:white; border:none; padding:12px; border-radius:20px; cursor:pointer;}
-.whatsapp { position:fixed; bottom:20px; right:20px; background:#25D366; color:white; padding:15px; border-radius:50%; text-decoration:none;}
-</style>
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Arial, Helvetica, sans-serif;
+      background:var(--white);
+      color:var(--text);
+    }
 
+    img{display:block;max-width:100%}
+
+    .container{
+      width:min(calc(100% - 28px), var(--max));
+      margin:auto;
+    }
+
+    .fade-up{
+      opacity:0;
+      transform:translateY(24px);
+      animation:fadeUp .8s ease forwards;
+    }
+    .delay-1{animation-delay:.12s}
+    .delay-2{animation-delay:.24s}
+    .delay-3{animation-delay:.36s}
+
+    @keyframes fadeUp{
+      to{opacity:1;transform:translateY(0)}
+    }
+
+    @keyframes pulse{
+      0%{transform:scale(1)}
+      50%{transform:scale(1.05)}
+      100%{transform:scale(1)}
+    }
+
+    header{
+      position:sticky;
+      top:0;
+      z-index:1000;
+      background:rgba(255,255,255,.95);
+      backdrop-filter:blur(10px);
+      border-bottom:1px solid var(--line);
+    }
+
+    .nav{
+      min-height:82px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:18px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      min-width:0;
+    }
+
+    .brand img{
+      width:62px;
+      height:62px;
+      object-fit:contain;
+      border-radius:16px;
+      background:#fff;
+      box-shadow:var(--shadow);
+      flex-shrink:0;
+    }
+
+    .brand-copy{
+      min-width:0;
+    }
+
+    .brand-copy h1{
+      margin:0;
+      font-size:24px;
+      color:var(--dark);
+      line-height:1.02;
+    }
+
+    .brand-copy p{
+      margin:4px 0 0;
+      color:var(--muted);
+      font-size:12px;
+      letter-spacing:.8px;
+    }
+
+    nav{
+      display:flex;
+      align-items:center;
+      gap:18px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+
+    nav a{
+      text-decoration:none;
+      color:var(--dark);
+      font-weight:700;
+      font-size:15px;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      border:none;
+      text-decoration:none;
+      cursor:pointer;
+      padding:14px 22px;
+      border-radius:999px;
+      font-weight:700;
+      transition:.25s ease;
+      box-shadow:none;
+    }
+
+    .btn-primary{
+      background:var(--green);
+      color:#fff;
+      box-shadow:0 12px 28px rgba(32,192,92,.26);
+    }
+
+    .btn-primary:hover{
+      background:var(--green-dark);
+      transform:translateY(-2px);
+    }
+
+    .btn-secondary{
+      background:#fff;
+      color:var(--dark);
+      border:1px solid #dbe5ea;
+    }
+
+    .btn-secondary:hover{
+      transform:translateY(-2px);
+      box-shadow:var(--shadow);
+    }
+
+    .hero{
+      background:
+        radial-gradient(circle at top left, #effbf2 0, #ffffff 45%),
+        linear-gradient(to bottom, #ffffff, #f8fbf9);
+      padding:40px 0 30px;
+    }
+
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1.05fr .95fr;
+      gap:28px;
+      align-items:center;
+    }
+
+    .badge{
+      display:inline-block;
+      padding:10px 16px;
+      border-radius:999px;
+      background:var(--green-soft);
+      color:#4c8a39;
+      font-weight:700;
+      font-size:14px;
+      margin-bottom:18px;
+    }
+
+    .hero h2{
+      margin:0 0 18px;
+      color:var(--dark);
+      font-size:60px;
+      line-height:.98;
+      letter-spacing:-1.8px;
+    }
+
+    .hero h2 span{
+      color:#63ad30;
+    }
+
+    .hero p{
+      margin:0 0 24px;
+      font-size:21px;
+      line-height:1.65;
+      color:#56677a;
+      max-width:760px;
+    }
+
+    .hero-actions{
+      display:flex;
+      gap:14px;
+      flex-wrap:wrap;
+      margin-bottom:26px;
+    }
+
+    .metrics{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:14px;
+    }
+
+    .metric{
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:22px;
+      padding:18px;
+      box-shadow:var(--shadow);
+    }
+
+    .metric strong{
+      display:block;
+      margin-bottom:6px;
+      color:#65a630;
+      font-size:22px;
+    }
+
+    .hero-card{
+      position:relative;
+      overflow:hidden;
+      border-radius:28px;
+      min-height:560px;
+      background:#0f1c39;
+      box-shadow:var(--shadow-strong);
+    }
+
+    .hero-card img{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      opacity:.48;
+    }
+
+    .hero-card::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(180deg, rgba(15,28,57,.18), rgba(15,28,57,.80));
+    }
+
+    .hero-card-content{
+      position:relative;
+      z-index:2;
+      color:#fff;
+      padding:28px;
+      min-height:560px;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+    }
+
+    .hero-card-content small{
+      color:#b7e56e;
+      letter-spacing:2.5px;
+      font-weight:700;
+    }
+
+    .hero-card-content h3{
+      margin:14px 0 18px;
+      font-size:44px;
+      line-height:1.03;
+    }
+
+    .mini-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:14px;
+    }
+
+    .mini-box{
+      background:rgba(255,255,255,.10);
+      border:1px solid rgba(255,255,255,.14);
+      border-radius:18px;
+      padding:16px;
+      backdrop-filter:blur(4px);
+    }
+
+    .mini-box h4{
+      margin:0 0 10px;
+      font-size:16px;
+    }
+
+    .mini-box p{
+      margin:0;
+      color:#e9eef6;
+      font-size:14px;
+      line-height:1.55;
+    }
+
+    section.block{
+      padding:78px 0;
+    }
+
+    .kicker{
+      margin:0;
+      color:#1c2740;
+      letter-spacing:2px;
+      text-transform:uppercase;
+      font-size:14px;
+      font-weight:700;
+    }
+
+    .section-title{
+      margin:10px 0 12px;
+      color:#1c2740;
+      font-size:48px;
+      line-height:1.04;
+      letter-spacing:-1px;
+      max-width:820px;
+    }
+
+    .section-sub{
+      margin:0 0 28px;
+      color:#637487;
+      font-size:18px;
+      line-height:1.75;
+      max-width:820px;
+    }
+
+    .cards{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:20px;
+    }
+
+    .card{
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:24px;
+      overflow:hidden;
+      box-shadow:var(--shadow);
+      transition:.25s ease;
+    }
+
+    .card:hover{
+      transform:translateY(-6px);
+    }
+
+    .card img{
+      width:100%;
+      height:220px;
+      object-fit:cover;
+    }
+
+    .card-body{
+      padding:22px;
+    }
+
+    .card-body h3{
+      margin:0 0 10px;
+      color:#1f2a44;
+      font-size:28px;
+    }
+
+    .card-body p{
+      margin:0;
+      color:#617286;
+      line-height:1.7;
+      font-size:17px;
+    }
+
+    .advantages{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:24px;
+      align-items:start;
+    }
+
+    .panel{
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:28px;
+      box-shadow:var(--shadow);
+      padding:28px;
+    }
+
+    .list{
+      display:grid;
+      gap:16px;
+      margin-top:18px;
+    }
+
+    .list-item{
+      display:flex;
+      gap:12px;
+      color:#405165;
+      line-height:1.65;
+      font-size:17px;
+    }
+
+    .tick{
+      color:#189144;
+      font-weight:700;
+    }
+
+    .gallery{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:18px;
+    }
+
+    .gallery figure{
+      margin:0;
+      position:relative;
+      overflow:hidden;
+      min-height:320px;
+      border-radius:24px;
+      background:#112247;
+      box-shadow:var(--shadow);
+    }
+
+    .gallery img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      opacity:.85;
+      transition:.35s ease;
+    }
+
+    .gallery figure:hover img{
+      transform:scale(1.04);
+      opacity:.95;
+    }
+
+    .gallery figcaption{
+      position:absolute;
+      left:18px;
+      right:18px;
+      bottom:16px;
+      color:#fff;
+      z-index:2;
+    }
+
+    .gallery figcaption strong{
+      display:block;
+      margin-bottom:8px;
+      font-size:18px;
+    }
+
+    .contact-grid{
+      display:grid;
+      grid-template-columns:.95fr 1.05fr;
+      gap:24px;
+      align-items:start;
+    }
+
+    .contact-panel,
+    .form-panel{
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:28px;
+      box-shadow:var(--shadow);
+      padding:28px;
+    }
+
+    .contact-panel h4,
+    .form-panel h4{
+      margin:0 0 12px;
+      color:#1f2a44;
+      letter-spacing:2px;
+      text-transform:uppercase;
+      font-size:14px;
+    }
+
+    .contact-panel h5{
+      margin:0 0 16px;
+      color:#17233b;
+      font-size:42px;
+      line-height:1.03;
+    }
+
+    .contact-panel p{
+      color:#627386;
+      line-height:1.75;
+      font-size:18px;
+    }
+
+    .contact-list{
+      display:grid;
+      gap:14px;
+      margin-top:18px;
+      color:#415164;
+      font-size:17px;
+    }
+
+    form{
+      display:grid;
+      gap:14px;
+    }
+
+    .form-row{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:14px;
+    }
+
+    input, textarea{
+      width:100%;
+      border:1px solid #d8e2e8;
+      border-radius:16px;
+      padding:16px 18px;
+      font:inherit;
+      color:#1c2942;
+      background:#fff;
+    }
+
+    textarea{
+      min-height:140px;
+      resize:vertical;
+    }
+
+    .form-actions{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-top:6px;
+    }
+
+    footer{
+      background:#0e1a32;
+      color:#fff;
+      margin-top:30px;
+    }
+
+    .footer-wrap{
+      padding:24px 0;
+      display:flex;
+      justify-content:space-between;
+      gap:18px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+
+    .footer-links{
+      display:flex;
+      gap:16px;
+      flex-wrap:wrap;
+    }
+
+    .footer-links a{
+      color:#d8e3ef;
+      text-decoration:none;
+    }
+
+    .wa-float{
+      position:fixed;
+      right:16px;
+      bottom:16px;
+      z-index:999;
+      background:#25D366;
+      color:#fff;
+      text-decoration:none;
+      padding:15px 20px;
+      border-radius:999px;
+      font-weight:700;
+      box-shadow:0 14px 32px rgba(37,211,102,.35);
+      animation:pulse 1.8s infinite;
+    }
+
+    @media (max-width: 1024px){
+      .hero-grid,
+      .advantages,
+      .contact-grid,
+      .cards,
+      .gallery{
+        grid-template-columns:1fr;
+      }
+
+      .hero h2{font-size:44px}
+      .section-title{font-size:36px}
+      .metrics{grid-template-columns:1fr 1fr}
+    }
+
+    @media (max-width: 680px){
+      .nav{
+        flex-direction:column;
+        align-items:flex-start;
+        padding:12px 0;
+      }
+
+      nav{
+        width:100%;
+        justify-content:flex-start;
+        gap:12px;
+      }
+
+      .brand img{
+        width:54px;
+        height:54px;
+      }
+
+      .brand-copy h1{
+        font-size:20px;
+      }
+
+      .hero{
+        padding:26px 0 12px;
+      }
+
+      .hero h2{
+        font-size:35px;
+      }
+
+      .hero p{
+        font-size:18px;
+      }
+
+      .metrics,
+      .form-row{
+        grid-template-columns:1fr;
+      }
+
+      .mini-grid{
+        grid-template-columns:1fr;
+      }
+
+      .hero-card,
+      .hero-card-content{
+        min-height:unset;
+      }
+
+      .contact-panel h5{
+        font-size:34px;
+      }
+
+      .wa-float{
+        right:12px;
+        left:12px;
+        bottom:12px;
+        text-align:center;
+      }
+    }
+  </style>
 </head>
-
 <body>
 
-<header>
-  <h2>EcoEnergy Asesores Panamá</h2>
-  <nav>
-    <a href="#servicios">Servicios</a>
-    <a href="#ventajas">Ventajas</a>
-    <a href="#contacto">Contacto</a>
-  </nav>
-  <a class="btn" href="https://wa.me/50769453126">WhatsApp</a>
-</header>
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <img src="logo-ecoenergy.jpg" alt="EcoEnergy">
+        <div class="brand-copy">
+          <h1>EcoEnergy Asesores Panamá</h1>
+          <p>FILIAL COMERCIAL DE ECO ENERGY SOLUTIONS</p>
+        </div>
+      </div>
 
-<section class="section hero">
-  <h1>Reduce tu factura eléctrica con energía solar</h1>
-  <p>
-  Diseñamos e instalamos sistemas solares para hogares, comercios e industrias en Panamá.
-  Ahorra desde un 30% hasta un 70% o incluso reduce tu consumo de energía a casi cero.
-  </p>
-
-  <a class="btn" href="https://wa.me/50769453126">Solicitar asesoría</a>
-</section>
-
-<section class="section">
-  <div class="cards">
-    <div class="card"><strong>24/7</strong><br>Atención personalizada</div>
-    <div class="card"><strong>WhatsApp</strong><br>Respuesta inmediata</div>
-    <div class="card"><strong>ROI</strong><br>Retorno de inversión</div>
-    <div class="card"><strong>100%</strong><br>Energía renovable</div>
-  </div>
-</section>
-
-<section id="servicios" class="section">
-  <h2>Servicios</h2>
-  <div class="cards">
-    <div class="card">
-      <h3>Residencial</h3>
-      <p>Reduce tu factura eléctrica a casi cero y paga solo el cargo básico.</p>
+      <nav>
+        <a href="#servicios">Servicios</a>
+        <a href="#ventajas">Ventajas</a>
+        <a href="#galeria">Galería</a>
+        <a href="#contacto">Contacto</a>
+        <a class="btn btn-primary" href="https://wa.me/50769453126?text=Hola%20EcoEnergy%20Asesores%20Panam%C3%A1,%20quiero%20cotizar%20un%20proyecto%20solar." target="_blank">WhatsApp</a>
+      </nav>
     </div>
+  </header>
 
-    <div class="card">
-      <h3>Comercial</h3>
-      <p>Ahorro del 30% al 70% en consumo energético para empresas.</p>
-    </div>
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="badge fade-up">Energía solar para Panamá</div>
+          <h2 class="fade-up delay-1">Reduce tu factura eléctrica con <span>energía solar inteligente</span>.</h2>
+          <p class="fade-up delay-2">Diseñamos e instalamos soluciones solares para hogares, comercios e industrias. Te ayudamos a ahorrar, modernizar tu propiedad y dar el paso hacia una energía más rentable y sostenible.</p>
 
-    <div class="card">
-      <h3>Industrial</h3>
-      <p>Soluciones solares escalables para grandes consumos.</p>
-    </div>
+          <div class="hero-actions fade-up delay-3">
+            <a class="btn btn-primary" href="https://wa.me/50769453126?text=Hola%20EcoEnergy%20Asesores%20Panam%C3%A1,%20quiero%20una%20cotizaci%C3%B3n%20solar." target="_blank">Solicitar cotización</a>
+            <a class="btn btn-secondary" href="#galeria">Ver proyectos</a>
+          </div>
 
-    <div class="card">
-      <h3>On Grid / Off Grid</h3>
-      <p>Sistemas conectados o independientes según tu necesidad.</p>
-    </div>
+          <div class="metrics">
+            <div class="metric">
+              <strong>24/7</strong>
+              Atención digital y seguimiento ágil.
+            </div>
+            <div class="metric">
+              <strong>WA</strong>
+              Respuesta rápida por WhatsApp.
+            </div>
+            <div class="metric">
+              <strong>ROI</strong>
+              Enfoque en retorno y ahorro real.
+            </div>
+            <div class="metric">
+              <strong>100%</strong>
+              Energía renovable y moderna.
+            </div>
+          </div>
+        </div>
 
-    <div class="card">
-      <h3>Monitoreo</h3>
-      <p>Controla tu sistema solar desde tu celular o computadora.</p>
-    </div>
+        <div class="hero-card fade-up delay-2">
+          <img src="hero.jpg" alt="Proyecto solar principal">
+          <div class="hero-card-content">
+            <div>
+              <small>ENERGÍA SOLAR MODERNA</small>
+              <h3>Soluciones solares para residencias, negocios e industria</h3>
+            </div>
 
-    <div class="card">
-      <h3>Asesoría</h3>
-      <p>Evaluación técnica completa y propuesta personalizada.</p>
+            <div class="mini-grid">
+              <div class="mini-box">
+                <h4>Residencial</h4>
+                <p>Disminuye tu factura y mejora el valor de tu hogar.</p>
+              </div>
+              <div class="mini-box">
+                <h4>Comercial</h4>
+                <p>Ahorro operativo para negocios y empresas.</p>
+              </div>
+              <div class="mini-box">
+                <h4>Industrial</h4>
+                <p>Soluciones escalables para grandes consumos.</p>
+              </div>
+              <div class="mini-box">
+                <h4>Contacto rápido</h4>
+                <p>WhatsApp 6945-3126<br>Panamá City</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="servicios" class="block">
+      <div class="container">
+        <p class="kicker">Servicios</p>
+        <h3 class="section-title">Soluciones solares diseñadas para todo tipo de cliente</h3>
+        <p class="section-sub">Atendemos proyectos residenciales, comerciales e industriales, además de sistemas conectados a red, independientes y monitoreo remoto.</p>
+
+        <div class="cards">
+          <article class="card fade-up">
+            <img src="residencial.jpg" alt="Sistema solar residencial">
+            <div class="card-body">
+              <h3>Residencial</h3>
+              <p>Reduce tu factura eléctrica a casi cero y paga solo el cargo básico, con una instalación pensada para tu hogar.</p>
+            </div>
+          </article>
+
+          <article class="card fade-up delay-1">
+            <img src="comercial.jpg" alt="Sistema solar comercial">
+            <div class="card-body">
+              <h3>Comercial</h3>
+              <p>En clientes comerciales el ahorro puede variar aproximadamente entre un 30% y un 70%, según demanda y consumo.</p>
+            </div>
+          </article>
+
+          <article class="card fade-up delay-2">
+            <img src="industrial.jpg" alt="Sistema solar industrial">
+            <div class="card-body">
+              <h3>Industrial</h3>
+              <p>Soluciones solares escalables para empresas con altos consumos, enfoque técnico y visión de crecimiento.</p>
+            </div>
+          </article>
+
+          <article class="card fade-up">
+            <div class="card-body">
+              <h3>On Grid / Off Grid</h3>
+              <p>Sistemas conectados a la red o independientes, según tu necesidad, ubicación y estrategia energética.</p>
+            </div>
+          </article>
+
+          <article class="card fade-up delay-1">
+            <div class="card-body">
+              <h3>Monitoreo</h3>
+              <p>Controla tu sistema solar desde tu celular o computadora con seguimiento visual y técnico.</p>
+            </div>
+          </article>
+
+          <article class="card fade-up delay-2">
+            <div class="card-body">
+              <h3>Asesoría</h3>
+              <p>Evaluación técnica completa, propuesta personalizada y acompañamiento para tomar una decisión rentable.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="ventajas" class="block" style="background:var(--bg);">
+      <div class="container advantages">
+        <div>
+          <p class="kicker">Ventajas</p>
+          <h3 class="section-title">Una presencia energética con ahorro, confianza y modernidad</h3>
+          <p class="section-sub">Ideal para captar clientes que buscan ahorro, autonomía, imagen sostenible y acompañamiento local en Panamá.</p>
+
+          <div class="list">
+            <div class="list-item"><span class="tick">✔</span><span>Ahorro en la factura eléctrica y mejor proyección de consumo.</span></div>
+            <div class="list-item"><span class="tick">✔</span><span>Instalación profesional para residencias, comercios e industrias.</span></div>
+            <div class="list-item"><span class="tick">✔</span><span>Atención personalizada en Panamá con respuesta rápida por WhatsApp.</span></div>
+            <div class="list-item"><span class="tick">✔</span><span>Monitoreo remoto y soporte orientado a resultados.</span></div>
+            <div class="list-item"><span class="tick">✔</span><span>Imagen moderna para marcas y proyectos comprometidos con la sostenibilidad.</span></div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <p class="kicker">Dirección comercial</p>
+          <h3 class="section-title" style="font-size:36px; margin-top:10px;">El Dorado, Plaza Figuer, oficina 106</h3>
+          <p class="section-sub" style="margin-top:0;">Panamá City, Panamá, 0819</p>
+
+          <div class="contact-list">
+            <div><strong>Empresa:</strong> EcoEnergy Asesores Panamá</div>
+            <div><strong>Filial de:</strong> Eco Energy Solutions</div>
+            <div><strong>WhatsApp:</strong> 6945-3126</div>
+            <div><strong>Correo:</strong> ecoenergy.asesores@gmail.com</div>
+            <div><strong>Cobertura:</strong> Todo Panamá</div>
+          </div>
+
+          <div style="margin-top:22px;">
+            <a class="btn btn-primary" href="https://wa.me/50769453126?text=Hola%20EcoEnergy%20Asesores%20Panam%C3%A1,%20quiero%20hablar%20con%20un%20asesor." target="_blank">Hablar con un asesor</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="galeria" class="block">
+      <div class="container">
+        <p class="kicker">Galería visual</p>
+        <h3 class="section-title">Imágenes que transmiten capacidad, confianza e innovación</h3>
+        <p class="section-sub">Una muestra visual para reforzar la presencia de marca y la percepción de profesionalismo en energía solar.</p>
+
+        <div class="gallery">
+          <figure class="fade-up">
+            <img src="hero.jpg" alt="Proyecto solar principal">
+            <figcaption>
+              <strong>Infraestructura solar moderna</strong>
+              Soluciones visuales y técnicas para clientes de alto valor.
+            </figcaption>
+          </figure>
+
+          <figure class="fade-up delay-1">
+            <img src="galeria1.jpg" alt="Proyecto solar adicional">
+            <figcaption>
+              <strong>Aplicación real</strong>
+              Energía renovable adaptada a distintos tipos de propiedad.
+            </figcaption>
+          </figure>
+
+          <figure class="fade-up delay-2">
+            <img src="comercial.jpg" alt="Proyecto comercial">
+            <figcaption>
+              <strong>Enfoque comercial</strong>
+              Ahorro, imagen y rentabilidad para empresas en Panamá.
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section id="contacto" class="block" style="background:var(--bg);">
+      <div class="container contact-grid">
+        <div class="contact-panel">
+          <h4>Solicita tu asesoría</h4>
+          <h5>Convierte tu consumo eléctrico en una oportunidad de ahorro</h5>
+          <p>Escríbenos por WhatsApp o completa el formulario para recibir atención inicial y una propuesta ajustada a tu necesidad.</p>
+
+          <div class="contact-list">
+            <div><strong>WhatsApp:</strong> 6945-3126</div>
+            <div><strong>Correo:</strong> ecoenergy.asesores@gmail.com</div>
+            <div><strong>Dirección:</strong> El Dorado, Plaza Figuer, oficina 106, Panamá City</div>
+            <div><strong>Filial de:</strong> Eco Energy Solutions</div>
+          </div>
+        </div>
+
+        <div class="form-panel">
+          <h4>Formulario</h4>
+          <form onsubmit="enviarWhatsApp(event)">
+            <div class="form-row">
+              <input type="text" id="nombre" placeholder="Nombre" required>
+              <input type="text" id="telefono" placeholder="Teléfono" required>
+            </div>
+            <div class="form-row">
+              <input type="email" id="correo" placeholder="Correo">
+              <input type="text" id="tipo" placeholder="Tipo de proyecto">
+            </div>
+            <textarea id="mensaje" placeholder="Cuéntanos qué necesitas: sistema residencial, comercial, cotización o asesoría..." required></textarea>
+
+            <div class="form-actions">
+              <button type="submit" class="btn btn-primary">Enviar solicitud</button>
+              <a class="btn btn-secondary" href="https://wa.me/50769453126?text=Hola%20EcoEnergy%20Asesores%20Panam%C3%A1,%20quiero%20una%20cotizaci%C3%B3n." target="_blank">Ir a WhatsApp</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-wrap">
+      <div>© 2026 EcoEnergy Asesores Panamá · Filial comercial de Eco Energy Solutions</div>
+      <div class="footer-links">
+        <a href="#servicios">Servicios</a>
+        <a href="#ventajas">Ventajas</a>
+        <a href="#galeria">Galería</a>
+        <a href="#contacto">Contacto</a>
+      </div>
     </div>
-  </div>
-</section>
+  </footer>
+
+  <a class="wa-float" href="https://wa.me/50769453126?text=Hola%20EcoEnergy%20Asesores%20Panam%C3%A1,%20quiero%20informaci%C3%B3n%20sobre%20energ%C3%ADa%20solar." target="_blank">WhatsApp 6945-3126</a>
+
+  <script>
+    function enviarWhatsApp(e){
+      e.preventDefault();
+      const nombre = document.getElementById('nombre').value;
+      const telefono = document.getElementById('telefono').value;
+      const correo = document.getElementById('correo').value;
+      const tipo = document.getElementById('tipo').value;
+      const mensaje = document.getElementById('mensaje').value;
+
+      const texto = `Hola EcoEnergy Asesores Panamá,%0A%0AMi nombre es: ${nombre}%0ATeléfono: ${telefono}%0ACorreo: ${correo}%0ATipo de proyecto: ${tipo}%0A%0ANecesito:%0A${mensaje}`;
+      window.open(`https://wa.me/50769453126?text=${texto}`, '_blank');
+    }
+  </script>
+
+</body>
+</html>
