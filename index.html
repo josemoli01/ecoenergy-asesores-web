@@ -3,21 +3,21 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>EcoEnergy Asesores Panamá | Energía solar para hogares, comercios e industrias</title>
-  <meta name="description" content="EcoEnergy Asesores Panamá. Soluciones solares residenciales, comerciales e industriales en Panamá. Filial comercial de Eco Energy Solutions." />
+  <title>EcoEnergy Asesores Panamá | Energía solar en Panamá</title>
+  <meta name="description" content="EcoEnergy Asesores Panamá. Soluciones solares residenciales, comerciales e industriales. Filial comercial de Eco Energy Solutions." />
   <style>
     :root{
-      --green:#20c05c;
-      --green-dark:#159447;
-      --green-soft:#eaf8ef;
-      --dark:#142033;
-      --text:#334155;
-      --muted:#6b7b8c;
-      --line:#e8edf2;
+      --green:#22c55e;
+      --green-dark:#169b47;
+      --green-soft:#ecf9f0;
+      --dark:#152235;
+      --text:#344255;
+      --muted:#6c7b8a;
+      --line:#e7edf1;
       --white:#ffffff;
       --bg:#f7faf8;
-      --shadow:0 10px 30px rgba(20,32,51,.08);
-      --shadow-strong:0 18px 45px rgba(20,32,51,.14);
+      --shadow:0 10px 30px rgba(21,34,53,.08);
+      --shadow-strong:0 18px 45px rgba(21,34,53,.14);
       --radius:22px;
       --max:1180px;
     }
@@ -53,7 +53,7 @@
 
     @keyframes pulse{
       0%{transform:scale(1)}
-      50%{transform:scale(1.05)}
+      50%{transform:scale(1.04)}
       100%{transform:scale(1)}
     }
 
@@ -61,7 +61,7 @@
       position:sticky;
       top:0;
       z-index:1000;
-      background:rgba(255,255,255,.95);
+      background:rgba(255,255,255,.96);
       backdrop-filter:blur(10px);
       border-bottom:1px solid var(--line);
     }
@@ -91,15 +91,11 @@
       flex-shrink:0;
     }
 
-    .brand-copy{
-      min-width:0;
-    }
-
     .brand-copy h1{
       margin:0;
       font-size:24px;
       color:var(--dark);
-      line-height:1.02;
+      line-height:1.03;
     }
 
     .brand-copy p{
@@ -136,13 +132,12 @@
       border-radius:999px;
       font-weight:700;
       transition:.25s ease;
-      box-shadow:none;
     }
 
     .btn-primary{
       background:var(--green);
       color:#fff;
-      box-shadow:0 12px 28px rgba(32,192,92,.26);
+      box-shadow:0 12px 28px rgba(34,197,94,.24);
     }
 
     .btn-primary:hover{
@@ -165,7 +160,7 @@
       background:
         radial-gradient(circle at top left, #effbf2 0, #ffffff 45%),
         linear-gradient(to bottom, #ffffff, #f8fbf9);
-      padding:40px 0 30px;
+      padding:42px 0 30px;
     }
 
     .hero-grid{
@@ -180,7 +175,7 @@
       padding:10px 16px;
       border-radius:999px;
       background:var(--green-soft);
-      color:#4c8a39;
+      color:#4f8e3d;
       font-weight:700;
       font-size:14px;
       margin-bottom:18px;
@@ -195,14 +190,14 @@
     }
 
     .hero h2 span{
-      color:#63ad30;
+      color:#64ad30;
     }
 
     .hero p{
       margin:0 0 24px;
       font-size:21px;
       line-height:1.65;
-      color:#56677a;
+      color:#55677a;
       max-width:760px;
     }
 
@@ -249,14 +244,14 @@
       width:100%;
       height:100%;
       object-fit:cover;
-      opacity:.48;
+      opacity:.50;
     }
 
     .hero-card::after{
       content:"";
       position:absolute;
       inset:0;
-      background:linear-gradient(180deg, rgba(15,28,57,.18), rgba(15,28,57,.80));
+      background:linear-gradient(180deg, rgba(15,28,57,.15), rgba(15,28,57,.80));
     }
 
     .hero-card-content{
@@ -417,45 +412,45 @@
     .gallery{
       display:grid;
       grid-template-columns:repeat(3,1fr);
-      gap:18px;
+      gap:20px;
     }
 
     .gallery figure{
       margin:0;
-      position:relative;
+      border-radius:20px;
       overflow:hidden;
-      min-height:320px;
-      border-radius:24px;
-      background:#112247;
-      box-shadow:var(--shadow);
+      box-shadow:0 10px 30px rgba(0,0,0,.08);
+      background:#fff;
+      transition:.3s ease;
+      border:1px solid var(--line);
+    }
+
+    .gallery figure:hover{
+      transform:translateY(-6px);
     }
 
     .gallery img{
       width:100%;
-      height:100%;
+      height:220px;
       object-fit:cover;
-      opacity:.85;
-      transition:.35s ease;
-    }
-
-    .gallery figure:hover img{
-      transform:scale(1.04);
-      opacity:.95;
     }
 
     .gallery figcaption{
-      position:absolute;
-      left:18px;
-      right:18px;
-      bottom:16px;
-      color:#fff;
-      z-index:2;
+      padding:16px;
     }
 
     .gallery figcaption strong{
       display:block;
-      margin-bottom:8px;
       font-size:18px;
+      margin-bottom:6px;
+      color:#1f2a44;
+    }
+
+    .gallery figcaption span{
+      display:block;
+      font-size:14px;
+      color:#5f7084;
+      line-height:1.55;
     }
 
     .contact-grid{
@@ -565,16 +560,17 @@
 
     .wa-float{
       position:fixed;
-      right:16px;
-      bottom:16px;
-      z-index:999;
+      right:20px;
+      bottom:20px;
       background:#25D366;
       color:#fff;
       text-decoration:none;
-      padding:15px 20px;
+      padding:14px 22px;
       border-radius:999px;
-      font-weight:700;
-      box-shadow:0 14px 32px rgba(37,211,102,.35);
+      font-weight:600;
+      box-shadow:0 10px 25px rgba(37,211,102,.3);
+      font-size:14px;
+      z-index:999;
       animation:pulse 1.8s infinite;
     }
 
@@ -731,7 +727,7 @@
               </div>
               <div class="mini-box">
                 <h4>Contacto rápido</h4>
-                <p>WhatsApp 6945-3126<br>Panamá City</p>
+                <p>WhatsApp directo disponible<br>Panamá City</p>
               </div>
             </div>
           </div>
@@ -798,20 +794,20 @@
       <div class="container advantages">
         <div>
           <p class="kicker">Ventajas</p>
-          <h3 class="section-title">Una presencia energética con ahorro, confianza y modernidad</h3>
-          <p class="section-sub">Ideal para captar clientes que buscan ahorro, autonomía, imagen sostenible y acompañamiento local en Panamá.</p>
+          <h3 class="section-title">Ahorro, respaldo técnico y atención directa en Panamá</h3>
+          <p class="section-sub">Trabajamos con enfoque práctico, atención cercana y soluciones diseñadas para que cada cliente obtenga una propuesta clara y rentable.</p>
 
           <div class="list">
-            <div class="list-item"><span class="tick">✔</span><span>Ahorro en la factura eléctrica y mejor proyección de consumo.</span></div>
-            <div class="list-item"><span class="tick">✔</span><span>Instalación profesional para residencias, comercios e industrias.</span></div>
-            <div class="list-item"><span class="tick">✔</span><span>Atención personalizada en Panamá con respuesta rápida por WhatsApp.</span></div>
-            <div class="list-item"><span class="tick">✔</span><span>Monitoreo remoto y soporte orientado a resultados.</span></div>
-            <div class="list-item"><span class="tick">✔</span><span>Imagen moderna para marcas y proyectos comprometidos con la sostenibilidad.</span></div>
+            <div class="list-item"><span class="tick">✔</span><span>Ahorro en la factura eléctrica y mejor control del consumo.</span></div>
+            <div class="list-item"><span class="tick">✔</span><span>Instalación profesional para hogares, comercios e industrias.</span></div>
+            <div class="list-item"><span class="tick">✔</span><span>Atención rápida por WhatsApp y acompañamiento durante el proceso.</span></div>
+            <div class="list-item"><span class="tick">✔</span><span>Monitoreo remoto y enfoque técnico orientado a resultados.</span></div>
+            <div class="list-item"><span class="tick">✔</span><span>Imagen moderna para proyectos comprometidos con energía renovable.</span></div>
           </div>
         </div>
 
         <div class="panel">
-          <p class="kicker">Dirección comercial</p>
+          <p class="kicker">Ubicación comercial</p>
           <h3 class="section-title" style="font-size:36px; margin-top:10px;">El Dorado, Plaza Figuer, oficina 106</h3>
           <p class="section-sub" style="margin-top:0;">Panamá City, Panamá, 0819</p>
 
@@ -833,15 +829,15 @@
     <section id="galeria" class="block">
       <div class="container">
         <p class="kicker">Galería visual</p>
-        <h3 class="section-title">Imágenes que transmiten capacidad, confianza e innovación</h3>
-        <p class="section-sub">Una muestra visual para reforzar la presencia de marca y la percepción de profesionalismo en energía solar.</p>
+        <h3 class="section-title">Proyectos e imágenes que reflejan confianza y capacidad</h3>
+        <p class="section-sub">Una muestra visual del tipo de soluciones y presencia que representa la energía solar moderna.</p>
 
         <div class="gallery">
           <figure class="fade-up">
             <img src="hero.jpg" alt="Proyecto solar principal">
             <figcaption>
               <strong>Infraestructura solar moderna</strong>
-              Soluciones visuales y técnicas para clientes de alto valor.
+              <span>Aplicaciones visuales y técnicas para proyectos de alto impacto.</span>
             </figcaption>
           </figure>
 
@@ -849,7 +845,7 @@
             <img src="galeria1.jpg" alt="Proyecto solar adicional">
             <figcaption>
               <strong>Aplicación real</strong>
-              Energía renovable adaptada a distintos tipos de propiedad.
+              <span>Soluciones renovables adaptadas a distintos tipos de propiedad.</span>
             </figcaption>
           </figure>
 
@@ -857,7 +853,7 @@
             <img src="comercial.jpg" alt="Proyecto comercial">
             <figcaption>
               <strong>Enfoque comercial</strong>
-              Ahorro, imagen y rentabilidad para empresas en Panamá.
+              <span>Ahorro, imagen y rentabilidad para empresas en Panamá.</span>
             </figcaption>
           </figure>
         </div>
@@ -868,7 +864,7 @@
       <div class="container contact-grid">
         <div class="contact-panel">
           <h4>Solicita tu asesoría</h4>
-          <h5>Convierte tu consumo eléctrico en una oportunidad de ahorro</h5>
+          <h5>Da el siguiente paso hacia una energía más rentable</h5>
           <p>Escríbenos por WhatsApp o completa el formulario para recibir atención inicial y una propuesta ajustada a tu necesidad.</p>
 
           <div class="contact-list">
@@ -914,7 +910,7 @@
     </div>
   </footer>
 
-  <a class="wa-float" href="https://wa.me/50769453126?text=Hola%20EcoEnergy%20Asesores%20Panam%C3%A1,%20quiero%20informaci%C3%B3n%20sobre%20energ%C3%ADa%20solar." target="_blank">WhatsApp 6945-3126</a>
+  <a class="wa-float" href="https://wa.me/50769453126?text=Hola%20EcoEnergy%20Asesores%20Panam%C3%A1,%20quiero%20informaci%C3%B3n%20sobre%20energ%C3%ADa%20solar." target="_blank">WhatsApp</a>
 
   <script>
     function enviarWhatsApp(e){
