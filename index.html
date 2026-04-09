@@ -1,1099 +1,318 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ecoenergy Asesores Panamá | Energía solar en Panamá</title>
-  <meta name="description" content="Ecoenergy Asesores Panamá. Soluciones solares para residencias, comercios, industrias y lugares aislados. Cotiza por WhatsApp y calcula tu ahorro." />
-  <meta name="theme-color" content="#08152f" />
-  <style>
-    :root{
-      --bg:#f5f7fb;
-      --white:#ffffff;
-      --navy:#08152f;
-      --navy-2:#10244a;
-      --green:#18e34f;
-      --green-2:#13c844;
-      --text:#0b1730;
-      --muted:#64748b;
-      --line:#e7edf6;
-      --soft:#eef4fb;
-      --radius:28px;
-      --shadow:0 18px 40px rgba(8,21,47,.10);
-      --max:1180px;
-    }
+import React, { useMemo, useState } from "react"; import { motion } from "framer-motion"; import { Sun, Zap, Phone, MapPin, ChevronRight, ShieldCheck, BarChart3, Building2, Leaf, MessageCircle, CheckCircle2, PlayCircle, Menu, X } from "lucide-react"; import { Card, CardContent } from "@/components/ui/card"; import { Button } from "@/components/ui/button"; import { Input } from "@/components/ui/input"; import { Textarea } from "@/components/ui/textarea";
 
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{
-      margin:0;
-      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-      background:var(--bg);
-      color:var(--text);
-    }
+const BRAND = { green: "#80B441", dark: "#1F2937", accent: "#D9F99D", soft: "#F6FAF1", };
 
-    a{text-decoration:none;color:inherit}
-    img{max-width:100%;display:block}
+const services = [ { icon: Sun, title: "Sistemas solares residenciales", text: "Diseño e instalación de soluciones para hogares que buscan reducir su factura eléctrica y ganar independencia energética.", }, { icon: Building2, title: "Proyectos comerciales e industriales", text: "Soluciones fotovoltaicas escalables para empresas, galeras, comercios y edificios con enfoque en retorno de inversión.", }, { icon: BarChart3, title: "Monitoreo inteligente", text: "Supervisión desde celular o PC para controlar generación, consumo y desempeño del sistema en tiempo real.", }, { icon: ShieldCheck, title: "Asesoría integral", text: "Evaluación técnica, propuesta económica, acompañamiento de instalación y seguimiento postventa.", }, ];
 
-    .container{
-      width:min(var(--max), calc(100% - 24px));
-      margin:auto;
-    }
+const benefits = [ "Ahorro mensual en la factura eléctrica", "Instalaciones para techo metálico, teja, loza o suelo", "Equipos mono y poli cristalinos", "Monitoreo remoto desde celular", "Atención personalizada en Ciudad de Panamá", "Imagen corporativa moderna y sostenible", ];
 
-    .topbar{
-      position:sticky;
-      top:0;
-      z-index:1000;
-      background:rgba(255,255,255,.94);
-      backdrop-filter:blur(10px);
-      border-bottom:1px solid rgba(8,21,47,.06);
-    }
+const gallery = [ { title: "Arquitectura fotovoltaica", label: "Diseños integrados en fachadas, techos y estructuras modernas", }, { title: "Tipos de energías renovables", label: "Educación visual para reforzar marca y autoridad digital", }, { title: "Paneles solares 250 a 500 watts", label: "Promoción de productos con enfoque comercial", }, { title: "Casa con sistema solar", label: "Visualización de instalación residencial completa", }, { title: "Tipos de montaje", label: "Metal roof, tile roof, flat roof y ground mount", }, { title: "Monitoreo inteligente", label: "Conectividad y control de inversores desde app y PC", }, ];
 
-    .nav{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:14px;
-      padding:14px 0;
-    }
+const stats = [ { value: "24/7", label: "Atención digital y seguimiento" }, { value: "100%", label: "Enfoque en energía renovable" }, { value: "ROI", label: "Proyectos orientados a rentabilidad" }, { value: "WA", label: "Contacto directo por WhatsApp" }, ];
 
-    .logo{
-      display:flex;
-      flex-direction:column;
-      line-height:1;
-    }
+function SectionTitle({ eyebrow, title, text }) { return ( <div className="max-w-3xl"> <div className="inline-flex items-center rounded-full border px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em]" style={{ borderColor: ${BRAND.green}55, color: BRAND.green }}> {eyebrow} </div> <h2 className="mt-4 text-3xl font-bold tracking-tight text-slate-900 md:text-5xl">{title}</h2> <p className="mt-4 text-base leading-7 text-slate-600 md:text-lg">{text}</p> </div> ); }
 
-    .logo strong{
-      font-size:clamp(20px,2.5vw,34px);
-      font-weight:900;
-      letter-spacing:-.04em;
-    }
+function FloatingWhatsApp() { return ( <a
+href="https://wa.me/50769453126"
+target="_blank"
+rel="noreferrer"
+className="fixed bottom-5 right-5 z-50"
+aria-label="Abrir WhatsApp"
+> <motion.div initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} whileHover={{ scale: 1.06 }} className="flex items-center gap-3 rounded-full px-4 py-3 text-white shadow-2xl" style={{ background: linear-gradient(135deg, ${BRAND.green}, #22c55e) }} > <MessageCircle className="h-5 w-5" /> <span className="hidden text-sm font-semibold sm:inline">WhatsApp: 6945-3126</span> </motion.div> </a> ); }
 
-    .logo .eco{color:var(--green-2)}
-    .logo .asesores{color:var(--navy)}
-    .logo span{
-      margin-top:8px;
-      font-size:11px;
-      letter-spacing:.35em;
-      text-transform:uppercase;
-      color:#98a3b8;
-    }
+export default function EcoEnergyAsesoresLanding() { const [mobileOpen, setMobileOpen] = useState(false); const [selected, setSelected] = useState(0);
 
-    .btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      min-height:54px;
-      padding:0 24px;
-      border:none;
-      border-radius:999px;
-      font-weight:900;
-      font-size:17px;
-      cursor:pointer;
-      transition:.2s ease;
-      text-align:center;
-    }
+const selectedItem = useMemo(() => gallery[selected], [selected]);
 
-    .btn:hover{transform:translateY(-2px)}
+return ( <div className="min-h-screen bg-white text-slate-900"> <FloatingWhatsApp />
 
-    .btn-primary{
-      background:linear-gradient(135deg,var(--green),var(--green-2));
-      color:#fff;
-      box-shadow:0 14px 30px rgba(19,200,68,.24);
-    }
-
-    .btn-secondary{
-      background:#173162;
-      color:#fff;
-      box-shadow:0 14px 30px rgba(8,21,47,.16);
-    }
-
-    .hero{
-      background:
-        radial-gradient(circle at 25% 18%, rgba(24,227,79,.12), transparent 28%),
-        radial-gradient(circle at 82% 20%, rgba(24,227,79,.10), transparent 24%),
-        linear-gradient(135deg,#061327 0%, #081a36 55%, #071227 100%);
-      color:#fff;
-      overflow:hidden;
-      position:relative;
-    }
-
-    .hero::before{
-      content:"";
-      position:absolute;
-      inset:0;
-      background-image:
-        linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
-      background-size:34px 34px;
-      mask-image:linear-gradient(to bottom, rgba(0,0,0,.55), transparent 92%);
-      pointer-events:none;
-    }
-
-    .hero-grid{
-      position:relative;
-      z-index:2;
-      display:grid;
-      grid-template-columns:1.05fr .95fr;
-      gap:32px;
-      align-items:center;
-      padding:58px 0 52px;
-    }
-
-    .eyebrow{
-      display:inline-block;
-      padding:12px 18px;
-      border-radius:999px;
-      border:1px solid rgba(255,255,255,.12);
-      background:rgba(255,255,255,.05);
-      color:#baf8c8;
-      font-size:14px;
-      font-weight:900;
-      letter-spacing:.16em;
-      text-transform:uppercase;
-      margin-bottom:18px;
-    }
-
-    h1{
-      margin:0 0 18px;
-      font-size:clamp(46px,7vw,78px);
-      line-height:.95;
-      letter-spacing:-.06em;
-      max-width:10ch;
-    }
-
-    .green{color:var(--green)}
-
-    .hero p{
-      margin:0 0 24px;
-      max-width:680px;
-      color:rgba(255,255,255,.88);
-      font-size:clamp(19px,2vw,24px);
-      line-height:1.6;
-    }
-
-    .hero-actions{
-      display:flex;
-      flex-wrap:wrap;
-      gap:14px;
-      margin-bottom:24px;
-    }
-
-    .hero-points{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:14px;
-    }
-
-    .hero-point{
-      background:rgba(255,255,255,.06);
-      border:1px solid rgba(255,255,255,.08);
-      border-radius:22px;
-      padding:18px;
-      min-height:144px;
-    }
-
-    .hero-point strong{
-      display:block;
-      color:var(--green);
-      font-size:32px;
-      line-height:1;
-      margin-bottom:8px;
-    }
-
-    .hero-point span{
-      font-size:15px;
-      color:rgba(255,255,255,.86);
-      line-height:1.55;
-    }
-
-    .slider-shell{
-      position:relative;
-      min-height:510px;
-      border-radius:32px;
-      overflow:hidden;
-      box-shadow:0 26px 60px rgba(0,0,0,.28);
-      background:#0c1d3f;
-    }
-
-    .slides{
-      position:relative;
-      width:100%;
-      height:100%;
-      min-height:510px;
-    }
-
-    .slide{
-      position:absolute;
-      inset:0;
-      opacity:0;
-      transition:opacity .9s ease;
-      background-size:cover;
-      background-position:center;
-    }
-
-    .slide.active{opacity:1}
-
-    .slide::after{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:linear-gradient(to top, rgba(8,21,47,.82), rgba(8,21,47,.18) 48%, rgba(8,21,47,.10));
-    }
-
-    .slide-content{
-      position:absolute;
-      left:24px;
-      right:24px;
-      bottom:24px;
-      z-index:2;
-      background:rgba(255,255,255,.12);
-      border:1px solid rgba(255,255,255,.12);
-      backdrop-filter:blur(10px);
-      border-radius:24px;
-      padding:18px;
-      color:#fff;
-      max-width:420px;
-    }
-
-    .slide-content h3{
-      margin:0 0 8px;
-      font-size:34px;
-      line-height:1;
-      letter-spacing:-.04em;
-    }
-
-    .slide-content p{
-      margin:0;
-      color:rgba(255,255,255,.88);
-      font-size:16px;
-      line-height:1.55;
-    }
-
-    .slider-dots{
-      position:absolute;
-      z-index:3;
-      left:24px;
-      top:24px;
-      display:flex;
-      gap:8px;
-    }
-
-    .slider-dots button{
-      width:10px;
-      height:10px;
-      border-radius:50%;
-      border:none;
-      background:rgba(255,255,255,.35);
-      cursor:pointer;
-      padding:0;
-    }
-
-    .slider-dots button.active{
-      background:#fff;
-      transform:scale(1.2);
-    }
-
-    section{padding:78px 0}
-
-    .section-title{
-      text-align:center;
-      max-width:850px;
-      margin:0 auto 28px;
-    }
-
-    .section-title .mini{
-      display:block;
-      color:var(--green-2);
-      font-size:14px;
-      font-weight:900;
-      letter-spacing:.18em;
-      text-transform:uppercase;
-      margin-bottom:10px;
-    }
-
-    .section-title h2{
-      margin:0 0 14px;
-      font-size:clamp(34px,5vw,58px);
-      line-height:1;
-      letter-spacing:-.05em;
-      color:var(--navy);
-    }
-
-    .section-title p{
-      margin:0 auto;
-      max-width:760px;
-      color:var(--muted);
-      font-size:19px;
-      line-height:1.7;
-    }
-
-    .cards-3{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:22px;
-    }
-
-    .card{
-      background:#fff;
-      border-radius:30px;
-      overflow:hidden;
-      box-shadow:var(--shadow);
-      border:1px solid rgba(8,21,47,.05);
-    }
-
-    .card-image{
-      aspect-ratio:16/10;
-      background-size:cover;
-      background-position:center;
-    }
-
-    .card-body{
-      padding:22px 22px 26px;
-    }
-
-    .card-body h3{
-      margin:0 0 10px;
-      font-size:32px;
-      line-height:1;
-      letter-spacing:-.04em;
-      color:var(--navy);
-    }
-
-    .card-body p{
-      margin:0;
-      color:#5f6e88;
-      font-size:18px;
-      line-height:1.65;
-    }
-
-    .gallery-grid{
-      display:grid;
-      grid-template-columns:1.2fr .8fr .8fr;
-      grid-template-rows:260px 260px;
-      gap:18px;
-      margin-top:24px;
-    }
-
-    .gallery-item{
-      position:relative;
-      overflow:hidden;
-      border-radius:30px;
-      box-shadow:var(--shadow);
-      min-height:220px;
-    }
-
-    .gallery-item img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      transition:transform .5s ease;
-    }
-
-    .gallery-item:hover img{transform:scale(1.06)}
-
-    .gallery-item::after{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:linear-gradient(to top, rgba(8,21,47,.68), rgba(8,21,47,.04));
-    }
-
-    .gallery-item .caption{
-      position:absolute;
-      z-index:2;
-      left:20px;
-      bottom:18px;
-      right:20px;
-      color:#fff;
-      font-size:18px;
-      font-weight:800;
-      line-height:1.35;
-    }
-
-    .gallery-item.big{
-      grid-row:1 / span 2;
-    }
-
-    .stats{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:20px;
-      margin-top:28px;
-    }
-
-    .stat{
-      background:#fff;
-      border-radius:28px;
-      padding:30px 22px;
-      text-align:center;
-      box-shadow:var(--shadow);
-      border:1px solid rgba(8,21,47,.04);
-    }
-
-    .stat strong{
-      display:block;
-      font-size:58px;
-      line-height:1;
-      color:var(--green-2);
-      margin-bottom:10px;
-    }
-
-    .stat span{
-      color:#60708d;
-      font-size:18px;
-      line-height:1.55;
-    }
-
-    .calc-wrap{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:26px;
-      align-items:stretch;
-      background:linear-gradient(135deg,#08152f,#0d2148);
-      border-radius:34px;
-      padding:28px;
-      color:#fff;
-      box-shadow:0 24px 54px rgba(8,21,47,.20);
-    }
-
-    .calc-copy h3{
-      margin:0 0 14px;
-      font-size:42px;
-      line-height:1;
-      letter-spacing:-.04em;
-    }
-
-    .calc-copy p{
-      margin:0;
-      color:rgba(255,255,255,.86);
-      font-size:18px;
-      line-height:1.7;
-      max-width:500px;
-    }
-
-    .calc-card{
-      background:#fff;
-      color:var(--text);
-      border-radius:28px;
-      padding:24px;
-      box-shadow:0 18px 40px rgba(8,21,47,.10);
-    }
-
-    .toggle{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:10px;
-      background:#eef3fb;
-      padding:6px;
-      border-radius:999px;
-      margin-bottom:16px;
-    }
-
-    .toggle button{
-      min-height:46px;
-      border:none;
-      border-radius:999px;
-      background:transparent;
-      color:var(--navy);
-      font-size:15px;
-      font-weight:900;
-      cursor:pointer;
-    }
-
-    .toggle button.active{
-      background:linear-gradient(135deg,var(--green),var(--green-2));
-      color:#fff;
-    }
-
-    label{
-      display:block;
-      margin-bottom:10px;
-      color:#5e6f89;
-      font-size:15px;
-      font-weight:800;
-    }
-
-    .input{
-      width:100%;
-      min-height:58px;
-      border:1px solid #d9e2f0;
-      border-radius:18px;
-      padding:0 18px;
-      font-size:18px;
-      outline:none;
-      margin-bottom:14px;
-    }
-
-    .input:focus{
-      border-color:#9fe1b0;
-      box-shadow:0 0 0 4px rgba(24,227,79,.12);
-    }
-
-    .calc-button{
-      width:100%;
-      min-height:58px;
-      border:none;
-      border-radius:18px;
-      background:linear-gradient(135deg,var(--green),var(--green-2));
-      color:#fff;
-      font-size:18px;
-      font-weight:900;
-      cursor:pointer;
-      margin-bottom:16px;
-    }
-
-    .result{
-      background:#f3fbf4;
-      border:1px solid #daf3df;
-      border-radius:22px;
-      padding:18px;
-    }
-
-    .result small{
-      display:block;
-      color:#5b6d60;
-      font-size:13px;
-      font-weight:900;
-      letter-spacing:.08em;
-      text-transform:uppercase;
-      margin-bottom:6px;
-    }
-
-    .result strong{
-      display:block;
-      color:var(--green-2);
-      font-size:38px;
-      line-height:1;
-      margin-bottom:10px;
-    }
-
-    .result p{
-      margin:0;
-      color:#4f6354;
-      font-size:17px;
-      line-height:1.6;
-    }
-
-    .faq-grid{
-      display:grid;
-      grid-template-columns:repeat(2,1fr);
-      gap:18px;
-    }
-
-    .faq{
-      background:#fff;
-      border-radius:28px;
-      padding:26px;
-      box-shadow:var(--shadow);
-      border:1px solid rgba(8,21,47,.05);
-    }
-
-    .faq h4{
-      margin:0 0 12px;
-      font-size:30px;
-      line-height:1.06;
-      letter-spacing:-.04em;
-      color:var(--navy);
-    }
-
-    .faq p{
-      margin:0;
-      color:#60708d;
-      font-size:18px;
-      line-height:1.7;
-    }
-
-    .contact{
-      background:
-        radial-gradient(circle at 80% 0%, rgba(24,227,79,.14), transparent 18%),
-        linear-gradient(135deg,#07142d,#091a3b 90%);
-      color:#fff;
-    }
-
-    .contact-box{
-      background:rgba(255,255,255,.05);
-      border:1px solid rgba(255,255,255,.10);
-      border-radius:34px;
-      padding:34px;
-      box-shadow:0 24px 54px rgba(0,0,0,.20);
-    }
-
-    .contact-box h2{
-      margin:0 0 12px;
-      font-size:clamp(34px,5vw,58px);
-      line-height:1;
-      letter-spacing:-.05em;
-      max-width:10ch;
-    }
-
-    .contact-box p{
-      margin:0 0 22px;
-      color:rgba(255,255,255,.86);
-      font-size:20px;
-      line-height:1.7;
-      max-width:760px;
-    }
-
-    .contact-actions{
-      display:flex;
-      flex-wrap:wrap;
-      gap:14px;
-      margin-bottom:24px;
-    }
-
-    .contact-grid{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:18px;
-    }
-
-    .contact-card{
-      background:rgba(255,255,255,.06);
-      border:1px solid rgba(255,255,255,.08);
-      border-radius:24px;
-      padding:20px;
-    }
-
-    .contact-card strong{
-      display:block;
-      color:#bbf8ca;
-      font-size:14px;
-      letter-spacing:.14em;
-      text-transform:uppercase;
-      margin-bottom:8px;
-    }
-
-    .contact-card span{
-      display:block;
-      color:#fff;
-      font-size:18px;
-      line-height:1.6;
-    }
-
-    footer{
-      background:#fff;
-      border-top:1px solid rgba(8,21,47,.06);
-      padding:24px 0 34px;
-      text-align:center;
-      color:#8594ab;
-      font-size:16px;
-    }
-
-    @media (max-width: 1024px){
-      .hero-grid,
-      .cards-3,
-      .stats,
-      .calc-wrap,
-      .faq-grid,
-      .contact-grid{
-        grid-template-columns:1fr;
-      }
-
-      .hero-points{
-        grid-template-columns:1fr;
-      }
-
-      .gallery-grid{
-        grid-template-columns:1fr;
-        grid-template-rows:auto;
-      }
-
-      .gallery-item.big{
-        grid-row:auto;
-      }
-    }
-
-    @media (max-width: 640px){
-      .container{width:min(var(--max), calc(100% - 18px))}
-      .nav{padding:12px 0}
-      .btn{min-height:50px;padding:0 18px;font-size:16px}
-      .hero-grid{padding:38px 0 42px}
-      .slider-shell,.slides{min-height:360px}
-      h1{font-size:50px}
-      .hero p{font-size:18px}
-      .slide-content h3{font-size:28px}
-      .card-body h3{font-size:28px}
-      .stat strong{font-size:48px}
-      .faq h4{font-size:24px}
-      .contact-box{padding:24px}
-      .contact-box h2{font-size:42px}
-      .contact-box p{font-size:18px}
-    }
-  </style>
-</head>
-<body>
-
-  <div class="topbar">
-    <div class="container nav">
-      <a href="#inicio" class="logo" aria-label="Ecoenergy Asesores Panamá">
-        <strong><span class="eco">ECOENERGY</span> <span class="asesores">ASESORES</span></strong>
-        <span>Panamá</span>
-      </a>
-
-      <a class="btn btn-primary" href="https://wa.me/50769453126?text=Hola%20quiero%20cotizar%20energ%C3%ADa%20solar%20en%20Panam%C3%A1" target="_blank" rel="noopener">
-        WhatsApp
-      </a>
-    </div>
-  </div>
-
-  <header class="hero" id="inicio">
-    <div class="container hero-grid">
-      <div>
-        <div class="eyebrow">Energía solar en Panamá</div>
-        <h1>Baja tu factura eléctrica <span class="green">hasta 70%</span></h1>
-        <p>
-          Soluciones solares para residencias, comercios, industrias y lugares aislados.
-          Cotiza por WhatsApp y revisa el estado de tu sistema desde tu celular.
-        </p>
-
-        <div class="hero-actions">
-          <a class="btn btn-primary" href="https://wa.me/50769453126?text=Hola%20quiero%20cotizar%20un%20sistema%20solar" target="_blank" rel="noopener">Cotizar por WhatsApp</a>
-          <a class="btn btn-secondary" href="#calculadora">Calcular ahorro</a>
+<header className="sticky top-0 z-40 border-b border-slate-200/80 bg-white/80 backdrop-blur-xl">
+    <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 md:px-8">
+      <div className="flex items-center gap-3">
+        <div className="grid h-11 w-11 place-items-center rounded-2xl text-white shadow-lg" style={{ background: `linear-gradient(135deg, ${BRAND.green}, #16a34a)` }}>
+          <Leaf className="h-6 w-6" />
         </div>
-
-        <div class="hero-points">
-          <div class="hero-point">
-            <strong>0 kWh</strong>
-            <span>En residencial, el cargo por consumo puede bajar prácticamente a cero.</span>
-          </div>
-          <div class="hero-point">
-            <strong>30%–70%</strong>
-            <span>En comercial, el ahorro puede variar según demanda y perfil de consumo.</span>
-          </div>
-          <div class="hero-point">
-            <strong>24/7</strong>
-            <span>Monitoreo del sistema desde celular o computadora.</span>
-          </div>
+        <div>
+          <div className="text-lg font-extrabold tracking-tight">EcoEnergy Asesores Panamá</div>
+          <div className="text-xs uppercase tracking-[0.25em] text-slate-500">EcoEnergy Solutions · filial comercial</div>
         </div>
       </div>
 
-      <div class="slider-shell">
-        <div class="slider-dots">
-          <button class="active" data-slide="0" aria-label="Imagen 1"></button>
-          <button data-slide="1" aria-label="Imagen 2"></button>
-          <button data-slide="2" aria-label="Imagen 3"></button>
-        </div>
+      <nav className="hidden items-center gap-6 md:flex">
+        <a href="#servicios" className="text-sm font-medium text-slate-700 hover:text-slate-900">Servicios</a>
+        <a href="#galeria" className="text-sm font-medium text-slate-700 hover:text-slate-900">Galería</a>
+        <a href="#beneficios" className="text-sm font-medium text-slate-700 hover:text-slate-900">Ventajas</a>
+        <a href="#contacto" className="text-sm font-medium text-slate-700 hover:text-slate-900">Contacto</a>
+        <Button asChild className="rounded-full px-5 text-white" style={{ backgroundColor: BRAND.green }}>
+          <a href="https://wa.me/50769453126" target="_blank" rel="noreferrer">Cotizar ahora</a>
+        </Button>
+      </nav>
 
-        <div class="slides">
-          <div class="slide active" style="background-image:url('https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=1400&q=80')">
-            <div class="slide-content">
-              <h3>Ahorro con control</h3>
-              <p>Una propuesta clara para reducir gasto, monitorear el sistema y tomar acción de inmediato.</p>
-            </div>
-          </div>
-
-          <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1497440001374-f26997328c1b?auto=format&fit=crop&w=1400&q=80')">
-            <div class="slide-content">
-              <h3>Proyectos con impacto</h3>
-              <p>Residencial, comercial e industrial con una presentación visual moderna y seria.</p>
-            </div>
-          </div>
-
-          <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1466611653911-95081537e5b7?auto=format&fit=crop&w=1400&q=80')">
-            <div class="slide-content">
-              <h3>Monitoreo inteligente</h3>
-              <p>Revisa tu sistema desde el celular y mantén visibilidad del rendimiento.</p>
-            </div>
-          </div>
+      <button onClick={() => setMobileOpen((v) => !v)} className="md:hidden">
+        {mobileOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+      </button>
+    </div>
+    {mobileOpen && (
+      <div className="border-t border-slate-200 bg-white md:hidden">
+        <div className="mx-auto flex max-w-7xl flex-col gap-4 px-4 py-4">
+          <a href="#servicios" onClick={() => setMobileOpen(false)}>Servicios</a>
+          <a href="#galeria" onClick={() => setMobileOpen(false)}>Galería</a>
+          <a href="#beneficios" onClick={() => setMobileOpen(false)}>Ventajas</a>
+          <a href="#contacto" onClick={() => setMobileOpen(false)}>Contacto</a>
         </div>
       </div>
-    </div>
+    )}
   </header>
 
-  <section>
-    <div class="container">
-      <div class="section-title">
-        <span class="mini">Tipos de instalación</span>
-        <h2>Una solución clara para cada necesidad</h2>
-        <p>
-          Residencial, comercial y monitoreo explicados de forma simple, directa y sin repeticiones.
+  <section className="relative overflow-hidden">
+    <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(128,180,65,.18),transparent_30%),radial-gradient(circle_at_left,rgba(34,197,94,.12),transparent_25%)]" />
+    <div className="mx-auto grid max-w-7xl gap-12 px-4 py-16 md:grid-cols-2 md:px-8 md:py-24">
+      <div className="relative z-10">
+        <div className="inline-flex items-center gap-2 rounded-full border border-lime-200 bg-lime-50 px-3 py-1 text-sm font-semibold text-lime-700">
+          <Zap className="h-4 w-4" />
+          Energía solar + mercadeo digital de alto impacto
+        </div>
+        <h1 className="mt-6 text-4xl font-black leading-tight tracking-tight text-slate-950 md:text-6xl">
+          Lleva a <span style={{ color: BRAND.green }}>EcoEnergy Asesores Panamá</span> a un nuevo nivel de ventas.
+        </h1>
+        <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-600">
+          Una propuesta web de última generación para captar clientes, mostrar soluciones solares de forma elegante y convertir visitas en cotizaciones reales desde WhatsApp.
         </p>
+
+        <div className="mt-8 flex flex-col gap-4 sm:flex-row">
+          <Button asChild size="lg" className="rounded-full px-7 text-white" style={{ backgroundColor: BRAND.green }}>
+            <a href="https://wa.me/50769453126" target="_blank" rel="noreferrer">
+              Solicitar cotización <ChevronRight className="ml-2 h-4 w-4" />
+            </a>
+          </Button>
+          <Button asChild variant="outline" size="lg" className="rounded-full px-7">
+            <a href="#galeria">
+              <PlayCircle className="mr-2 h-4 w-4" /> Ver propuesta visual
+            </a>
+          </Button>
+        </div>
+
+        <div className="mt-10 grid grid-cols-2 gap-4 md:grid-cols-4">
+          {stats.map((item) => (
+            <Card key={item.label} className="rounded-3xl border-slate-200 bg-white/80 shadow-sm">
+              <CardContent className="p-4">
+                <div className="text-xl font-black" style={{ color: BRAND.green }}>{item.value}</div>
+                <div className="mt-1 text-sm text-slate-600">{item.label}</div>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
       </div>
 
-      <div class="cards-3">
-        <article class="card">
-          <div class="card-image" style="background-image:url('https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?auto=format&fit=crop&w=1200&q=80')"></div>
-          <div class="card-body">
-            <h3>Residencial</h3>
-            <p>El cargo por kWh puede bajar prácticamente a cero y quedar principalmente el cargo fijo del recibo.</p>
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        className="relative z-10"
+      >
+        <div className="rounded-[2rem] border border-slate-200 bg-white p-4 shadow-2xl">
+          <div className="rounded-[1.5rem] bg-slate-950 p-5 text-white">
+            <div className="flex items-center justify-between">
+              <div>
+                <div className="text-sm uppercase tracking-[0.3em] text-lime-300">Demo premium</div>
+                <div className="mt-2 text-2xl font-bold">Panel comercial interactivo</div>
+              </div>
+              <div className="rounded-full bg-white/10 px-3 py-1 text-sm">ecoenergy-asesores.com</div>
+            </div>
+            <div className="mt-6 grid gap-4 md:grid-cols-[1.4fr_.9fr]">
+              <div className="rounded-[1.5rem] border border-white/10 bg-gradient-to-br from-lime-300/10 via-emerald-300/10 to-sky-300/10 p-5">
+                <div className="text-sm text-slate-300">Soluciones destacadas</div>
+                <div className="mt-3 grid gap-3">
+                  {[
+                    "Paneles solares para hogar",
+                    "Instalación comercial",
+                    "Monitoreo remoto",
+                    "Montajes para diferentes techos",
+                  ].map((line) => (
+                    <div key={line} className="flex items-center gap-3 rounded-2xl bg-white/5 p-3 text-sm">
+                      <CheckCircle2 className="h-4 w-4 text-lime-300" /> {line}
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div className="rounded-[1.5rem] border border-white/10 bg-white/5 p-5">
+                <div className="text-sm text-slate-300">Contacto rápido</div>
+                <div className="mt-4 rounded-2xl bg-white px-4 py-5 text-slate-900 shadow-inner">
+                  <div className="text-sm text-slate-500">Asesor comercial</div>
+                  <div className="mt-1 text-lg font-bold">EcoEnergy Asesores Panamá</div>
+                  <div className="mt-3 flex items-center gap-2 text-sm"><Phone className="h-4 w-4" /> WhatsApp 6945-3126</div>
+                  <div className="mt-2 flex items-start gap-2 text-sm"><MapPin className="mt-0.5 h-4 w-4" /> El Dorado Plaza Figuer, Ciudad de Panamá</div>
+                </div>
+              </div>
+            </div>
           </div>
-        </article>
+        </div>
+      </motion.div>
+    </div>
+  </section>
 
-        <article class="card">
-          <div class="card-image" style="background-image:url('https://images.unsplash.com/photo-1497440001374-f26997328c1b?auto=format&fit=crop&w=1200&q=80')"></div>
-          <div class="card-body">
-            <h3>Comercial</h3>
-            <p>El ahorro puede variar entre 30% y 70%, manteniendo demanda y cargos fijos según el perfil de consumo.</p>
-          </div>
-        </article>
+  <section id="servicios" className="mx-auto max-w-7xl px-4 py-16 md:px-8 md:py-24">
+    <SectionTitle
+      eyebrow="Servicios"
+      title="Una web pensada para vender, educar y convertir"
+      text="La estructura combina autoridad de marca, imágenes atractivas, beneficios claros y llamadas a la acción directas para aumentar consultas y cierres comerciales."
+    />
+    <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+      {services.map((service) => {
+        const Icon = service.icon;
+        return (
+          <motion.div key={service.title} whileHover={{ y: -6 }}>
+            <Card className="h-full rounded-[2rem] border-slate-200 shadow-sm transition-shadow hover:shadow-xl">
+              <CardContent className="p-6">
+                <div className="grid h-14 w-14 place-items-center rounded-2xl" style={{ backgroundColor: BRAND.soft }}>
+                  <Icon className="h-7 w-7" style={{ color: BRAND.green }} />
+                </div>
+                <h3 className="mt-5 text-xl font-bold text-slate-900">{service.title}</h3>
+                <p className="mt-3 text-sm leading-7 text-slate-600">{service.text}</p>
+              </CardContent>
+            </Card>
+          </motion.div>
+        );
+      })}
+    </div>
+  </section>
 
-        <article class="card">
-          <div class="card-image" style="background-image:url('https://images.unsplash.com/photo-1466611653911-95081537e5b7?auto=format&fit=crop&w=1200&q=80')"></div>
-          <div class="card-body">
-            <h3>Monitoreo</h3>
-            <p>Controla y revisa el estado del sistema desde el celular para tomar mejores decisiones.</p>
+  <section id="galeria" className="bg-slate-950 px-4 py-16 text-white md:px-8 md:py-24">
+    <div className="mx-auto max-w-7xl">
+      <SectionTitle
+        eyebrow="Galería interactiva"
+        title="Contenido visual listo para impulsar el mercadeo digital"
+        text="Esta demo organiza la comunicación visual de la empresa en un formato elegante y moderno. En la versión final se integran las fotos originales proporcionadas por ti en alta calidad."
+      />
+      <div className="mt-12 grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
+        <div className="grid gap-4 sm:grid-cols-2">
+          {gallery.map((item, index) => (
+            <button
+              key={item.title}
+              onClick={() => setSelected(index)}
+              className={`rounded-[1.75rem] border p-5 text-left transition-all ${selected === index ? "border-lime-300 bg-white/10" : "border-white/10 bg-white/5 hover:bg-white/10"}`}
+            >
+              <div className="text-lg font-bold">{item.title}</div>
+              <div className="mt-2 text-sm leading-6 text-slate-300">{item.label}</div>
+            </button>
+          ))}
+        </div>
+        <div className="rounded-[2rem] border border-white/10 bg-gradient-to-br from-white/10 to-white/5 p-5 shadow-2xl">
+          <div className="relative overflow-hidden rounded-[1.5rem] border border-white/10 bg-[radial-gradient(circle_at_top_left,rgba(128,180,65,.28),transparent_30%),linear-gradient(135deg,#0f172a,#111827,#1e293b)] p-8">
+            <div className="absolute right-6 top-6 rounded-full bg-lime-300 px-3 py-1 text-xs font-black uppercase tracking-[0.25em] text-slate-950">Preview</div>
+            <div className="max-w-lg">
+              <div className="text-sm uppercase tracking-[0.25em] text-lime-300">EcoEnergy Asesores</div>
+              <h3 className="mt-4 text-3xl font-black tracking-tight md:text-4xl">{selectedItem.title}</h3>
+              <p className="mt-4 text-base leading-7 text-slate-300">{selectedItem.label}</p>
+              <div className="mt-8 grid grid-cols-2 gap-4">
+                <div className="rounded-2xl bg-white/10 p-4 backdrop-blur">
+                  <div className="text-sm text-slate-300">Diseño</div>
+                  <div className="mt-2 text-xl font-bold">Premium</div>
+                </div>
+                <div className="rounded-2xl bg-white/10 p-4 backdrop-blur">
+                  <div className="text-sm text-slate-300">Conversión</div>
+                  <div className="mt-2 text-xl font-bold">WhatsApp + CTA</div>
+                </div>
+              </div>
+            </div>
+            <div className="mt-10 grid grid-cols-3 gap-3">
+              {[1,2,3,4,5,6].map((n) => (
+                <div key={n} className="aspect-[4/3] rounded-2xl border border-white/10 bg-white/5" />
+              ))}
+            </div>
           </div>
-        </article>
+        </div>
       </div>
     </div>
   </section>
 
-  <section style="padding-top:0">
-    <div class="container">
-      <div class="section-title">
-        <span class="mini">Galería visual</span>
-        <h2>Imágenes que le dan fuerza a la marca</h2>
-        <p>
-          Una presencia visual fuerte ayuda a transmitir orden, confianza y nivel profesional desde el primer vistazo.
-        </p>
-      </div>
-
-      <div class="gallery-grid">
-        <div class="gallery-item big">
-          <img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=1400&q=80" alt="Paneles solares" />
-          <div class="caption">Energía solar con presencia premium</div>
-        </div>
-
-        <div class="gallery-item">
-          <img src="https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?auto=format&fit=crop&w=900&q=80" alt="Sistema residencial" />
-          <div class="caption">Soluciones para residencia</div>
-        </div>
-
-        <div class="gallery-item">
-          <img src="https://images.unsplash.com/photo-1497440001374-f26997328c1b?auto=format&fit=crop&w=900&q=80" alt="Sistema comercial" />
-          <div class="caption">Ahorro para comercios</div>
-        </div>
-
-        <div class="gallery-item">
-          <img src="https://images.unsplash.com/photo-1466611653911-95081537e5b7?auto=format&fit=crop&w=900&q=80" alt="Monitoreo" />
-          <div class="caption">Monitoreo desde celular</div>
-        </div>
-
-        <div class="gallery-item">
-          <img src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=900&q=80" alt="Proyecto solar" />
-          <div class="caption">Presentación moderna y clara</div>
+  <section id="beneficios" className="mx-auto max-w-7xl px-4 py-16 md:px-8 md:py-24">
+    <div className="grid gap-10 lg:grid-cols-[1.1fr_.9fr] lg:items-center">
+      <div>
+        <SectionTitle
+          eyebrow="Ventajas competitivas"
+          title="Una presencia digital que transmite confianza y modernidad"
+          text="La página está diseñada para que la empresa se vea más sólida, profesional y preparada para captar clientes residenciales, corporativos y de inversión energética."
+        />
+        <div className="mt-8 grid gap-4 sm:grid-cols-2">
+          {benefits.map((benefit) => (
+            <div key={benefit} className="flex items-start gap-3 rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
+              <CheckCircle2 className="mt-0.5 h-5 w-5" style={{ color: BRAND.green }} />
+              <span className="text-sm leading-6 text-slate-700">{benefit}</span>
+            </div>
+          ))}
         </div>
       </div>
+      <Card className="rounded-[2rem] border-0 shadow-2xl" style={{ background: `linear-gradient(135deg, ${BRAND.soft}, white)` }}>
+        <CardContent className="p-8">
+          <div className="text-sm font-semibold uppercase tracking-[0.25em]" style={{ color: BRAND.green }}>Dirección comercial</div>
+          <h3 className="mt-4 text-3xl font-black tracking-tight">El Dorado Plaza Figuer</h3>
+          <p className="mt-3 text-base leading-7 text-slate-600">Ciudad de Panamá, Panamá</p>
+          <div className="mt-6 rounded-[1.5rem] border border-lime-200 bg-white p-5">
+            <div className="text-sm text-slate-500">Dominio</div>
+            <div className="mt-1 text-lg font-bold">ecoenergy-asesores.com</div>
+            <div className="mt-4 text-sm text-slate-500">Canal principal</div>
+            <div className="mt-1 text-lg font-bold">WhatsApp 6945-3126</div>
+          </div>
+          <Button asChild className="mt-6 w-full rounded-full text-white" style={{ backgroundColor: BRAND.green }}>
+            <a href="https://wa.me/50769453126" target="_blank" rel="noreferrer">Hablar con un asesor ahora</a>
+          </Button>
+        </CardContent>
+      </Card>
     </div>
   </section>
 
-  <section style="padding-top:0">
-    <div class="container">
-      <div class="section-title">
-        <span class="mini">Resultados claros</span>
-        <h2>Números que venden sin enredos</h2>
-        <p>
-          Ahorro, control y una explicación simple para entender rápidamente el beneficio.
-        </p>
-      </div>
-
-      <div class="stats">
-        <div class="stat">
-          <strong>70%</strong>
-          <span>Ahorro máximo estimado en algunos perfiles comerciales.</span>
-        </div>
-        <div class="stat">
-          <strong>30%</strong>
-          <span>Ahorro base posible en proyectos comerciales.</span>
-        </div>
-        <div class="stat">
-          <strong>24/7</strong>
-          <span>Monitoreo desde celular o computadora.</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="calculadora">
-    <div class="container">
-      <div class="calc-wrap">
-        <div class="calc-copy">
-          <h3>Calcula tu ahorro</h3>
-          <p>
-            Ingresa tu factura mensual para obtener una referencia rápida antes de cotizar por WhatsApp.
+  <section id="contacto" className="bg-slate-50 px-4 py-16 md:px-8 md:py-24">
+    <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[.95fr_1.05fr]">
+      <Card className="rounded-[2rem] border-slate-200 shadow-sm">
+        <CardContent className="p-8">
+          <div className="text-sm font-semibold uppercase tracking-[0.25em]" style={{ color: BRAND.green }}>CTA principal</div>
+          <h3 className="mt-4 text-3xl font-black tracking-tight text-slate-950">Convierte visitas en clientes</h3>
+          <p className="mt-4 text-base leading-7 text-slate-600">
+            Este bloque puede conectarse con formularios, CRM, campañas publicitarias, pixel de Meta, analítica y automatizaciones para seguimiento comercial.
           </p>
-        </div>
-
-        <div class="calc-card">
-          <div class="toggle">
-            <button class="active" id="resBtn" type="button">Residencial</button>
-            <button id="comBtn" type="button">Comercial</button>
+          <div className="mt-8 space-y-4 text-sm text-slate-700">
+            <div className="flex items-center gap-3"><Phone className="h-4 w-4" style={{ color: BRAND.green }} /> WhatsApp: 6945-3126</div>
+            <div className="flex items-center gap-3"><MapPin className="h-4 w-4" style={{ color: BRAND.green }} /> El Dorado Plaza Figuer, Ciudad de Panamá</div>
+            <div className="flex items-center gap-3"><Zap className="h-4 w-4" style={{ color: BRAND.green }} /> Dominio: ecoenergy-asesores.com</div>
           </div>
+        </CardContent>
+      </Card>
 
-          <label for="bill">Ingresa tu factura mensual</label>
-          <input id="bill" class="input" type="number" min="1" step="0.01" placeholder="Factura mensual en dólares" />
-
-          <button class="calc-button" type="button" onclick="calcularAhorro()">Calcular ahorro</button>
-
-          <div class="result" id="resultado">
-            <small>Resultado estimado</small>
-            <strong>Tu ahorro aparecerá aquí</strong>
-            <p>Esta es una referencia rápida para ayudarte a tomar una decisión inicial.</p>
+      <Card className="rounded-[2rem] border-slate-200 shadow-sm">
+        <CardContent className="p-8">
+          <div className="grid gap-4 sm:grid-cols-2">
+            <Input className="h-12 rounded-xl" placeholder="Nombre" />
+            <Input className="h-12 rounded-xl" placeholder="Teléfono" />
           </div>
-        </div>
-      </div>
+          <div className="mt-4 grid gap-4 sm:grid-cols-2">
+            <Input className="h-12 rounded-xl" placeholder="Correo" />
+            <Input className="h-12 rounded-xl" placeholder="Tipo de proyecto" />
+          </div>
+          <Textarea className="mt-4 min-h-[140px] rounded-xl" placeholder="Cuéntanos qué necesitas: sistema residencial, comercial, cotización o asesoría..." />
+          <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+            <Button className="rounded-full px-6 text-white" style={{ backgroundColor: BRAND.green }}>Enviar solicitud</Button>
+            <Button asChild variant="outline" className="rounded-full px-6">
+              <a href="https://wa.me/50769453126" target="_blank" rel="noreferrer">Ir a WhatsApp</a>
+            </Button>
+          </div>
+        </CardContent>
+      </Card>
     </div>
   </section>
 
-  <section>
-    <div class="container">
-      <div class="section-title">
-        <span class="mini">Preguntas frecuentes</span>
-        <h2>Respuestas simples para actuar rápido</h2>
-        <p>Información clara, corta y útil para pasar directo a cotización.</p>
+  <footer className="border-t border-slate-200 bg-white">
+    <div className="mx-auto flex max-w-7xl flex-col gap-4 px-4 py-8 text-sm text-slate-600 md:flex-row md:items-center md:justify-between md:px-8">
+      <div>
+        © {new Date().getFullYear()} EcoEnergy Asesores Panamá · Filial de EcoEnergy Solutions
       </div>
-
-      <div class="faq-grid">
-        <article class="faq">
-          <h4>¿La factura queda en cero?</h4>
-          <p>En residencial, el cargo por consumo puede bajar prácticamente a cero, pero normalmente sigue existiendo un cargo fijo. En comercial puede mantenerse la demanda y otros cargos fijos.</p>
-        </article>
-
-        <article class="faq">
-          <h4>¿El ahorro es igual para todos?</h4>
-          <p>No. Depende del tipo de instalación, el patrón de consumo, la demanda y la solución instalada.</p>
-        </article>
-
-        <article class="faq">
-          <h4>¿Se puede monitorear el sistema?</h4>
-          <p>Sí. Una de las ventajas es poder revisar el estado del sistema desde el celular.</p>
-        </article>
-
-        <article class="faq">
-          <h4>¿Atienden en Panamá?</h4>
-          <p>Sí. Se atienden proyectos residenciales, comerciales, industriales y lugares aislados en Panamá.</p>
-        </article>
+      <div className="flex flex-wrap gap-4">
+        <a href="#servicios">Servicios</a>
+        <a href="#galeria">Galería</a>
+        <a href="#contacto">Contacto</a>
       </div>
     </div>
-  </section>
-
-  <section class="contact">
-    <div class="container">
-      <div class="contact-box">
-        <h2>Solicita tu cotización</h2>
-        <p>
-          Envía la factura por WhatsApp y recibe orientación para residencia, comercio, industria o lugares aislados.
-        </p>
-
-        <div class="contact-actions">
-          <a class="btn btn-primary" href="https://wa.me/50769453126?text=Hola%20quiero%20cotizar%20energ%C3%ADa%20solar%20en%20Panam%C3%A1" target="_blank" rel="noopener">Hablar por WhatsApp</a>
-          <a class="btn btn-secondary" href="tel:+50769453126">Llamar ahora</a>
-        </div>
-
-        <div class="contact-grid">
-          <div class="contact-card">
-            <strong>Dirección</strong>
-            <span>El Dorado, Plaza Figuer, oficina 106, Panamá City, Panamá 0819</span>
-          </div>
-          <div class="contact-card">
-            <strong>WhatsApp</strong>
-            <span>6945-3126</span>
-          </div>
-          <div class="contact-card">
-            <strong>Referencia</strong>
-            <span>Ecoenergy Asesores Panamá</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <footer>
-    Ecoenergy Asesores Panamá · Energía solar en Panamá
   </footer>
+</div>
 
-  <script>
-    let modo = "residencial";
-
-    const resBtn = document.getElementById("resBtn");
-    const comBtn = document.getElementById("comBtn");
-    const resultado = document.getElementById("resultado");
-
-    resBtn.addEventListener("click", () => {
-      modo = "residencial";
-      resBtn.classList.add("active");
-      comBtn.classList.remove("active");
-    });
-
-    comBtn.addEventListener("click", () => {
-      modo = "comercial";
-      comBtn.classList.add("active");
-      resBtn.classList.remove("active");
-    });
-
-    function calcularAhorro(){
-      const valor = parseFloat(document.getElementById("bill").value);
-
-      if(!valor || valor <= 0){
-        resultado.innerHTML = `
-          <small>Resultado estimado</small>
-          <strong>Ingresa un monto válido</strong>
-          <p>Escribe tu factura mensual en dólares para calcular una referencia.</p>
-        `;
-        return;
-      }
-
-      if(modo === "residencial"){
-        const ahorro = valor * 0.88;
-        const restante = Math.max(valor - ahorro, 2.50);
-
-        resultado.innerHTML = `
-          <small>Estimación residencial</small>
-          <strong>Ahorro aproximado: $${ahorro.toFixed(2)}</strong>
-          <p>El cargo por consumo podría bajar prácticamente a cero. Podría quedar alrededor de $${restante.toFixed(2)} más cargos mínimos, según el caso.</p>
-        `;
-      } else {
-        const ahorroMin = valor * 0.30;
-        const ahorroMax = valor * 0.70;
-
-        resultado.innerHTML = `
-          <small>Estimación comercial</small>
-          <strong>Ahorro estimado: $${ahorroMin.toFixed(2)} a $${ahorroMax.toFixed(2)}</strong>
-          <p>En comercial, el ahorro depende del perfil de consumo y de la demanda. Puede mantenerse parte de los cargos fijos.</p>
-        `;
-      }
-    }
-
-    const slides = document.querySelectorAll(".slide");
-    const dots = document.querySelectorAll(".slider-dots button");
-    let currentSlide = 0;
-    let sliderInterval;
-
-    function showSlide(index){
-      slides.forEach((slide, i) => {
-        slide.classList.toggle("active", i === index);
-      });
-      dots.forEach((dot, i) => {
-        dot.classList.toggle("active", i === index);
-      });
-      currentSlide = index;
-    }
-
-    function nextSlide(){
-      let next = currentSlide + 1;
-      if(next >= slides.length) next = 0;
-      showSlide(next);
-    }
-
-    function startSlider(){
-      sliderInterval = setInterval(nextSlide, 4200);
-    }
-
-    function restartSlider(){
-      clearInterval(sliderInterval);
-      startSlider();
-    }
-
-    dots.forEach((dot, i) => {
-      dot.addEventListener("click", () => {
-        showSlide(i);
-        restartSlider();
-      });
-    });
-
-    showSlide(0);
-    startSlider();
-  </script>
-</body>
-</html>
+); }
