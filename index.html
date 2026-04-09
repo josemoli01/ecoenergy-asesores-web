@@ -1,370 +1,831 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ecoenergy Asesores | Energía solar en Panamá</title>
-  <meta name="description" content="Ecoenergy Asesores en Panamá. Soluciones solares para residencias, comercios e industrias. Cotiza por WhatsApp.">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ecoenergy Asesores Panamá | Energía solar en Panamá</title>
+  <meta name="description" content="Reduce tu factura eléctrica con soluciones solares para residencias, comercios, industrias y lugares aislados en Panamá. Cotiza por WhatsApp con Ecoenergy Asesores." />
+  <meta name="theme-color" content="#08152f" />
   <style>
+    :root{
+      --bg:#f3f6fb;
+      --white:#ffffff;
+      --navy:#08152f;
+      --navy-2:#0d1f44;
+      --green:#20e35b;
+      --green-2:#14c84b;
+      --text:#0d1732;
+      --muted:#65748f;
+      --line:rgba(255,255,255,.12);
+      --shadow:0 18px 45px rgba(7,21,47,.16);
+      --radius:28px;
+      --max:1180px;
+    }
+
     *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
     body{
       margin:0;
-      font-family:Arial,Helvetica,sans-serif;
-      background:#081326;
-      color:#fff;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      overflow-x:hidden;
     }
-    a{text-decoration:none}
+
+    a{text-decoration:none;color:inherit}
+    img{max-width:100%;display:block}
+    .container{width:min(var(--max), calc(100% - 24px)); margin:auto}
+
     .topbar{
-      background:#fff;
-      padding:16px 18px;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
       position:sticky;
       top:0;
       z-index:1000;
-      box-shadow:0 2px 10px rgba(0,0,0,.08);
+      background:rgba(255,255,255,.95);
+      backdrop-filter: blur(12px);
+      border-bottom:1px solid rgba(8,21,47,.06);
     }
-    .logo{
-      font-weight:900;
-      font-size:28px;
+
+    .nav{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      padding:14px 0;
+    }
+
+    .brand{
+      display:flex;
+      flex-direction:column;
       line-height:1;
-      color:#0b1220;
+      min-width:0;
     }
-    .logo span{color:#22c55e}
-    .sublogo{
-      display:block;
-      font-size:10px;
-      letter-spacing:4px;
-      color:#64748b;
-      margin-top:4px;
+
+    .brand strong{
+      font-size:clamp(24px,4vw,40px);
+      letter-spacing:-0.05em;
+      font-weight:900;
     }
-    .btn{
-      display:inline-block;
-      background:#22c55e;
-      color:#fff;
-      padding:14px 24px;
-      border-radius:999px;
-      font-weight:700;
-      border:none;
-      cursor:pointer;
-    }
-    .btn-dark{
-      background:#1e293b;
-      color:#fff;
-    }
-    .hero{
-      padding:70px 22px 50px;
-      text-align:center;
-      background:linear-gradient(135deg,#061021 0%,#081326 70%,#0d1d3a 100%);
-    }
-    .hero small{
-      display:inline-block;
-      color:#9ae6b4;
-      border:1px solid rgba(255,255,255,.15);
-      padding:10px 16px;
-      border-radius:999px;
-      margin-bottom:18px;
-      letter-spacing:2px;
+
+    .brand .eco{color:var(--green-2)}
+    .brand .asesores{color:var(--navy)}
+
+    .brand span{
       font-size:11px;
-      font-weight:700;
+      letter-spacing:.32em;
+      color:#a0abc0;
+      margin-top:8px;
       text-transform:uppercase;
     }
-    .hero h1{
-      font-size:52px;
-      line-height:1;
-      margin:0 0 18px;
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      min-height:54px;
+      padding:0 24px;
+      border:none;
+      border-radius:999px;
       font-weight:900;
+      font-size:17px;
+      cursor:pointer;
+      transition:.22s ease;
+      text-align:center;
     }
-    .hero h1 .green{color:#22c55e}
+
+    .btn:hover{transform:translateY(-2px)}
+    .btn-primary{
+      background:linear-gradient(135deg,var(--green),var(--green-2));
+      color:white;
+      box-shadow:0 14px 30px rgba(20,200,75,.25);
+    }
+    .btn-secondary{
+      background:linear-gradient(180deg,#1a2f63,#10224c);
+      color:white;
+      box-shadow:0 14px 30px rgba(10,20,50,.2);
+    }
+
+    .hero{
+      position:relative;
+      overflow:hidden;
+      color:white;
+      background:
+        radial-gradient(circle at 12% 18%, rgba(32,227,91,.16), transparent 22%),
+        radial-gradient(circle at 90% 10%, rgba(32,227,91,.12), transparent 24%),
+        linear-gradient(135deg,#07142e 0%, #081a39 45%, #041025 100%);
+    }
+
+    .hero::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background-image:
+        linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
+      background-size:34px 34px;
+      mask-image:linear-gradient(to bottom, rgba(0,0,0,.5), transparent 90%);
+      pointer-events:none;
+    }
+
+    .orb{
+      position:absolute;
+      border-radius:50%;
+      filter:blur(60px);
+      opacity:.35;
+      pointer-events:none;
+      animation:float 10s ease-in-out infinite;
+    }
+
+    .orb-1{width:260px;height:260px;background:#20e35b;top:60px;left:-70px}
+    .orb-2{width:320px;height:320px;background:#1d64ff;right:-100px;bottom:50px;animation-delay:1.5s}
+    .orb-3{width:180px;height:180px;background:#20e35b;right:18%;top:18%;animation-delay:3s}
+
+    @keyframes float{
+      0%,100%{transform:translate(0,0)}
+      50%{transform:translate(10px,-18px)}
+    }
+
+    .hero-grid{
+      position:relative;
+      z-index:2;
+      display:grid;
+      grid-template-columns:1.08fr .92fr;
+      gap:28px;
+      align-items:center;
+      padding:54px 0 48px;
+    }
+
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:12px 18px;
+      border-radius:999px;
+      background:rgba(255,255,255,.05);
+      border:1px solid rgba(255,255,255,.13);
+      color:#baf9cb;
+      font-size:14px;
+      font-weight:900;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+    }
+
+    h1{
+      margin:18px 0 18px;
+      font-size:clamp(42px,8vw,78px);
+      line-height:.98;
+      letter-spacing:-.06em;
+      max-width:10ch;
+    }
+
+    .green{color:var(--green)}
     .hero p{
-      font-size:22px;
-      line-height:1.6;
-      max-width:900px;
-      margin:0 auto 28px;
-      color:#dbe4ee;
+      margin:0 0 24px;
+      max-width:680px;
+      color:rgba(255,255,255,.9);
+      font-size:clamp(19px,2vw,25px);
+      line-height:1.58;
     }
+
     .hero-actions{
       display:flex;
-      gap:14px;
-      justify-content:center;
       flex-wrap:wrap;
+      gap:14px;
+      margin-bottom:22px;
     }
-    .section{
-      padding:55px 20px;
+
+    .hero-points{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:14px;
     }
-    .light{
-      background:#f3f6fb;
-      color:#0f172a;
+
+    .hero-point{
+      background:rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:24px;
+      padding:18px;
+      backdrop-filter: blur(8px);
     }
-    .container{
-      max-width:1100px;
-      margin:0 auto;
+
+    .hero-point strong{
+      display:block;
+      font-size:28px;
+      line-height:1;
+      color:var(--green);
+      margin-bottom:8px;
     }
-    .title{
-      text-align:center;
-      margin-bottom:30px;
+
+    .hero-point span{
+      color:rgba(255,255,255,.86);
+      font-size:15px;
+      line-height:1.5;
     }
-    .title h2{
-      font-size:40px;
-      margin:0 0 12px;
+
+    .hero-panel{
+      background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
+      border:1px solid rgba(255,255,255,.12);
+      border-radius:32px;
+      padding:16px;
+      box-shadow:0 25px 60px rgba(0,0,0,.28);
+    }
+
+    .hero-card{
+      position:relative;
+      min-height:510px;
+      border-radius:28px;
+      overflow:hidden;
+      background:
+        linear-gradient(to top, rgba(7,20,47,.86), rgba(7,20,47,.12)),
+        url('https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
+    }
+
+    .hero-card-badge{
+      position:absolute;
+      top:18px;
+      right:18px;
+      z-index:2;
+      background:rgba(255,255,255,.95);
+      color:var(--navy);
       font-weight:900;
+      border-radius:999px;
+      padding:12px 16px;
+      box-shadow:0 10px 24px rgba(0,0,0,.15);
     }
-    .title p{
-      font-size:18px;
-      color:#64748b;
-      max-width:760px;
+
+    .hero-card-copy{
+      position:absolute;
+      left:20px;
+      right:20px;
+      bottom:20px;
+      z-index:2;
+    }
+
+    .hero-card-copy h3{
+      margin:0 0 8px;
+      font-size:38px;
+      line-height:1;
+      color:white;
+      letter-spacing:-.04em;
+    }
+
+    .hero-card-copy p{
+      margin:0;
+      font-size:17px;
+      color:rgba(255,255,255,.9);
+      line-height:1.6;
+    }
+
+    section{padding:76px 0}
+
+    .section-title{
+      text-align:center;
+      max-width:900px;
+      margin:0 auto 28px;
+    }
+
+    .section-title .mini{
+      color:var(--green-2);
+      font-weight:900;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+      font-size:14px;
+      margin-bottom:10px;
+      display:block;
+    }
+
+    .section-title h2{
+      margin:0 0 14px;
+      font-size:clamp(34px,5vw,58px);
+      line-height:1;
+      letter-spacing:-.05em;
+      color:var(--navy);
+    }
+
+    .section-title p{
       margin:0 auto;
+      max-width:760px;
+      color:var(--muted);
+      font-size:19px;
       line-height:1.7;
     }
-    .grid{
+
+    .cards-3{
       display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+      grid-template-columns:repeat(3,1fr);
       gap:22px;
     }
+
     .card{
-      background:#0d1b33;
-      border-radius:24px;
+      background:white;
+      border-radius:30px;
       overflow:hidden;
-      box-shadow:0 15px 35px rgba(0,0,0,.18);
+      box-shadow:var(--shadow);
+      border:1px solid rgba(8,21,47,.05);
+      transition:.26s ease;
     }
-    .light .card{
-      background:#fff;
-      box-shadow:0 12px 28px rgba(15,23,42,.08);
+
+    .card:hover{transform:translateY(-6px)}
+
+    .card-image{
+      aspect-ratio: 16/10;
+      background-size:cover;
+      background-position:center;
     }
-    .card img{
-      width:100%;
-      height:220px;
-      object-fit:cover;
-      display:block;
-    }
-    .card-body{
-      padding:24px;
-    }
-    .card h3{
-      margin:0 0 12px;
+
+    .card-body{padding:22px 22px 26px}
+    .card-body h3{
+      margin:0 0 10px;
       font-size:34px;
-      font-weight:900;
+      line-height:1;
+      letter-spacing:-.04em;
+      color:var(--navy);
     }
-    .card p{
+
+    .card-body p{
       margin:0;
+      color:#576681;
       font-size:18px;
-      line-height:1.7;
-      color:#d3deea;
+      line-height:1.65;
     }
-    .light .card p{color:#475569}
-    .stats{
+
+    .stats-row{
       display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-      gap:18px;
-      margin-top:20px;
+      grid-template-columns:repeat(4,1fr);
+      gap:20px;
+      margin-top:26px;
     }
+
     .stat{
-      background:#fff;
-      color:#0f172a;
-      border-radius:22px;
-      padding:26px;
+      background:white;
+      border-radius:28px;
+      padding:30px 22px;
       text-align:center;
-      box-shadow:0 10px 25px rgba(15,23,42,.08);
+      box-shadow:var(--shadow);
     }
+
     .stat strong{
       display:block;
-      font-size:48px;
-      color:#16a34a;
+      font-size:54px;
+      line-height:1;
+      color:var(--green-2);
       margin-bottom:10px;
-      font-weight:900;
+      letter-spacing:-.04em;
     }
+
     .stat span{
-      color:#475569;
-      line-height:1.6;
-      font-size:17px;
+      color:#60708c;
+      font-size:18px;
+      line-height:1.55;
     }
-    .calc-box{
-      background:#fff;
-      color:#0f172a;
-      border-radius:26px;
+
+    .calc-wrap{
+      background:linear-gradient(135deg,#07142f,#0c1d41);
+      color:white;
+      border-radius:34px;
       padding:28px;
-      max-width:720px;
-      margin:0 auto;
-      box-shadow:0 18px 40px rgba(15,23,42,.10);
-    }
-    .calc-box h3{
-      margin-top:0;
-      font-size:38px;
-      font-weight:900;
-      text-align:center;
-    }
-    .calc-box p{
-      text-align:center;
-      color:#64748b;
-      line-height:1.7;
-      font-size:18px;
-    }
-    .calc-box input{
-      width:100%;
-      padding:16px;
-      border-radius:14px;
-      border:1px solid #dbe3ed;
-      font-size:18px;
-      margin:14px 0;
-    }
-    .result{
-      margin-top:18px;
-      padding:18px;
-      border-radius:16px;
-      background:#f0fdf4;
-      color:#166534;
-      font-size:24px;
-      font-weight:800;
-      text-align:center;
-    }
-    .faq{
+      box-shadow:0 28px 60px rgba(5,16,38,.28);
       display:grid;
-      gap:16px;
-      max-width:900px;
-      margin:0 auto;
+      grid-template-columns:1fr 1fr;
+      gap:28px;
+      align-items:stretch;
     }
-    .faq-item{
-      background:#fff;
-      border-radius:20px;
-      padding:24px;
-      color:#0f172a;
-      box-shadow:0 10px 24px rgba(15,23,42,.07);
+
+    .calc-info h3{
+      margin:0 0 12px;
+      font-size:42px;
+      line-height:1;
+      letter-spacing:-.04em;
     }
-    .faq-item h4{
-      margin:0 0 10px;
-      font-size:28px;
+
+    .calc-info p{
+      color:rgba(255,255,255,.84);
+      font-size:18px;
+      line-height:1.7;
+      margin:0 0 16px;
+    }
+
+    .calc-tags{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+    }
+
+    .tag{
+      padding:10px 14px;
+      border-radius:999px;
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.08);
+      color:#d6e4ff;
+      font-size:14px;
+      font-weight:800;
+    }
+
+    .calc-card{
+      background:white;
+      color:var(--text);
+      border-radius:28px;
+      padding:26px;
+      box-shadow:0 20px 44px rgba(4,14,34,.2);
+    }
+
+    .segment{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:10px;
+      background:#eef3fb;
+      border-radius:999px;
+      padding:6px;
+      margin-bottom:18px;
+    }
+
+    .seg-btn{
+      min-height:46px;
+      border:none;
+      border-radius:999px;
       font-weight:900;
+      font-size:15px;
+      cursor:pointer;
+      transition:.2s ease;
+      background:transparent;
+      color:var(--navy);
     }
-    .faq-item p{
+
+    .seg-btn.active{
+      background:linear-gradient(135deg,var(--green),var(--green-2));
+      color:white;
+      box-shadow:0 10px 20px rgba(16,185,73,.22);
+    }
+
+    .calc-card label{
+      display:block;
+      font-size:15px;
+      font-weight:800;
+      color:#50607d;
+      margin-bottom:10px;
+    }
+
+    .input{
+      width:100%;
+      min-height:58px;
+      border:1px solid #d9e2f0;
+      border-radius:18px;
+      padding:0 18px;
+      font-size:18px;
+      outline:none;
+      margin-bottom:14px;
+      transition:.2s ease;
+    }
+
+    .input:focus{
+      border-color:#9edbb3;
+      box-shadow:0 0 0 4px rgba(32,227,91,.12);
+    }
+
+    .calc-btn{
+      width:100%;
+      min-height:58px;
+      border:none;
+      border-radius:18px;
+      background:linear-gradient(135deg,var(--green),var(--green-2));
+      color:white;
+      font-weight:900;
+      font-size:18px;
+      cursor:pointer;
+      margin-bottom:16px;
+      box-shadow:0 12px 28px rgba(18,201,74,.24);
+    }
+
+    .result{
+      border-radius:22px;
+      background:#f2fbf4;
+      border:1px solid #d8f3df;
+      padding:18px;
+    }
+
+    .result small{
+      display:block;
+      color:#57705e;
+      font-weight:800;
+      margin-bottom:6px;
+      font-size:13px;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+    }
+
+    .result strong{
+      display:block;
+      font-size:40px;
+      line-height:1;
+      color:var(--green-2);
+      margin-bottom:10px;
+      letter-spacing:-.04em;
+    }
+
+    .result p{
       margin:0;
-      color:#475569;
+      color:#4a5e52;
+      font-size:17px;
+      line-height:1.6;
+    }
+
+    .faq-grid{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:18px;
+    }
+
+    .faq{
+      background:white;
+      border-radius:28px;
+      padding:26px;
+      box-shadow:var(--shadow);
+    }
+
+    .faq h4{
+      margin:0 0 12px;
+      font-size:30px;
+      line-height:1.05;
+      letter-spacing:-.04em;
+      color:var(--navy);
+    }
+
+    .faq p{
+      margin:0;
+      color:#60708c;
       font-size:18px;
       line-height:1.7;
     }
-    .cta{
-      background:linear-gradient(135deg,#061021 0%,#081326 100%);
-      border-radius:28px;
+
+    .cta-section{
+      background:
+        radial-gradient(circle at 80% 0%, rgba(32,227,91,.16), transparent 20%),
+        linear-gradient(135deg, #08152f, #061127 90%);
+      color:white;
+      overflow:hidden;
+    }
+
+    .cta-box{
+      background:rgba(255,255,255,.05);
+      border:1px solid rgba(255,255,255,.1);
+      border-radius:34px;
       padding:34px;
-      color:#fff;
-      box-shadow:0 20px 40px rgba(0,0,0,.25);
+      box-shadow:0 28px 58px rgba(0,0,0,.2);
     }
-    .cta h2{
-      font-size:46px;
+
+    .cta-box h2{
       margin:0 0 12px;
-      font-weight:900;
+      font-size:clamp(34px,5vw,60px);
+      line-height:.98;
+      letter-spacing:-.05em;
+      color:white;
+      max-width:14ch;
     }
-    .cta p{
-      color:#d9e3ee;
+
+    .cta-box p{
+      margin:0 0 24px;
+      color:rgba(255,255,255,.84);
       font-size:20px;
       line-height:1.7;
-      margin:0 0 24px;
+      max-width:780px;
     }
-    .contact-list{
-      margin-top:20px;
-      color:#d9e3ee;
-      line-height:1.9;
-      font-size:18px;
+
+    .contact-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:18px;
+      margin-top:22px;
     }
+
+    .contact-card{
+      background:rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:24px;
+      padding:20px;
+    }
+
+    .contact-card strong{
+      display:block;
+      color:#baf9cb;
+      font-size:14px;
+      text-transform:uppercase;
+      letter-spacing:.14em;
+      margin-bottom:8px;
+    }
+
+    .contact-card span{
+      display:block;
+      color:white;
+      font-size:19px;
+      line-height:1.6;
+    }
+
     footer{
+      background:white;
+      border-top:1px solid rgba(10,20,50,.06);
+      padding:24px 0 34px;
       text-align:center;
-      padding:26px 20px 100px;
-      color:#94a3b8;
-      background:#f3f6fb;
+      color:#8090ab;
+      font-size:16px;
     }
-    .floating{
+
+    .whatsapp-float{
       position:fixed;
       right:16px;
       bottom:16px;
-      background:#22c55e;
-      color:#fff;
-      padding:16px 24px;
-      border-radius:999px;
-      font-weight:800;
-      box-shadow:0 12px 30px rgba(34,197,94,.35);
       z-index:999;
+      min-height:58px;
+      padding:0 22px;
+      border-radius:999px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      background:linear-gradient(135deg,var(--green),var(--green-2));
+      color:white;
+      font-weight:900;
+      font-size:18px;
+      box-shadow:0 18px 36px rgba(18,201,74,.34);
     }
-    @media (max-width:768px){
-      .hero h1{font-size:42px}
+
+    .reveal{
+      opacity:0;
+      transform:translateY(24px);
+      transition:.7s ease;
+    }
+
+    .reveal.visible{
+      opacity:1;
+      transform:translateY(0);
+    }
+
+    @media (max-width: 980px){
+      .hero-grid,
+      .cards-3,
+      .stats-row,
+      .calc-wrap,
+      .faq-grid,
+      .contact-grid{
+        grid-template-columns:1fr;
+      }
+
+      .hero-points{
+        grid-template-columns:1fr;
+      }
+
+      .hero-card{
+        min-height:420px;
+      }
+    }
+
+    @media (max-width: 640px){
+      .container{width:min(var(--max), calc(100% - 18px))}
+      .nav{padding:12px 0}
+      .brand strong{font-size:22px}
+      .brand span{font-size:10px; letter-spacing:.28em}
+      .btn{min-height:50px; padding:0 18px; font-size:16px}
+      .hero-grid{padding:36px 0 34px}
+      h1{font-size:56px}
       .hero p{font-size:18px}
-      .title h2{font-size:32px}
-      .card h3{font-size:28px}
-      .cta h2{font-size:34px}
-      .btn{width:100%;text-align:center}
-      .hero-actions{flex-direction:column}
+      .hero-card{min-height:370px}
+      .section-title h2{font-size:38px}
+      .card-body h3{font-size:28px}
+      .stat strong{font-size:44px}
+      .faq h4{font-size:24px}
+      .cta-box{padding:24px}
+      .cta-box h2{font-size:42px}
+      .cta-box p{font-size:18px}
     }
   </style>
 </head>
 <body>
 
-  <header class="topbar">
-    <div>
-      <div class="logo"><span>ECOENERGY</span> ASESORES</div>
-      <span class="sublogo">PANAMÁ</span>
+  <div class="topbar">
+    <div class="container nav">
+      <a href="#inicio" class="brand" aria-label="Ecoenergy Asesores Panamá">
+        <strong><span class="eco">ECOENERGY</span> <span class="asesores">ASESORES</span></strong>
+        <span>Panamá</span>
+      </a>
+
+      <a class="btn btn-primary" href="https://wa.me/50769453126?text=Hola%20quiero%20cotizar%20un%20sistema%20solar" target="_blank" rel="noopener">
+        WhatsApp
+      </a>
     </div>
-    <a class="btn" href="https://wa.me/50769453126?text=Hola%20quiero%20cotizar%20energ%C3%ADa%20solar" target="_blank">WhatsApp</a>
+  </div>
+
+  <header class="hero" id="inicio">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+
+    <div class="container hero-grid">
+      <div class="reveal visible">
+        <div class="eyebrow">Energía solar en Panamá</div>
+
+        <h1>Baja tu factura eléctrica <span class="green">hasta 70%</span></h1>
+
+        <p>
+          Soluciones solares para residencias, comercios, industrias y lugares aislados.
+          Cotiza por WhatsApp y revisa el estado de tu sistema desde tu celular.
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="https://wa.me/50769453126?text=Hola%20quiero%20cotizar%20energ%C3%ADa%20solar" target="_blank" rel="noopener">Cotizar por WhatsApp</a>
+          <a class="btn btn-secondary" href="#calculadora">Calcular ahorro</a>
+        </div>
+
+        <div class="hero-points">
+          <div class="hero-point">
+            <strong>0 kWh</strong>
+            <span>En residencial, el cargo por consumo puede bajar prácticamente a cero.</span>
+          </div>
+          <div class="hero-point">
+            <strong>30%–70%</strong>
+            <span>En comercial, el ahorro puede variar según demanda y perfil de consumo.</span>
+          </div>
+          <div class="hero-point">
+            <strong>24/7</strong>
+            <span>Monitoreo del sistema desde celular o computadora.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="reveal visible">
+        <div class="hero-panel">
+          <div class="hero-card">
+            <div class="hero-card-badge">Cotización rápida</div>
+            <div class="hero-card-copy">
+              <h3>Control y ahorro</h3>
+              <p>Una propuesta clara para reducir gasto, monitorear el sistema y tomar acción de inmediato.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </header>
 
-  <section class="hero">
-    <small>energía solar en panamá</small>
-    <h1>Baja tu factura eléctrica <span class="green">hasta 70%</span></h1>
-    <p>Soluciones solares para residencias, comercios, industrias y lugares aislados. Cotiza por WhatsApp y revisa el estado de tu sistema desde tu celular.</p>
-    <div class="hero-actions">
-      <a class="btn" href="https://wa.me/50769453126?text=Hola%20quiero%20cotizar%20energ%C3%ADa%20solar" target="_blank">Cotizar por WhatsApp</a>
-      <a class="btn btn-dark" href="#calculadora">Calcular ahorro</a>
-    </div>
-  </section>
-
-  <section class="section">
+  <section>
     <div class="container">
-      <div class="grid">
-        <div class="card">
-          <img src="https://images.unsplash.com/photo-1497440001374-f26997328c1b?auto=format&fit=crop&w=1200&q=80" alt="Sistema residencial">
+      <div class="section-title reveal">
+        <span class="mini">Tipos de cliente</span>
+        <h2>Una solución clara para cada necesidad</h2>
+        <p>
+          El cliente debe entender rápido qué cambia entre residencial, comercial y monitoreo.
+          Así la página vende mejor y sin confusiones.
+        </p>
+      </div>
+
+      <div class="cards-3">
+        <article class="card reveal">
+          <div class="card-image" style="background-image:url('https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?auto=format&fit=crop&w=1200&q=80')"></div>
           <div class="card-body">
             <h3>Residencial</h3>
             <p>El cargo por kWh puede bajar prácticamente a cero y quedar principalmente el cargo fijo del recibo.</p>
           </div>
-        </div>
+        </article>
 
-        <div class="card">
-          <img src="https://images.unsplash.com/photo-1509395176047-4a66953fd231?auto=format&fit=crop&w=1200&q=80" alt="Sistema comercial">
+        <article class="card reveal">
+          <div class="card-image" style="background-image:url('https://images.unsplash.com/photo-1466611653911-95081537e5b7?auto=format&fit=crop&w=1200&q=80')"></div>
           <div class="card-body">
             <h3>Comercial</h3>
             <p>El ahorro puede variar entre 30% y 70%, manteniendo demanda y cargos fijos según el perfil de consumo.</p>
           </div>
-        </div>
+        </article>
 
-        <div class="card">
-          <img src="https://images.unsplash.com/photo-1466611653911-95081537e5b7?auto=format&fit=crop&w=1200&q=80" alt="Monitoreo solar">
+        <article class="card reveal">
+          <div class="card-image" style="background-image:url('https://images.unsplash.com/photo-1497440001374-f26997328c1b?auto=format&fit=crop&w=1200&q=80')"></div>
           <div class="card-body">
             <h3>Monitoreo</h3>
             <p>Controla y revisa el estado de tu sistema desde el celular para tomar mejores decisiones.</p>
           </div>
-        </div>
+        </article>
       </div>
     </div>
   </section>
 
-  <section class="section light">
+  <section style="padding-top:0">
     <div class="container">
-      <div class="title">
-        <h2>Resultados claros</h2>
-        <p>La propuesta comercial debe decirle al cliente de inmediato cuánto puede ahorrar y cómo funciona según su tipo de instalación.</p>
+      <div class="section-title reveal">
+        <span class="mini">Resultados claros</span>
+        <h2>Números que venden sin enredos</h2>
+        <p>
+          Una propuesta comercial fuerte debe decirle al cliente cuánto puede ahorrar y cómo funciona según su instalación.
+        </p>
       </div>
-      <div class="stats">
-        <div class="stat">
+
+      <div class="stats-row">
+        <div class="stat reveal">
           <strong>70%</strong>
           <span>Ahorro máximo estimado en algunos perfiles comerciales.</span>
         </div>
-        <div class="stat">
+        <div class="stat reveal">
           <strong>30%</strong>
           <span>Ahorro base posible en proyectos comerciales.</span>
         </div>
-        <div class="stat">
+        <div class="stat reveal">
           <strong>0 kWh</strong>
           <span>Meta del cargo por consumo en clientes residenciales.</span>
         </div>
-        <div class="stat">
+        <div class="stat reveal">
           <strong>24/7</strong>
           <span>Monitoreo desde celular o computadora.</span>
         </div>
@@ -372,59 +833,106 @@
     </div>
   </section>
 
-  <section class="section" id="calculadora">
+  <section id="calculadora">
     <div class="container">
-      <div class="calc-box">
-        <h3>Calcula tu ahorro</h3>
-        <p>Ingresa tu factura mensual para tener una referencia rápida antes de cotizar.</p>
-        <input id="factura" type="number" placeholder="Factura mensual en dólares">
-        <button class="btn" onclick="calcularAhorro()">Calcular ahorro</button>
-        <div class="result" id="resultado">Tu ahorro estimado aparecerá aquí</div>
+      <div class="calc-wrap reveal">
+        <div class="calc-info">
+          <h3>Calcula tu ahorro</h3>
+          <p>
+            Ingresa tu factura mensual para obtener una referencia rápida antes de cotizar.
+            La estimación cambia según si eres residencial o comercial.
+          </p>
+
+          <div class="calc-tags">
+            <div class="tag">Residencial: casi 0 kWh</div>
+            <div class="tag">Comercial: 30% a 70%</div>
+            <div class="tag">Cotización rápida</div>
+            <div class="tag">WhatsApp directo</div>
+          </div>
+        </div>
+
+        <div class="calc-card">
+          <div class="segment">
+            <button class="seg-btn active" id="resBtn" type="button">Residencial</button>
+            <button class="seg-btn" id="comBtn" type="button">Comercial</button>
+          </div>
+
+          <label for="bill">Ingresa tu factura mensual</label>
+          <input class="input" id="bill" type="number" min="1" step="0.01" placeholder="Factura mensual en dólares" />
+
+          <button class="calc-btn" type="button" onclick="calcularAhorro()">Calcular ahorro</button>
+
+          <div class="result" id="resultBox">
+            <small>Resultado estimado</small>
+            <strong>Tu ahorro estimado aparecerá aquí</strong>
+            <p>Luego escríbenos por WhatsApp para una cotización más precisa según tu consumo real.</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <section class="section light">
+  <section style="padding-top:0">
     <div class="container">
-      <div class="title">
-        <h2>Preguntas frecuentes</h2>
-        <p>Respuestas simples para que el cliente entienda rápido y pase a cotización.</p>
+      <div class="section-title reveal">
+        <span class="mini">Preguntas frecuentes</span>
+        <h2>Respuestas simples para que el cliente actúe</h2>
+        <p>
+          Información clara para que la persona entienda rápido y pase a cotizar.
+        </p>
       </div>
-      <div class="faq">
-        <div class="faq-item">
+
+      <div class="faq-grid">
+        <article class="faq reveal">
           <h4>¿La factura queda en cero?</h4>
           <p>En residencial, el cargo por consumo puede bajar prácticamente a cero, pero normalmente sigue existiendo un cargo fijo. En comercial, además del cargo fijo, puede mantenerse la demanda.</p>
-        </div>
-        <div class="faq-item">
+        </article>
+
+        <article class="faq reveal">
           <h4>¿El ahorro es igual para todos?</h4>
           <p>No. Depende del tipo de cliente, el patrón de consumo, la demanda y la solución instalada.</p>
-        </div>
-        <div class="faq-item">
+        </article>
+
+        <article class="faq reveal">
           <h4>¿Puedo monitorear mi sistema?</h4>
           <p>Sí. Uno de los beneficios de la solución es poder revisar el estado del sistema desde tu celular.</p>
-        </div>
-        <div class="faq-item">
+        </article>
+
+        <article class="faq reveal">
           <h4>¿Atienden en Panamá?</h4>
           <p>Sí. La comunicación comercial está enfocada en Panamá para clientes residenciales, comerciales e industriales.</p>
-        </div>
+        </article>
       </div>
     </div>
   </section>
 
-  <section class="section">
+  <section class="cta-section">
     <div class="container">
-      <div class="cta">
+      <div class="cta-box reveal">
         <h2>Solicita tu cotización</h2>
-        <p>Envíanos tu factura por WhatsApp y te orientamos según tu tipo de cliente: residencial, comercial o industrial.</p>
+        <p>
+          Envíanos tu factura por WhatsApp y te orientamos según tu tipo de cliente:
+          residencial, comercial o industrial.
+        </p>
+
         <div class="hero-actions">
-          <a class="btn" href="https://wa.me/50769453126?text=Hola%20quiero%20cotizar%20energ%C3%ADa%20solar" target="_blank">Hablar por WhatsApp</a>
-          <a class="btn btn-dark" href="tel:69453126">Llamar ahora</a>
+          <a class="btn btn-primary" href="https://wa.me/50769453126?text=Hola%20quiero%20cotizar%20un%20sistema%20solar%20y%20enviar%20mi%20factura" target="_blank" rel="noopener">Hablar por WhatsApp</a>
+          <a class="btn btn-secondary" href="tel:+50769453126">Llamar ahora</a>
         </div>
-        <div class="contact-list">
-          📍 El Dorado, Plaza Figuer, oficina 106, Panamá City, Panamá 0819<br>
-          📲 WhatsApp: 6945-3126<br>
-          🌐 Dominio: ecoenergy-asesores.com<br>
-          ⚡ Empresa madre: Eco Energy Solutions
+
+        <div class="contact-grid">
+          <div class="contact-card">
+            <strong>Dirección</strong>
+            <span>El Dorado, Plaza Figuer, oficina 106, Panamá City, Panamá 0819</span>
+          </div>
+          <div class="contact-card">
+            <strong>WhatsApp</strong>
+            <span>6945-3126</span>
+          </div>
+          <div class="contact-card">
+            <strong>Respaldo</strong>
+            <span>Eco Energy Solutions</span>
+          </div>
         </div>
       </div>
     </div>
@@ -434,24 +942,72 @@
     Ecoenergy Asesores · Energía solar en Panamá
   </footer>
 
-  <a class="floating" href="https://wa.me/50769453126?text=Hola%20quiero%20cotizar%20energ%C3%ADa%20solar" target="_blank">WhatsApp</a>
+  <a class="whatsapp-float" href="https://wa.me/50769453126?text=Hola%20quiero%20informaci%C3%B3n%20sobre%20energ%C3%ADa%20solar" target="_blank" rel="noopener">
+    WhatsApp
+  </a>
 
   <script>
-    function calcularAhorro() {
-      const factura = parseFloat(document.getElementById('factura').value);
-      const resultado = document.getElementById('resultado');
+    let modo = "residencial";
 
-      if (isNaN(factura) || factura <= 0) {
-        resultado.innerText = 'Ingresa una factura válida';
+    const resBtn = document.getElementById("resBtn");
+    const comBtn = document.getElementById("comBtn");
+
+    resBtn.addEventListener("click", () => {
+      modo = "residencial";
+      resBtn.classList.add("active");
+      comBtn.classList.remove("active");
+    });
+
+    comBtn.addEventListener("click", () => {
+      modo = "comercial";
+      comBtn.classList.add("active");
+      resBtn.classList.remove("active");
+    });
+
+    function calcularAhorro(){
+      const billInput = document.getElementById("bill");
+      const resultBox = document.getElementById("resultBox");
+      const valor = parseFloat(billInput.value);
+
+      if(!valor || valor <= 0){
+        resultBox.innerHTML = `
+          <small>Resultado estimado</small>
+          <strong>Ingresa un monto válido</strong>
+          <p>Escribe tu factura mensual en dólares para calcular una referencia rápida.</p>
+        `;
         return;
       }
 
-      const ahorro = Math.round(factura * 0.70);
-      const restante = Math.round(factura - ahorro);
+      if(modo === "residencial"){
+        const ahorro = valor * 0.88;
+        const restante = Math.max(valor - ahorro, 2.50);
 
-      resultado.innerText = `Ahorro estimado: $${ahorro} | Pago restante estimado: $${restante}`;
+        resultBox.innerHTML = `
+          <small>Estimación residencial</small>
+          <strong>Ahorro aproximado: $${ahorro.toFixed(2)}</strong>
+          <p>Tu cargo por consumo podría bajar prácticamente a cero. Podrías quedar pagando cerca de <strong>$${restante.toFixed(2)}</strong> más cargos mínimos, según tu caso.</p>
+        `;
+      } else {
+        const ahorroMin = valor * 0.30;
+        const ahorroMax = valor * 0.70;
+
+        resultBox.innerHTML = `
+          <small>Estimación comercial</small>
+          <strong>Ahorro estimado: $${ahorroMin.toFixed(2)} a $${ahorroMax.toFixed(2)}</strong>
+          <p>En comercial, el ahorro depende del perfil de consumo y de la demanda. Normalmente se mantienen ciertos cargos fijos.</p>
+        `;
+      }
     }
-  </script>
 
+    const observer = new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){
+          entry.target.classList.add("visible");
+        }
+      });
+    }, {threshold:0.12});
+
+    document.querySelectorAll(".reveal").forEach(el=>observer.observe(el));
+  </script>
 </body>
 </html>
