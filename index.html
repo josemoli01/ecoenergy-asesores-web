@@ -9,15 +9,14 @@
 body {
     font-family: Arial, sans-serif;
     margin: 0;
-    background: #f8fafc;
+    background: #f4f7fb;
 }
 
 /* NAV */
 nav {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    padding: 15px 40px;
+    padding: 20px 40px;
     background: white;
     box-shadow: 0 2px 10px rgba(0,0,0,0.05);
 }
@@ -32,31 +31,31 @@ nav a {
     color: #333;
 }
 
-.whatsapp-btn {
+.btn {
     background: #25D366;
     color: white;
     padding: 10px 18px;
     border-radius: 20px;
-    text-decoration: none;
 }
 
 /* HERO */
 .hero {
-    padding: 80px 40px;
+    padding: 90px 40px;
     text-align: center;
 }
 
 .hero h2 {
-    font-size: 40px;
-    margin-bottom: 10px;
+    font-size: 38px;
 }
 
 .hero p {
     color: #555;
+    max-width: 600px;
+    margin: auto;
 }
 
 /* SERVICIOS */
-.servicios {
+.section {
     padding: 60px 40px;
 }
 
@@ -69,9 +68,9 @@ nav a {
 .card {
     background: white;
     border-radius: 15px;
-    overflow: hidden;
     width: 300px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
 }
 
 .card img {
@@ -83,87 +82,44 @@ nav a {
 }
 
 .card p {
-    padding: 0 10px 10px;
+    padding: 0 10px 15px;
     color: #555;
 }
 
 /* GALERIA */
-.galeria {
-    padding: 60px 40px;
-}
-
-.galeria h2 {
-    font-size: 32px;
-    margin-bottom: 10px;
-}
-
-.galeria p {
-    color: #555;
-    margin-bottom: 20px;
-}
-
-.galeria-grid {
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
-}
-
-.galeria-grid img {
+.grid img {
     width: 300px;
     border-radius: 15px;
 }
 
 /* CALCULADORA */
-.calculadora {
-    padding: 60px 40px;
-    background: #e6f4ea;
+.calc {
+    background: #e8f5e9;
     text-align: center;
+    padding: 60px 40px;
 }
 
-.calculadora h2 {
-    font-size: 28px;
-}
-
-.calculadora input {
+.calc input {
     padding: 10px;
-    width: 200px;
     margin: 10px;
 }
 
-.calculadora button {
+.calc button {
     padding: 10px 20px;
     background: green;
     color: white;
     border: none;
-    border-radius: 8px;
-    cursor: pointer;
-}
-
-.resultado {
-    margin-top: 15px;
-    font-weight: bold;
-}
-
-/* CONTACTO */
-.contacto {
-    padding: 60px 40px;
-    text-align: center;
-}
-
-.contacto a {
-    color: green;
-    text-decoration: none;
+    border-radius: 10px;
 }
 
 /* FOOTER */
 footer {
-    padding: 30px;
-    text-align: center;
     background: #0f172a;
     color: white;
+    text-align: center;
+    padding: 20px;
 }
 </style>
-
 </head>
 
 <body>
@@ -172,82 +128,92 @@ footer {
     <h1>EcoEnergy Asesores Panamá</h1>
     <div>
         <a href="#servicios">Servicios</a>
-        <a href="#galeria">Galería</a>
+        <a href="#soluciones">Soluciones</a>
         <a href="#contacto">Contacto</a>
-        <a class="whatsapp-btn" href="https://wa.me/50769453126" target="_blank">WhatsApp</a>
+        <a class="btn" href="https://wa.me/50769453126">WhatsApp</a>
     </div>
 </nav>
 
 <section class="hero">
-    <h2>Reduce tu factura eléctrica con energía solar</h2>
-    <p>Soluciones diseñadas para hogares, negocios e industrias en Panamá. Ahorra desde el primer mes con tecnología confiable.</p>
+    <h2>Energía solar inteligente para Panamá</h2>
+    <p>Asesoramos, diseñamos e implementamos soluciones solares para hogares, negocios e industrias. Reduce costos y gana independencia energética.</p>
 </section>
 
-<section id="servicios" class="servicios">
-    <h2>Soluciones solares para cada necesidad</h2>
+<section id="servicios" class="section">
+    <h2>Servicios</h2>
 
     <div class="cards">
         <div class="card">
             <img src="residencial.jpg">
             <h3>Residencial</h3>
-            <p>Reduce tu factura eléctrica y aumenta el valor de tu vivienda con energía limpia.</p>
+            <p>Sistemas diseñados para hogares que buscan ahorrar en su factura eléctrica.</p>
         </div>
 
         <div class="card">
             <img src="comercial.jpg">
             <h3>Comercial</h3>
-            <p>Optimiza costos operativos y mejora la rentabilidad de tu negocio.</p>
+            <p>Soluciones energéticas para mejorar la eficiencia de tu negocio.</p>
         </div>
 
         <div class="card">
             <img src="industrial.jpg">
             <h3>Industrial</h3>
-            <p>Soluciones de alto rendimiento para consumo energético intensivo.</p>
+            <p>Proyectos adaptados a altos niveles de consumo energético.</p>
         </div>
     </div>
 </section>
 
-<section id="galeria" class="galeria">
-    <h2>Proyectos que reflejan confianza y resultados</h2>
-    <p>Instalaciones reales que demuestran calidad, eficiencia y compromiso con nuestros clientes.</p>
+<section id="soluciones" class="section">
+    <h2>Aplicaciones de energía solar</h2>
+    <p>Explora cómo la energía solar se adapta a diferentes tipos de proyectos en Panamá.</p>
 
-    <div class="galeria-grid">
-        <img src="galeria1.jpg">
-        <img src="hero.jpg">
-        <img src="comercial.jpg">
+    <div class="cards">
+        <div class="card">
+            <img src="galeria1.jpg">
+            <h3>Infraestructura solar</h3>
+            <p>Sistemas modernos diseñados para alto rendimiento.</p>
+        </div>
+
+        <div class="card">
+            <img src="hero.jpg">
+            <h3>Aplicación real</h3>
+            <p>Soluciones adaptadas a distintos tipos de propiedades.</p>
+        </div>
+
+        <div class="card">
+            <img src="comercial.jpg">
+            <h3>Optimización energética</h3>
+            <p>Reducción de costos y mejora de eficiencia.</p>
+        </div>
     </div>
 </section>
 
-<section class="calculadora">
-    <h2>Calcula tu ahorro estimado</h2>
-    <p>Ingresa tu factura mensual y descubre cuánto podrías ahorrar con energía solar.</p>
+<section class="calc">
+    <h2>Calcula tu ahorro</h2>
+    <p>Ingresa tu factura mensual</p>
 
-    <input type="number" id="factura" placeholder="Ej: 150">
+    <input type="number" id="factura" placeholder="$150">
     <br>
-    <button onclick="calcular()">Calcular ahorro</button>
+    <button onclick="calc()">Calcular</button>
 
-    <div class="resultado" id="resultado"></div>
+    <p id="res"></p>
 </section>
 
-<section id="contacto" class="contacto">
-    <h2>Contáctanos</h2>
+<section id="contacto" class="section" style="text-align:center;">
+    <h2>Contacto</h2>
     <p>📧 contacto@ecoenergy-asesores.com</p>
-    <p>📱 WhatsApp disponible para atención inmediata</p>
+    <p>Atención rápida por WhatsApp</p>
 </section>
 
 <footer>
-    EcoEnergy Asesores Panamá © 2026  
-    <br>
-    Filial comercial de Eco Energy Solutions
+EcoEnergy Asesores Panamá © 2026  
 </footer>
 
 <script>
-function calcular() {
-    let factura = document.getElementById("factura").value;
-    let ahorro = factura * 0.7;
-
-    document.getElementById("resultado").innerText =
-        "Ahorro estimado mensual: $" + ahorro.toFixed(2);
+function calc(){
+    let f = document.getElementById("factura").value;
+    let r = f * 0.7;
+    document.getElementById("res").innerText = "Ahorro estimado: $" + r.toFixed(2);
 }
 </script>
 
