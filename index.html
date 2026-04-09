@@ -8,18 +8,19 @@
   <meta name="theme-color" content="#08152f" />
   <style>
     :root{
-      --bg:#f4f7fb;
+      --bg:#f5f7fb;
       --white:#ffffff;
       --navy:#08152f;
-      --navy2:#0d2149;
-      --green:#19e34f;
-      --green2:#11c841;
+      --navy-2:#10244a;
+      --green:#18e34f;
+      --green-2:#13c844;
       --text:#0b1730;
-      --muted:#687791;
-      --line:#e4ebf5;
+      --muted:#64748b;
+      --line:#e7edf6;
+      --soft:#eef4fb;
       --radius:28px;
-      --shadow:0 18px 40px rgba(8,21,47,.12);
-      --max:1120px;
+      --shadow:0 18px 40px rgba(8,21,47,.10);
+      --max:1180px;
     }
 
     *{box-sizing:border-box}
@@ -32,46 +33,50 @@
     }
 
     a{text-decoration:none;color:inherit}
-    img{display:block;max-width:100%}
-    .container{width:min(var(--max),calc(100% - 22px));margin:auto}
+    img{max-width:100%;display:block}
+
+    .container{
+      width:min(var(--max), calc(100% - 24px));
+      margin:auto;
+    }
 
     .topbar{
       position:sticky;
       top:0;
       z-index:1000;
-      background:rgba(255,255,255,.95);
+      background:rgba(255,255,255,.94);
       backdrop-filter:blur(10px);
       border-bottom:1px solid rgba(8,21,47,.06);
     }
 
     .nav{
       display:flex;
-      justify-content:space-between;
       align-items:center;
+      justify-content:space-between;
       gap:14px;
       padding:14px 0;
     }
 
     .logo{
+      display:flex;
+      flex-direction:column;
       line-height:1;
     }
 
     .logo strong{
-      display:block;
-      font-size:clamp(20px,3vw,34px);
+      font-size:clamp(20px,2.5vw,34px);
       font-weight:900;
       letter-spacing:-.04em;
     }
 
-    .logo .eco{color:var(--green2)}
+    .logo .eco{color:var(--green-2)}
     .logo .asesores{color:var(--navy)}
     .logo span{
-      display:block;
-      margin-top:7px;
+      margin-top:8px;
       font-size:11px;
       letter-spacing:.35em;
       text-transform:uppercase;
-      color:#a1abc0;
+      color:#98a3b8;
     }
 
     .btn{
@@ -92,21 +97,22 @@
     .btn:hover{transform:translateY(-2px)}
 
     .btn-primary{
-      background:linear-gradient(135deg,var(--green),var(--green2));
+      background:linear-gradient(135deg,var(--green),var(--green-2));
       color:#fff;
-      box-shadow:0 14px 30px rgba(17,200,65,.25);
+      box-shadow:0 14px 30px rgba(19,200,68,.24);
     }
 
     .btn-secondary{
-      background:#132855;
+      background:#173162;
       color:#fff;
       box-shadow:0 14px 30px rgba(8,21,47,.16);
     }
 
     .hero{
       background:
-        radial-gradient(circle at 15% 10%, rgba(25,227,79,.18), transparent 26%),
-        linear-gradient(135deg,#07142d 0%, #081933 55%, #061125 100%);
+        radial-gradient(circle at 25% 18%, rgba(24,227,79,.12), transparent 28%),
+        radial-gradient(circle at 82% 20%, rgba(24,227,79,.10), transparent 24%),
+        linear-gradient(135deg,#061327 0%, #081a36 55%, #071227 100%);
       color:#fff;
       overflow:hidden;
       position:relative;
@@ -128,10 +134,10 @@
       position:relative;
       z-index:2;
       display:grid;
-      grid-template-columns:1.1fr .9fr;
-      gap:28px;
+      grid-template-columns:1.05fr .95fr;
+      gap:32px;
       align-items:center;
-      padding:56px 0;
+      padding:58px 0 52px;
     }
 
     .eyebrow{
@@ -140,17 +146,18 @@
       border-radius:999px;
       border:1px solid rgba(255,255,255,.12);
       background:rgba(255,255,255,.05);
-      color:#bbf8c8;
+      color:#baf8c8;
       font-size:14px;
       font-weight:900;
-      letter-spacing:.18em;
+      letter-spacing:.16em;
       text-transform:uppercase;
+      margin-bottom:18px;
     }
 
     h1{
-      margin:18px 0 18px;
-      font-size:clamp(42px,7vw,72px);
-      line-height:.98;
+      margin:0 0 18px;
+      font-size:clamp(46px,7vw,78px);
+      line-height:.95;
       letter-spacing:-.06em;
       max-width:10ch;
     }
@@ -159,9 +166,9 @@
 
     .hero p{
       margin:0 0 24px;
-      max-width:650px;
+      max-width:680px;
       color:rgba(255,255,255,.88);
-      font-size:clamp(19px,2vw,23px);
+      font-size:clamp(19px,2vw,24px);
       line-height:1.6;
     }
 
@@ -183,12 +190,13 @@
       border:1px solid rgba(255,255,255,.08);
       border-radius:22px;
       padding:18px;
+      min-height:144px;
     }
 
     .hero-point strong{
       display:block;
       color:var(--green);
-      font-size:30px;
+      font-size:32px;
       line-height:1;
       margin-bottom:8px;
     }
@@ -196,66 +204,117 @@
     .hero-point span{
       font-size:15px;
       color:rgba(255,255,255,.86);
-      line-height:1.5;
+      line-height:1.55;
     }
 
-    .hero-image{
-      border-radius:30px;
+    .slider-shell{
+      position:relative;
+      min-height:510px;
+      border-radius:32px;
       overflow:hidden;
-      box-shadow:0 24px 50px rgba(0,0,0,.28);
-      min-height:460px;
-      background:
-        linear-gradient(to top, rgba(8,21,47,.72), rgba(8,21,47,.15)),
-        url('https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=1400&q=80') center/cover no-repeat;
-      display:flex;
-      align-items:flex-end;
-      padding:24px;
+      box-shadow:0 26px 60px rgba(0,0,0,.28);
+      background:#0c1d3f;
     }
 
-    .hero-image-box{
+    .slides{
+      position:relative;
+      width:100%;
+      height:100%;
+      min-height:510px;
+    }
+
+    .slide{
+      position:absolute;
+      inset:0;
+      opacity:0;
+      transition:opacity .9s ease;
+      background-size:cover;
+      background-position:center;
+    }
+
+    .slide.active{opacity:1}
+
+    .slide::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(to top, rgba(8,21,47,.82), rgba(8,21,47,.18) 48%, rgba(8,21,47,.10));
+    }
+
+    .slide-content{
+      position:absolute;
+      left:24px;
+      right:24px;
+      bottom:24px;
+      z-index:2;
       background:rgba(255,255,255,.12);
+      border:1px solid rgba(255,255,255,.12);
       backdrop-filter:blur(10px);
-      border:1px solid rgba(255,255,255,.14);
       border-radius:24px;
       padding:18px;
+      color:#fff;
       max-width:420px;
     }
 
-    .hero-image-box h3{
+    .slide-content h3{
       margin:0 0 8px;
       font-size:34px;
       line-height:1;
       letter-spacing:-.04em;
     }
 
-    .hero-image-box p{
+    .slide-content p{
       margin:0;
       color:rgba(255,255,255,.88);
       font-size:16px;
-      line-height:1.6;
+      line-height:1.55;
     }
 
-    section{padding:76px 0}
+    .slider-dots{
+      position:absolute;
+      z-index:3;
+      left:24px;
+      top:24px;
+      display:flex;
+      gap:8px;
+    }
+
+    .slider-dots button{
+      width:10px;
+      height:10px;
+      border-radius:50%;
+      border:none;
+      background:rgba(255,255,255,.35);
+      cursor:pointer;
+      padding:0;
+    }
+
+    .slider-dots button.active{
+      background:#fff;
+      transform:scale(1.2);
+    }
+
+    section{padding:78px 0}
 
     .section-title{
       text-align:center;
-      max-width:840px;
+      max-width:850px;
       margin:0 auto 28px;
     }
 
     .section-title .mini{
       display:block;
-      margin-bottom:10px;
-      color:var(--green2);
+      color:var(--green-2);
       font-size:14px;
       font-weight:900;
       letter-spacing:.18em;
       text-transform:uppercase;
+      margin-bottom:10px;
     }
 
     .section-title h2{
       margin:0 0 14px;
-      font-size:clamp(34px,5vw,56px);
+      font-size:clamp(34px,5vw,58px);
       line-height:1;
       letter-spacing:-.05em;
       color:var(--navy);
@@ -289,7 +348,9 @@
       background-position:center;
     }
 
-    .card-body{padding:22px 22px 26px}
+    .card-body{
+      padding:22px 22px 26px;
+    }
 
     .card-body h3{
       margin:0 0 10px;
@@ -301,9 +362,57 @@
 
     .card-body p{
       margin:0;
-      color:#5d6d88;
+      color:#5f6e88;
       font-size:18px;
       line-height:1.65;
+    }
+
+    .gallery-grid{
+      display:grid;
+      grid-template-columns:1.2fr .8fr .8fr;
+      grid-template-rows:260px 260px;
+      gap:18px;
+      margin-top:24px;
+    }
+
+    .gallery-item{
+      position:relative;
+      overflow:hidden;
+      border-radius:30px;
+      box-shadow:var(--shadow);
+      min-height:220px;
+    }
+
+    .gallery-item img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      transition:transform .5s ease;
+    }
+
+    .gallery-item:hover img{transform:scale(1.06)}
+
+    .gallery-item::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(to top, rgba(8,21,47,.68), rgba(8,21,47,.04));
+    }
+
+    .gallery-item .caption{
+      position:absolute;
+      z-index:2;
+      left:20px;
+      bottom:18px;
+      right:20px;
+      color:#fff;
+      font-size:18px;
+      font-weight:800;
+      line-height:1.35;
+    }
+
+    .gallery-item.big{
+      grid-row:1 / span 2;
     }
 
     .stats{
@@ -319,13 +428,14 @@
       padding:30px 22px;
       text-align:center;
       box-shadow:var(--shadow);
+      border:1px solid rgba(8,21,47,.04);
     }
 
     .stat strong{
       display:block;
-      font-size:54px;
+      font-size:58px;
       line-height:1;
-      color:var(--green2);
+      color:var(--green-2);
       margin-bottom:10px;
     }
 
@@ -340,11 +450,11 @@
       grid-template-columns:1fr 1fr;
       gap:26px;
       align-items:stretch;
-      background:linear-gradient(135deg,#08152f,#0c2148);
+      background:linear-gradient(135deg,#08152f,#0d2148);
       border-radius:34px;
       padding:28px;
       color:#fff;
-      box-shadow:0 22px 54px rgba(8,21,47,.22);
+      box-shadow:0 24px 54px rgba(8,21,47,.20);
     }
 
     .calc-copy h3{
@@ -356,9 +466,10 @@
 
     .calc-copy p{
       margin:0;
-      color:rgba(255,255,255,.85);
+      color:rgba(255,255,255,.86);
       font-size:18px;
       line-height:1.7;
+      max-width:500px;
     }
 
     .calc-card{
@@ -366,6 +477,7 @@
       color:var(--text);
       border-radius:28px;
       padding:24px;
+      box-shadow:0 18px 40px rgba(8,21,47,.10);
     }
 
     .toggle{
@@ -390,32 +502,32 @@
     }
 
     .toggle button.active{
-      background:linear-gradient(135deg,var(--green),var(--green2));
+      background:linear-gradient(135deg,var(--green),var(--green-2));
       color:#fff;
     }
 
     label{
       display:block;
       margin-bottom:10px;
-      color:#566884;
-      font-weight:800;
+      color:#5e6f89;
       font-size:15px;
+      font-weight:800;
     }
 
     .input{
       width:100%;
       min-height:58px;
-      border:1px solid #d8e2f0;
+      border:1px solid #d9e2f0;
       border-radius:18px;
       padding:0 18px;
       font-size:18px;
-      margin-bottom:14px;
       outline:none;
+      margin-bottom:14px;
     }
 
     .input:focus{
       border-color:#9fe1b0;
-      box-shadow:0 0 0 4px rgba(25,227,79,.12);
+      box-shadow:0 0 0 4px rgba(24,227,79,.12);
     }
 
     .calc-button{
@@ -423,7 +535,7 @@
       min-height:58px;
       border:none;
       border-radius:18px;
-      background:linear-gradient(135deg,var(--green),var(--green2));
+      background:linear-gradient(135deg,var(--green),var(--green-2));
       color:#fff;
       font-size:18px;
       font-weight:900;
@@ -432,15 +544,15 @@
     }
 
     .result{
-      background:#f2fbf4;
-      border:1px solid #d9f3df;
+      background:#f3fbf4;
+      border:1px solid #daf3df;
       border-radius:22px;
       padding:18px;
     }
 
     .result small{
       display:block;
-      color:#5a6f60;
+      color:#5b6d60;
       font-size:13px;
       font-weight:900;
       letter-spacing:.08em;
@@ -450,7 +562,7 @@
 
     .result strong{
       display:block;
-      color:var(--green2);
+      color:var(--green-2);
       font-size:38px;
       line-height:1;
       margin-bottom:10px;
@@ -458,7 +570,7 @@
 
     .result p{
       margin:0;
-      color:#4d6252;
+      color:#4f6354;
       font-size:17px;
       line-height:1.6;
     }
@@ -474,6 +586,7 @@
       border-radius:28px;
       padding:26px;
       box-shadow:var(--shadow);
+      border:1px solid rgba(8,21,47,.05);
     }
 
     .faq h4{
@@ -493,17 +606,17 @@
 
     .contact{
       background:
-        radial-gradient(circle at 80% 0%, rgba(25,227,79,.15), transparent 18%),
+        radial-gradient(circle at 80% 0%, rgba(24,227,79,.14), transparent 18%),
         linear-gradient(135deg,#07142d,#091a3b 90%);
       color:#fff;
     }
 
     .contact-box{
       background:rgba(255,255,255,.05);
-      border:1px solid rgba(255,255,255,.1);
+      border:1px solid rgba(255,255,255,.10);
       border-radius:34px;
       padding:34px;
-      box-shadow:0 24px 54px rgba(0,0,0,.2);
+      box-shadow:0 24px 54px rgba(0,0,0,.20);
     }
 
     .contact-box h2{
@@ -511,7 +624,7 @@
       font-size:clamp(34px,5vw,58px);
       line-height:1;
       letter-spacing:-.05em;
-      max-width:12ch;
+      max-width:10ch;
     }
 
     .contact-box p{
@@ -544,7 +657,7 @@
 
     .contact-card strong{
       display:block;
-      color:#bcf8ca;
+      color:#bbf8ca;
       font-size:14px;
       letter-spacing:.14em;
       text-transform:uppercase;
@@ -563,11 +676,11 @@
       border-top:1px solid rgba(8,21,47,.06);
       padding:24px 0 34px;
       text-align:center;
-      color:#8493ab;
+      color:#8594ab;
       font-size:16px;
     }
 
-    @media (max-width: 980px){
+    @media (max-width: 1024px){
       .hero-grid,
       .cards-3,
       .stats,
@@ -581,21 +694,27 @@
         grid-template-columns:1fr;
       }
 
-      .hero-image{
-        min-height:380px;
+      .gallery-grid{
+        grid-template-columns:1fr;
+        grid-template-rows:auto;
+      }
+
+      .gallery-item.big{
+        grid-row:auto;
       }
     }
 
     @media (max-width: 640px){
-      .container{width:min(var(--max),calc(100% - 18px))}
+      .container{width:min(var(--max), calc(100% - 18px))}
       .nav{padding:12px 0}
       .btn{min-height:50px;padding:0 18px;font-size:16px}
-      .hero-grid{padding:38px 0}
+      .hero-grid{padding:38px 0 42px}
+      .slider-shell,.slides{min-height:360px}
       h1{font-size:50px}
       .hero p{font-size:18px}
-      .hero-image-box h3{font-size:30px}
+      .slide-content h3{font-size:28px}
       .card-body h3{font-size:28px}
-      .stat strong{font-size:46px}
+      .stat strong{font-size:48px}
       .faq h4{font-size:24px}
       .contact-box{padding:24px}
       .contact-box h2{font-size:42px}
@@ -612,7 +731,7 @@
         <span>Panamá</span>
       </a>
 
-      <a class="btn btn-primary" href="https://wa.me/50769453126?text=Hola%20quiero%20cotizar%20un%20sistema%20solar" target="_blank" rel="noopener">
+      <a class="btn btn-primary" href="https://wa.me/50769453126?text=Hola%20quiero%20cotizar%20energ%C3%ADa%20solar%20en%20Panam%C3%A1" target="_blank" rel="noopener">
         WhatsApp
       </a>
     </div>
@@ -629,7 +748,7 @@
         </p>
 
         <div class="hero-actions">
-          <a class="btn btn-primary" href="https://wa.me/50769453126?text=Hola%20quiero%20cotizar%20energ%C3%ADa%20solar" target="_blank" rel="noopener">Cotizar por WhatsApp</a>
+          <a class="btn btn-primary" href="https://wa.me/50769453126?text=Hola%20quiero%20cotizar%20un%20sistema%20solar" target="_blank" rel="noopener">Cotizar por WhatsApp</a>
           <a class="btn btn-secondary" href="#calculadora">Calcular ahorro</a>
         </div>
 
@@ -649,10 +768,34 @@
         </div>
       </div>
 
-      <div class="hero-image">
-        <div class="hero-image-box">
-          <h3>Ahorro con control</h3>
-          <p>Una propuesta clara para reducir gasto, monitorear el sistema y tomar acción de inmediato.</p>
+      <div class="slider-shell">
+        <div class="slider-dots">
+          <button class="active" data-slide="0" aria-label="Imagen 1"></button>
+          <button data-slide="1" aria-label="Imagen 2"></button>
+          <button data-slide="2" aria-label="Imagen 3"></button>
+        </div>
+
+        <div class="slides">
+          <div class="slide active" style="background-image:url('https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=1400&q=80')">
+            <div class="slide-content">
+              <h3>Ahorro con control</h3>
+              <p>Una propuesta clara para reducir gasto, monitorear el sistema y tomar acción de inmediato.</p>
+            </div>
+          </div>
+
+          <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1497440001374-f26997328c1b?auto=format&fit=crop&w=1400&q=80')">
+            <div class="slide-content">
+              <h3>Proyectos con impacto</h3>
+              <p>Residencial, comercial e industrial con una presentación visual moderna y seria.</p>
+            </div>
+          </div>
+
+          <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1466611653911-95081537e5b7?auto=format&fit=crop&w=1400&q=80')">
+            <div class="slide-content">
+              <h3>Monitoreo inteligente</h3>
+              <p>Revisa tu sistema desde el celular y mantén visibilidad del rendimiento.</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -661,10 +804,10 @@
   <section>
     <div class="container">
       <div class="section-title">
-        <span class="mini">Tipos de cliente</span>
+        <span class="mini">Tipos de instalación</span>
         <h2>Una solución clara para cada necesidad</h2>
         <p>
-          El cliente debe entender rápido qué cambia entre residencial, comercial y monitoreo.
+          Residencial, comercial y monitoreo explicados de forma simple, directa y sin repeticiones.
         </p>
       </div>
 
@@ -689,9 +832,48 @@
           <div class="card-image" style="background-image:url('https://images.unsplash.com/photo-1466611653911-95081537e5b7?auto=format&fit=crop&w=1200&q=80')"></div>
           <div class="card-body">
             <h3>Monitoreo</h3>
-            <p>Controla y revisa el estado de tu sistema desde el celular para tomar mejores decisiones.</p>
+            <p>Controla y revisa el estado del sistema desde el celular para tomar mejores decisiones.</p>
           </div>
         </article>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top:0">
+    <div class="container">
+      <div class="section-title">
+        <span class="mini">Galería visual</span>
+        <h2>Imágenes que le dan fuerza a la marca</h2>
+        <p>
+          Una presencia visual fuerte ayuda a transmitir orden, confianza y nivel profesional desde el primer vistazo.
+        </p>
+      </div>
+
+      <div class="gallery-grid">
+        <div class="gallery-item big">
+          <img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=1400&q=80" alt="Paneles solares" />
+          <div class="caption">Energía solar con presencia premium</div>
+        </div>
+
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?auto=format&fit=crop&w=900&q=80" alt="Sistema residencial" />
+          <div class="caption">Soluciones para residencia</div>
+        </div>
+
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1497440001374-f26997328c1b?auto=format&fit=crop&w=900&q=80" alt="Sistema comercial" />
+          <div class="caption">Ahorro para comercios</div>
+        </div>
+
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1466611653911-95081537e5b7?auto=format&fit=crop&w=900&q=80" alt="Monitoreo" />
+          <div class="caption">Monitoreo desde celular</div>
+        </div>
+
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=900&q=80" alt="Proyecto solar" />
+          <div class="caption">Presentación moderna y clara</div>
+        </div>
       </div>
     </div>
   </section>
@@ -702,7 +884,7 @@
         <span class="mini">Resultados claros</span>
         <h2>Números que venden sin enredos</h2>
         <p>
-          Una propuesta comercial fuerte debe decirle al cliente cuánto puede ahorrar según su tipo de instalación.
+          Ahorro, control y una explicación simple para entender rápidamente el beneficio.
         </p>
       </div>
 
@@ -729,8 +911,7 @@
         <div class="calc-copy">
           <h3>Calcula tu ahorro</h3>
           <p>
-            Ingresa tu factura mensual para obtener una referencia rápida antes de cotizar.
-            Luego escríbenos por WhatsApp para afinar la propuesta.
+            Ingresa tu factura mensual para obtener una referencia rápida antes de cotizar por WhatsApp.
           </p>
         </div>
 
@@ -759,8 +940,8 @@
     <div class="container">
       <div class="section-title">
         <span class="mini">Preguntas frecuentes</span>
-        <h2>Respuestas simples para que el cliente actúe</h2>
-        <p>Información clara para que la persona entienda rápido y pase a cotizar.</p>
+        <h2>Respuestas simples para actuar rápido</h2>
+        <p>Información clara, corta y útil para pasar directo a cotización.</p>
       </div>
 
       <div class="faq-grid">
@@ -771,17 +952,17 @@
 
         <article class="faq">
           <h4>¿El ahorro es igual para todos?</h4>
-          <p>No. Depende del tipo de cliente, el patrón de consumo, la demanda y la solución instalada.</p>
+          <p>No. Depende del tipo de instalación, el patrón de consumo, la demanda y la solución instalada.</p>
         </article>
 
         <article class="faq">
-          <h4>¿Puedo monitorear mi sistema?</h4>
-          <p>Sí. Una de las ventajas del sistema es poder revisar su estado desde tu celular.</p>
+          <h4>¿Se puede monitorear el sistema?</h4>
+          <p>Sí. Una de las ventajas es poder revisar el estado del sistema desde el celular.</p>
         </article>
 
         <article class="faq">
           <h4>¿Atienden en Panamá?</h4>
-          <p>Sí. Atendemos proyectos residenciales, comerciales, industriales y lugares aislados en Panamá.</p>
+          <p>Sí. Se atienden proyectos residenciales, comerciales, industriales y lugares aislados en Panamá.</p>
         </article>
       </div>
     </div>
@@ -792,12 +973,11 @@
       <div class="contact-box">
         <h2>Solicita tu cotización</h2>
         <p>
-          Envíanos tu factura por WhatsApp y te orientamos según tu tipo de cliente:
-          residencial, comercial, industrial o lugares aislados.
+          Envía la factura por WhatsApp y recibe orientación para residencia, comercio, industria o lugares aislados.
         </p>
 
         <div class="contact-actions">
-          <a class="btn btn-primary" href="https://wa.me/50769453126?text=Hola%20quiero%20cotizar%20un%20sistema%20solar%20y%20enviar%20mi%20factura" target="_blank" rel="noopener">Hablar por WhatsApp</a>
+          <a class="btn btn-primary" href="https://wa.me/50769453126?text=Hola%20quiero%20cotizar%20energ%C3%ADa%20solar%20en%20Panam%C3%A1" target="_blank" rel="noopener">Hablar por WhatsApp</a>
           <a class="btn btn-secondary" href="tel:+50769453126">Llamar ahora</a>
         </div>
 
@@ -811,8 +991,8 @@
             <span>6945-3126</span>
           </div>
           <div class="contact-card">
-            <strong>Empresa madre</strong>
-            <span>Eco Energy Solutions</span>
+            <strong>Referencia</strong>
+            <span>Ecoenergy Asesores Panamá</span>
           </div>
         </div>
       </div>
@@ -820,7 +1000,7 @@
   </section>
 
   <footer>
-    Ecoenergy Asesores · Energía solar en Panamá
+    Ecoenergy Asesores Panamá · Energía solar en Panamá
   </footer>
 
   <script>
@@ -849,7 +1029,7 @@
         resultado.innerHTML = `
           <small>Resultado estimado</small>
           <strong>Ingresa un monto válido</strong>
-          <p>Escribe tu factura mensual en dólares para calcular tu referencia.</p>
+          <p>Escribe tu factura mensual en dólares para calcular una referencia.</p>
         `;
         return;
       }
@@ -861,7 +1041,7 @@
         resultado.innerHTML = `
           <small>Estimación residencial</small>
           <strong>Ahorro aproximado: $${ahorro.toFixed(2)}</strong>
-          <p>El cargo por consumo podría bajar prácticamente a cero. Podrías quedar pagando alrededor de $${restante.toFixed(2)} más cargos mínimos, según el caso.</p>
+          <p>El cargo por consumo podría bajar prácticamente a cero. Podría quedar alrededor de $${restante.toFixed(2)} más cargos mínimos, según el caso.</p>
         `;
       } else {
         const ahorroMin = valor * 0.30;
@@ -874,6 +1054,46 @@
         `;
       }
     }
+
+    const slides = document.querySelectorAll(".slide");
+    const dots = document.querySelectorAll(".slider-dots button");
+    let currentSlide = 0;
+    let sliderInterval;
+
+    function showSlide(index){
+      slides.forEach((slide, i) => {
+        slide.classList.toggle("active", i === index);
+      });
+      dots.forEach((dot, i) => {
+        dot.classList.toggle("active", i === index);
+      });
+      currentSlide = index;
+    }
+
+    function nextSlide(){
+      let next = currentSlide + 1;
+      if(next >= slides.length) next = 0;
+      showSlide(next);
+    }
+
+    function startSlider(){
+      sliderInterval = setInterval(nextSlide, 4200);
+    }
+
+    function restartSlider(){
+      clearInterval(sliderInterval);
+      startSlider();
+    }
+
+    dots.forEach((dot, i) => {
+      dot.addEventListener("click", () => {
+        showSlide(i);
+        restartSlider();
+      });
+    });
+
+    showSlide(0);
+    startSlider();
   </script>
 </body>
 </html>
