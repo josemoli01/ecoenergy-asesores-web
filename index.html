@@ -1,112 +1,457 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Eco Energy Asesores</title>
-
-<style>
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: #0b1220;
-  color: white;
-}
-
-header {
-  display: flex;
-  justify-content: space-between;
-  padding: 15px;
-  background: white;
-  color: black;
-}
-
-.btn {
-  background: #22c55e;
-  padding: 10px 18px;
-  border-radius: 25px;
-  color: white;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-.hero {
-  padding: 40px 20px;
-  text-align: center;
-}
-
-.hero h1 {
-  font-size: 34px;
-}
-
-.section {
-  padding: 30px 20px;
-}
-
-.card {
-  background: #111827;
-  padding: 20px;
-  margin-bottom: 15px;
-  border-radius: 15px;
-}
-
-img {
-  width: 100%;
-  border-radius: 15px;
-  margin-bottom: 10px;
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ecoenergy Asesores | Energía solar en Panamá</title>
+  <meta name="description" content="Ecoenergy Asesores en Panamá. Soluciones solares para residencias, comercios e industrias. Cotiza por WhatsApp.">
+  <style>
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:Arial,Helvetica,sans-serif;
+      background:#081326;
+      color:#fff;
+    }
+    a{text-decoration:none}
+    .topbar{
+      background:#fff;
+      padding:16px 18px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      position:sticky;
+      top:0;
+      z-index:1000;
+      box-shadow:0 2px 10px rgba(0,0,0,.08);
+    }
+    .logo{
+      font-weight:900;
+      font-size:28px;
+      line-height:1;
+      color:#0b1220;
+    }
+    .logo span{color:#22c55e}
+    .sublogo{
+      display:block;
+      font-size:10px;
+      letter-spacing:4px;
+      color:#64748b;
+      margin-top:4px;
+    }
+    .btn{
+      display:inline-block;
+      background:#22c55e;
+      color:#fff;
+      padding:14px 24px;
+      border-radius:999px;
+      font-weight:700;
+      border:none;
+      cursor:pointer;
+    }
+    .btn-dark{
+      background:#1e293b;
+      color:#fff;
+    }
+    .hero{
+      padding:70px 22px 50px;
+      text-align:center;
+      background:linear-gradient(135deg,#061021 0%,#081326 70%,#0d1d3a 100%);
+    }
+    .hero small{
+      display:inline-block;
+      color:#9ae6b4;
+      border:1px solid rgba(255,255,255,.15);
+      padding:10px 16px;
+      border-radius:999px;
+      margin-bottom:18px;
+      letter-spacing:2px;
+      font-size:11px;
+      font-weight:700;
+      text-transform:uppercase;
+    }
+    .hero h1{
+      font-size:52px;
+      line-height:1;
+      margin:0 0 18px;
+      font-weight:900;
+    }
+    .hero h1 .green{color:#22c55e}
+    .hero p{
+      font-size:22px;
+      line-height:1.6;
+      max-width:900px;
+      margin:0 auto 28px;
+      color:#dbe4ee;
+    }
+    .hero-actions{
+      display:flex;
+      gap:14px;
+      justify-content:center;
+      flex-wrap:wrap;
+    }
+    .section{
+      padding:55px 20px;
+    }
+    .light{
+      background:#f3f6fb;
+      color:#0f172a;
+    }
+    .container{
+      max-width:1100px;
+      margin:0 auto;
+    }
+    .title{
+      text-align:center;
+      margin-bottom:30px;
+    }
+    .title h2{
+      font-size:40px;
+      margin:0 0 12px;
+      font-weight:900;
+    }
+    .title p{
+      font-size:18px;
+      color:#64748b;
+      max-width:760px;
+      margin:0 auto;
+      line-height:1.7;
+    }
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+      gap:22px;
+    }
+    .card{
+      background:#0d1b33;
+      border-radius:24px;
+      overflow:hidden;
+      box-shadow:0 15px 35px rgba(0,0,0,.18);
+    }
+    .light .card{
+      background:#fff;
+      box-shadow:0 12px 28px rgba(15,23,42,.08);
+    }
+    .card img{
+      width:100%;
+      height:220px;
+      object-fit:cover;
+      display:block;
+    }
+    .card-body{
+      padding:24px;
+    }
+    .card h3{
+      margin:0 0 12px;
+      font-size:34px;
+      font-weight:900;
+    }
+    .card p{
+      margin:0;
+      font-size:18px;
+      line-height:1.7;
+      color:#d3deea;
+    }
+    .light .card p{color:#475569}
+    .stats{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:18px;
+      margin-top:20px;
+    }
+    .stat{
+      background:#fff;
+      color:#0f172a;
+      border-radius:22px;
+      padding:26px;
+      text-align:center;
+      box-shadow:0 10px 25px rgba(15,23,42,.08);
+    }
+    .stat strong{
+      display:block;
+      font-size:48px;
+      color:#16a34a;
+      margin-bottom:10px;
+      font-weight:900;
+    }
+    .stat span{
+      color:#475569;
+      line-height:1.6;
+      font-size:17px;
+    }
+    .calc-box{
+      background:#fff;
+      color:#0f172a;
+      border-radius:26px;
+      padding:28px;
+      max-width:720px;
+      margin:0 auto;
+      box-shadow:0 18px 40px rgba(15,23,42,.10);
+    }
+    .calc-box h3{
+      margin-top:0;
+      font-size:38px;
+      font-weight:900;
+      text-align:center;
+    }
+    .calc-box p{
+      text-align:center;
+      color:#64748b;
+      line-height:1.7;
+      font-size:18px;
+    }
+    .calc-box input{
+      width:100%;
+      padding:16px;
+      border-radius:14px;
+      border:1px solid #dbe3ed;
+      font-size:18px;
+      margin:14px 0;
+    }
+    .result{
+      margin-top:18px;
+      padding:18px;
+      border-radius:16px;
+      background:#f0fdf4;
+      color:#166534;
+      font-size:24px;
+      font-weight:800;
+      text-align:center;
+    }
+    .faq{
+      display:grid;
+      gap:16px;
+      max-width:900px;
+      margin:0 auto;
+    }
+    .faq-item{
+      background:#fff;
+      border-radius:20px;
+      padding:24px;
+      color:#0f172a;
+      box-shadow:0 10px 24px rgba(15,23,42,.07);
+    }
+    .faq-item h4{
+      margin:0 0 10px;
+      font-size:28px;
+      font-weight:900;
+    }
+    .faq-item p{
+      margin:0;
+      color:#475569;
+      font-size:18px;
+      line-height:1.7;
+    }
+    .cta{
+      background:linear-gradient(135deg,#061021 0%,#081326 100%);
+      border-radius:28px;
+      padding:34px;
+      color:#fff;
+      box-shadow:0 20px 40px rgba(0,0,0,.25);
+    }
+    .cta h2{
+      font-size:46px;
+      margin:0 0 12px;
+      font-weight:900;
+    }
+    .cta p{
+      color:#d9e3ee;
+      font-size:20px;
+      line-height:1.7;
+      margin:0 0 24px;
+    }
+    .contact-list{
+      margin-top:20px;
+      color:#d9e3ee;
+      line-height:1.9;
+      font-size:18px;
+    }
+    footer{
+      text-align:center;
+      padding:26px 20px 100px;
+      color:#94a3b8;
+      background:#f3f6fb;
+    }
+    .floating{
+      position:fixed;
+      right:16px;
+      bottom:16px;
+      background:#22c55e;
+      color:#fff;
+      padding:16px 24px;
+      border-radius:999px;
+      font-weight:800;
+      box-shadow:0 12px 30px rgba(34,197,94,.35);
+      z-index:999;
+    }
+    @media (max-width:768px){
+      .hero h1{font-size:42px}
+      .hero p{font-size:18px}
+      .title h2{font-size:32px}
+      .card h3{font-size:28px}
+      .cta h2{font-size:34px}
+      .btn{width:100%;text-align:center}
+      .hero-actions{flex-direction:column}
+    }
+  </style>
 </head>
-
 <body>
 
-<header>
-  <b>ECO ENERGY</b>
-  <a class="btn" href="https://wa.me/50769453126">WhatsApp</a>
-</header>
+  <header class="topbar">
+    <div>
+      <div class="logo"><span>ECOENERGY</span> ASESORES</div>
+      <span class="sublogo">PANAMÁ</span>
+    </div>
+    <a class="btn" href="https://wa.me/50769453126?text=Hola%20quiero%20cotizar%20energ%C3%ADa%20solar" target="_blank">WhatsApp</a>
+  </header>
 
-<section class="hero">
-  <h1>Paga $0 en luz ⚡</h1>
-  <p>Ahorra hasta 70% con energía solar en Panamá</p>
-  <a class="btn" href="https://wa.me/50769453126">Cotizar ahora</a>
-</section>
+  <section class="hero">
+    <small>energía solar en panamá</small>
+    <h1>Baja tu factura eléctrica <span class="green">hasta 70%</span></h1>
+    <p>Soluciones solares para residencias, comercios, industrias y lugares aislados. Cotiza por WhatsApp y revisa el estado de tu sistema desde tu celular.</p>
+    <div class="hero-actions">
+      <a class="btn" href="https://wa.me/50769453126?text=Hola%20quiero%20cotizar%20energ%C3%ADa%20solar" target="_blank">Cotizar por WhatsApp</a>
+      <a class="btn btn-dark" href="#calculadora">Calcular ahorro</a>
+    </div>
+  </section>
 
-<section class="section">
-  <div class="card">
-    <img src="https://images.unsplash.com/photo-1509395176047-4a66953fd231">
-    <h2>Residencial</h2>
-    <p>Reduce tu factura eléctrica casi a cero.</p>
-  </div>
+  <section class="section">
+    <div class="container">
+      <div class="grid">
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1497440001374-f26997328c1b?auto=format&fit=crop&w=1200&q=80" alt="Sistema residencial">
+          <div class="card-body">
+            <h3>Residencial</h3>
+            <p>El cargo por kWh puede bajar prácticamente a cero y quedar principalmente el cargo fijo del recibo.</p>
+          </div>
+        </div>
 
-  <div class="card">
-    <img src="https://images.unsplash.com/photo-1508514177221-188b1cf16e9d">
-    <h2>Comercial</h2>
-    <p>Ahorro de 30% a 70% en negocios.</p>
-  </div>
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1509395176047-4a66953fd231?auto=format&fit=crop&w=1200&q=80" alt="Sistema comercial">
+          <div class="card-body">
+            <h3>Comercial</h3>
+            <p>El ahorro puede variar entre 30% y 70%, manteniendo demanda y cargos fijos según el perfil de consumo.</p>
+          </div>
+        </div>
 
-  <div class="card">
-    <img src="https://images.unsplash.com/photo-1581091215367-59ab6b9d1e4d">
-    <h2>Monitoreo</h2>
-    <p>Controla tu sistema desde tu celular.</p>
-  </div>
-</section>
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1466611653911-95081537e5b7?auto=format&fit=crop&w=1200&q=80" alt="Monitoreo solar">
+          <div class="card-body">
+            <h3>Monitoreo</h3>
+            <p>Controla y revisa el estado de tu sistema desde el celular para tomar mejores decisiones.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<section class="section">
-  <div class="card">
-    <h2>Calcula tu ahorro</h2>
-    <input id="factura" placeholder="Factura mensual $" style="width:100%;padding:10px;margin-top:10px;">
-    <button class="btn" onclick="calc()">Calcular</button>
-    <p id="resultado"></p>
-  </div>
-</section>
+  <section class="section light">
+    <div class="container">
+      <div class="title">
+        <h2>Resultados claros</h2>
+        <p>La propuesta comercial debe decirle al cliente de inmediato cuánto puede ahorrar y cómo funciona según su tipo de instalación.</p>
+      </div>
+      <div class="stats">
+        <div class="stat">
+          <strong>70%</strong>
+          <span>Ahorro máximo estimado en algunos perfiles comerciales.</span>
+        </div>
+        <div class="stat">
+          <strong>30%</strong>
+          <span>Ahorro base posible en proyectos comerciales.</span>
+        </div>
+        <div class="stat">
+          <strong>0 kWh</strong>
+          <span>Meta del cargo por consumo en clientes residenciales.</span>
+        </div>
+        <div class="stat">
+          <strong>24/7</strong>
+          <span>Monitoreo desde celular o computadora.</span>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<script>
-function calc(){
-  let f = document.getElementById("factura").value;
-  let ahorro = f * 0.7;
-  document.getElementById("resultado").innerText = "Ahorro estimado: $" + ahorro;
-}
-</script>
+  <section class="section" id="calculadora">
+    <div class="container">
+      <div class="calc-box">
+        <h3>Calcula tu ahorro</h3>
+        <p>Ingresa tu factura mensual para tener una referencia rápida antes de cotizar.</p>
+        <input id="factura" type="number" placeholder="Factura mensual en dólares">
+        <button class="btn" onclick="calcularAhorro()">Calcular ahorro</button>
+        <div class="result" id="resultado">Tu ahorro estimado aparecerá aquí</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section light">
+    <div class="container">
+      <div class="title">
+        <h2>Preguntas frecuentes</h2>
+        <p>Respuestas simples para que el cliente entienda rápido y pase a cotización.</p>
+      </div>
+      <div class="faq">
+        <div class="faq-item">
+          <h4>¿La factura queda en cero?</h4>
+          <p>En residencial, el cargo por consumo puede bajar prácticamente a cero, pero normalmente sigue existiendo un cargo fijo. En comercial, además del cargo fijo, puede mantenerse la demanda.</p>
+        </div>
+        <div class="faq-item">
+          <h4>¿El ahorro es igual para todos?</h4>
+          <p>No. Depende del tipo de cliente, el patrón de consumo, la demanda y la solución instalada.</p>
+        </div>
+        <div class="faq-item">
+          <h4>¿Puedo monitorear mi sistema?</h4>
+          <p>Sí. Uno de los beneficios de la solución es poder revisar el estado del sistema desde tu celular.</p>
+        </div>
+        <div class="faq-item">
+          <h4>¿Atienden en Panamá?</h4>
+          <p>Sí. La comunicación comercial está enfocada en Panamá para clientes residenciales, comerciales e industriales.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="cta">
+        <h2>Solicita tu cotización</h2>
+        <p>Envíanos tu factura por WhatsApp y te orientamos según tu tipo de cliente: residencial, comercial o industrial.</p>
+        <div class="hero-actions">
+          <a class="btn" href="https://wa.me/50769453126?text=Hola%20quiero%20cotizar%20energ%C3%ADa%20solar" target="_blank">Hablar por WhatsApp</a>
+          <a class="btn btn-dark" href="tel:69453126">Llamar ahora</a>
+        </div>
+        <div class="contact-list">
+          📍 El Dorado, Plaza Figuer, oficina 106, Panamá City, Panamá 0819<br>
+          📲 WhatsApp: 6945-3126<br>
+          🌐 Dominio: ecoenergy-asesores.com<br>
+          ⚡ Empresa madre: Eco Energy Solutions
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    Ecoenergy Asesores · Energía solar en Panamá
+  </footer>
+
+  <a class="floating" href="https://wa.me/50769453126?text=Hola%20quiero%20cotizar%20energ%C3%ADa%20solar" target="_blank">WhatsApp</a>
+
+  <script>
+    function calcularAhorro() {
+      const factura = parseFloat(document.getElementById('factura').value);
+      const resultado = document.getElementById('resultado');
+
+      if (isNaN(factura) || factura <= 0) {
+        resultado.innerText = 'Ingresa una factura válida';
+        return;
+      }
+
+      const ahorro = Math.round(factura * 0.70);
+      const restante = Math.round(factura - ahorro);
+
+      resultado.innerText = `Ahorro estimado: $${ahorro} | Pago restante estimado: $${restante}`;
+    }
+  </script>
 
 </body>
 </html>
